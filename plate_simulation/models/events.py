@@ -84,7 +84,7 @@ class Erosion(Event):
         return model
 
 
-class Anomaly(Event):
+class Body(Event):
     """
     Enrich or deplete the model within a close surface.
 
@@ -94,7 +94,7 @@ class Anomaly(Event):
     """
 
     def __init__(self, surface: Surface, value: float):
-        self.surface = Body(surface)
+        self.surface = ClosedSurface(surface)
         self.value = value
 
     def realize(self, mesh: Octree, model: np.ndarray) -> np.ndarray:
@@ -148,7 +148,7 @@ class Boundary:
         return active_from_xyz(mesh, self.vertical_shift(offset), reference)
 
 
-class Body:
+class ClosedSurface:
     """
     Represents a closed surface in the model.
 

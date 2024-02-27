@@ -19,12 +19,13 @@ from simpeg_drivers.driver import InversionDriver
 
 from .logger import get_logger
 from .mesh.params import MeshParams
-from .models.events import Anomaly, Erosion, Overburden
+from .models.events import Body, Erosion, Overburden
 from .models.params import ModelParams, OverburdenParams, PlateParams
 from .models.plates import Plate
 from .models.series import Scenario
 from .params import PlateSimulationParams
 from .simulations.params import SimulationParams
+from .quantities import Quantity
 
 
 class PlateSimulationDriver:
@@ -116,11 +117,12 @@ class PlateSimulationDriver:
         overburden = Overburden(
             topography=self.params.simulation.topography_object,
             thickness=self.params.model.overburden.thickness,
-            value=self.params.model.overburden.value,
+            value=self.params.model.overburden.anomaly.value,
         )
 
-        anomaly = Anomaly(
-            surface=self.plate.surface, value=self.params.model.plate.anomaly
+        body = Body(
+            surface=self.plate.surface,
+            value=self.params.model.plate.anomaly.value
         )
 
         erosion = Erosion(
@@ -130,8 +132,8 @@ class PlateSimulationDriver:
         scenario = Scenario(
             workspace=self.params.workspace,
             mesh=self.mesh,
-            background=self.params.model.background,
-            history=[anomaly, overburden, erosion],
+            background=self.params.model.background.value,
+            history=[body, overburden, erosion],
             name=self.params.model.name,
         )
 
@@ -158,10 +160,16 @@ class PlateSimulationDriver:
         Converts ui.json resistivity to conductivity.
         """
 
-        return OverburdenParams(
-            thickness=ifile.data["thickness"],  # type: ignore
-            value=1.0 / ifile.data["overburden"],  # type: ignore
+        anomaly = Quantity.create(
+            ifile.data["overburden"],
+            ifile.ui_json["overburden"]["unit"]
         )
+        overburden_params = OverburdenParams(
+            thickness=ifile.data["thickness"],  # type: ignore
+            anomaly=anomaly,
+        )
+        return overburden_params
+
 
     @staticmethod
     def _plate_params_from_input_file(ifile: InputFile) -> PlateParams:
@@ -171,9 +179,13 @@ class PlateSimulationDriver:
         Converts ui.json resistivity to conductivity.
         """
 
+        anomaly = Quantity.create(
+            ifile.data["plate"],
+            ifile.ui_json["plate"]["unit"]
+        )
         return PlateParams(
             name="plate",
-            anomaly=1.0 / ifile.data["plate"],  # type: ignore
+            anomaly=anomaly,
             center_x=ifile.data["center_x"],  # type: ignore
             center_y=ifile.data["center_y"],  # type: ignore
             center_z=ifile.data["center_z"],  # type: ignore
@@ -209,10 +221,13 @@ class PlateSimulationDriver:
             ifile
         )
         plate_params = PlateSimulationDriver._plate_params_from_input_file(ifile)
-
+        background = Quantity.create(
+            ifile.data["background"],
+            ifile.ui_json["background"]["unit"]
+        )
         return ModelParams(
             name=ifile.data["name"],  # type: ignore
-            background=1.0 / ifile.data["background"],  # type: ignore
+            background=background,
             overburden=overburden_params,
             plate=plate_params,
         )

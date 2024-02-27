@@ -24,6 +24,7 @@
     "group": "Basement",
     "label": "Basement",
     "value": 2000.0,
+    "unit": "Ohm*m",
     "enabled": true
   },
   "overburden": {
@@ -31,6 +32,7 @@
     "group": "Overburden",
     "label": "Resistivity",
     "value": 8000.0,
+    "unit": "Ohm*m",
     "enabled": true
   },
   "thickness": {
@@ -45,6 +47,7 @@
     "group": "Plate",
     "label": "Resistivity",
     "value": 20.0,
+    "unit": "Ohm*m",
     "enabled": true
   },
   "center_x": {

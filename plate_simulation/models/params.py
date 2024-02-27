@@ -5,7 +5,10 @@
 #  All rights reserved.
 #
 
-from pydantic import BaseModel, ConfigDict
+from typing import ClassVar
+from pydantic import BaseModel, ConfigDict, field_validator
+
+from plate_simulation.quantities import Quantity
 
 
 class PlateParams(BaseModel):
@@ -14,7 +17,7 @@ class PlateParams(BaseModel):
 
     :param name: Name to be given to the geoh5py Surface object
         representing the plate.
-    :param anomaly: Value given to the plate.
+    :param anomaly: Plate value in accepted units.
     :param center_x: X-coordinate of the center of the plate.
     :param center_y: Y-coordinate of the center of the plate.
     :param center_z: Z-coordinate of the center of the plate.
@@ -29,7 +32,7 @@ class PlateParams(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
     name: str
-    anomaly: float
+    anomaly: Quantity
     center_x: float
     center_y: float
     center_z: float
@@ -46,19 +49,26 @@ class OverburdenParams(BaseModel):
     Parameters for the overburden layer.
 
     :param thickness: Thickness of the overburden layer.
-    :param value: Value given to the overburden layer.
+    :param anomaly: Overburden value in accepted units.
     """
 
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
     thickness: float
-    value: float
+    anomaly: Quantity
+
+    @field_validator("anomaly")
+    def flatten(cls, val):
+        return val.value
+
 
 
 class ModelParams(BaseModel):
     """
     Parameters for the blackground + overburden and plate model.
 
-    :param name: Name to be given to the model.
-    :param background: Value given to the background.
+    :param name: Name to be given to the model
+    :param background: Background value in accepted units.
     :param overburden: Overburden layer parameters.
     :param plate: Plate parameters.
     """
@@ -66,6 +76,6 @@ class ModelParams(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
     name: str
-    background: float
+    background: Quantity
     overburden: OverburdenParams
     plate: PlateParams

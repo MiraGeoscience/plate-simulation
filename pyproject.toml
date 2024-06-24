@@ -65,13 +65,13 @@ octree-creation-app = {url = "https://github.com/MiraGeoscience/octree-creation-
 geoapps-utils = {url = "https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/develop.zip"}
 
 #mira-simpeg = {version = ">=0.19.0.8rc3,<0.19.0.9.dev", source = "pypi", allow-prereleases = true}
-mira-simpeg = {url = "https://github.com/MiraGeoscience/simpeg/archive/refs/heads/develop.zip"}
+#mira-simpeg = {url = "https://github.com/MiraGeoscience/simpeg/archive/refs/heads/GEOPY-1524.zip"}
 
 #param-sweeps = {version = "~0.1.7rc1", source = "pypi", allow-prereleases = true}
 param-sweeps = {url = "https://github.com/MiraGeoscience/param-sweeps/archive/refs/heads/develop.zip"}
 
 #simpeg-drivers = {version = "~0.1.0rc1", source = "pypi", allow-prereleases = true}
-simpeg-drivers = { url = "https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/develop.zip" }
+simpeg-drivers = { url = "https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/GEOPY-1524.zip" }
 
 ## indirect dependencies, forcing them here for installation through Conda not pip
 #---------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ matplotlib = "~3.7.1"  # from simpeg and geoana
 mkl = "2023.2.0"  # from simpeg
 pandas = "~2.2.1"  # from simpeg
 Pillow = "~10.3.0"  # from geoh5py
-pydiso = "~0.0.5"  # from simpeg
+pydiso = "~0.0.4"  # from simpeg
 intel-openmp = "2023.2.0"
 pymatsolver = "~0.2.0"  # from simpeg
 scikit-learn = "~1.4.0"  # from simpeg

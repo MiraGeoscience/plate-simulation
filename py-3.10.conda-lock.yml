@@ -15,8 +15,8 @@
 version: 1
 metadata:
   content_hash:
-    win-64: b5e05b5244d6fbf25c2ca415ec6fb0f306f2ff9aa275019768c7e728096fc193
-    linux-64: 26baf32d8aaaf652ee7349589559300cd1b8dfc3265d2bd3ead820a31f00980a
+    win-64: f719a2e62f3b7a5e774411c0cf9d4a4d3a5804b51ce824d86b7de83d5f104939
+    linux-64: 525baf28cdf05abb6a6f452ea0f73273345d46f749badcf5b99183ec4be4b1e0
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -541,7 +541,7 @@ package:
   category: main
   optional: false
 - name: coverage
-  version: 7.5.3
+  version: 7.5.4
   manager: conda
   platform: linux-64
   dependencies:
@@ -549,14 +549,14 @@ package:
     python: '>=3.10,<3.11.0a0'
     python_abi: 3.10.*
     tomli: ''
-  url: https://conda.anaconda.org/conda-forge/linux-64/coverage-7.5.3-py310hc51659f_0.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/coverage-7.5.4-py310hc51659f_0.conda
   hash:
-    md5: 4be0e55c0f724d339be3d4dc9dfc5752
-    sha256: d14fd44ca7f9ae180e6a9a565d39ffe093d0c9eacda6b13c85cb26ec6ef8687e
+    md5: b27dd9fc9a5f0ffd01999f2c8a53ec0b
+    sha256: a28441edb664e76f6776830b3eea80914e1d236d135964813ccfcd7ca2d23c1d
   category: dev
   optional: true
 - name: coverage
-  version: 7.5.3
+  version: 7.5.4
   manager: conda
   platform: win-64
   dependencies:
@@ -566,10 +566,10 @@ package:
     ucrt: '>=10.0.20348.0'
     vc: '>=14.2,<15'
     vc14_runtime: '>=14.29.30139'
-  url: https://conda.anaconda.org/conda-forge/win-64/coverage-7.5.3-py310ha8f682b_0.conda
+  url: https://conda.anaconda.org/conda-forge/win-64/coverage-7.5.4-py310ha8f682b_0.conda
   hash:
-    md5: 0609217d7e0efa5d9095fef96081cf1e
-    sha256: 1322bb9f73ee730beabcdc10538dcaec2f6015d5c0df8e878de5d7c10ce310ad
+    md5: 482417204036a723d4a516c234ff0ebd
+    sha256: 2a75c92abf423a8785c72394744dd0374663b59f7d9be561aa5d3d23d9fd74bb
   category: dev
   optional: true
 - name: cycler
@@ -1153,29 +1153,29 @@ package:
   category: dev
   optional: true
 - name: importlib-metadata
-  version: 7.2.0
+  version: 7.2.1
   manager: conda
   platform: linux-64
   dependencies:
     python: '>=3.8'
     zipp: '>=0.5'
-  url: https://conda.anaconda.org/conda-forge/noarch/importlib-metadata-7.2.0-pyha770c72_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/importlib-metadata-7.2.1-pyha770c72_0.conda
   hash:
-    md5: e1d9f6dc77209defc283bdf61588e968
-    sha256: 15a35caaff1d06dc7177d7272a7b1c6cf14849569ecf2204baf0be875849d807
+    md5: b9f5330c0853ccabc39a9878c6f1a2ab
+    sha256: 21c0aed99d05658760c87dcb3fce6e1175966d1bc51b7c31981e779e90574d27
   category: dev
   optional: true
 - name: importlib-metadata
-  version: 7.2.0
+  version: 7.2.1
   manager: conda
   platform: win-64
   dependencies:
     python: '>=3.8'
     zipp: '>=0.5'
-  url: https://conda.anaconda.org/conda-forge/noarch/importlib-metadata-7.2.0-pyha770c72_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/importlib-metadata-7.2.1-pyha770c72_0.conda
   hash:
-    md5: e1d9f6dc77209defc283bdf61588e968
-    sha256: 15a35caaff1d06dc7177d7272a7b1c6cf14849569ecf2204baf0be875849d807
+    md5: b9f5330c0853ccabc39a9878c6f1a2ab
+    sha256: 21c0aed99d05658760c87dcb3fce6e1175966d1bc51b7c31981e779e90574d27
   category: dev
   optional: true
 - name: iniconfig
@@ -1744,10 +1744,10 @@ package:
   dependencies:
     _libgcc_mutex: '0.1'
     _openmp_mutex: '>=4.5'
-  url: https://conda.anaconda.org/conda-forge/linux-64/libgcc-ng-13.2.0-h77fa898_11.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libgcc-ng-13.2.0-h77fa898_13.conda
   hash:
-    md5: 0b3b218a596bb4c3854cc9ee799f94e5
-    sha256: bbdd49b5a191105cf4bf82a59d611afa1e8568efa556dd988e4e5d0efc3058b1
+    md5: 9358cdd61ef0d600d2a0dde2d53b006c
+    sha256: ffa0f472c8b37f864de855af2d3c057f1813162319f10ebd97332d73fc27ba60
   category: main
   optional: false
 - name: libgfortran-ng
@@ -1756,10 +1756,10 @@ package:
   platform: linux-64
   dependencies:
     libgfortran5: 13.2.0
-  url: https://conda.anaconda.org/conda-forge/linux-64/libgfortran-ng-13.2.0-h69a702a_11.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libgfortran-ng-13.2.0-h69a702a_13.conda
   hash:
-    md5: 4c3e460d6acf8e43e4ce8bf405187eb7
-    sha256: f91aa928161201f189057c90db1508def36bef6329ebb29a71d8064b180250dd
+    md5: 516e66b26eea14e7e322fe99e88e0f02
+    sha256: 3ef5d92510e9cdd70ec2a9f1f83b8c1d327ff0f9bfc17831a8f8f06f10c2085c
   category: main
   optional: false
 - name: libgfortran5
@@ -1768,10 +1768,10 @@ package:
   platform: linux-64
   dependencies:
     libgcc-ng: '>=13.2.0'
-  url: https://conda.anaconda.org/conda-forge/linux-64/libgfortran5-13.2.0-h3d2ce59_11.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libgfortran5-13.2.0-h3d2ce59_13.conda
   hash:
-    md5: c485da4fdb454539f852a90ae06e9bb7
-    sha256: de8535b5fb39a78f4b7473b88c400c922ae063f29500c097743b480fd0a4f326
+    md5: 1e380198685bc1e993bbbc4b579f5916
+    sha256: 19cffb68b19ff5f426d1cb3db670dccb73c09f54b8d3f8e304665e2cee68f14f
   category: main
   optional: false
 - name: libhwloc
@@ -2056,10 +2056,10 @@ package:
   platform: linux-64
   dependencies:
     libgcc-ng: 13.2.0
-  url: https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-ng-13.2.0-hc0a3c3a_11.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-ng-13.2.0-hc0a3c3a_13.conda
   hash:
-    md5: eaa8ea74083fb4a78ae19e431e556003
-    sha256: e03f0f2712f45a85234016bcc5afa76023e31e00a2e74d8819a1b3bdf091fdb0
+    md5: 1053882642ed5bbc799e1e866ff86826
+    sha256: 143171c6084e526122cc2976fbbfadf7b9f50e5d13036adf20feb7ed9d036dd2
   category: main
   optional: false
 - name: libtiff
@@ -3050,7 +3050,7 @@ package:
   dependencies:
     annotated-types: '>=0.4.0'
     pydantic-core: 2.14.6
-    python: '>=3.7'
+    python: '>=3.7,<3.12.4.0a0'
     typing-extensions: '>=4.6.1'
   url: https://conda.anaconda.org/conda-forge/noarch/pydantic-2.5.3-pyhd8ed1ab_0.conda
   hash:
@@ -3063,9 +3063,9 @@ package:
   manager: conda
   platform: win-64
   dependencies:
-    python: '>=3.7'
     typing-extensions: '>=4.6.1'
     annotated-types: '>=0.4.0'
+    python: '>=3.7,<3.12.4.0a0'
     pydantic-core: 2.14.6
   url: https://conda.anaconda.org/conda-forge/noarch/pydantic-2.5.3-pyhd8ed1ab_0.conda
   hash:
@@ -5015,12 +5015,12 @@ package:
     tqdm: '>=4.66.1,<5.0.0'
     tzdata: '2023.4'
     zarr: '>=2.14.2,<2.15.0'
-  url: https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/develop.zip
+  url: https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/GEOPY-1524.zip
   hash: {}
   category: main
   source:
     type: url
-    url: https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/develop.zip
+    url: https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/GEOPY-1524.zip
   optional: false
 - name: simpeg-drivers
   version: 0.2.0a1
@@ -5053,10 +5053,10 @@ package:
     tqdm: '>=4.66.1,<5.0.0'
     tzdata: '2023.4'
     zarr: '>=2.14.2,<2.15.0'
-  url: https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/develop.zip
+  url: https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/GEOPY-1524.zip
   hash: {}
   category: main
   source:
     type: url
-    url: https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/develop.zip
+    url: https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/GEOPY-1524.zip
   optional: false

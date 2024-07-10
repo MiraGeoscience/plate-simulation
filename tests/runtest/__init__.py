@@ -7,7 +7,6 @@
 
 import numpy as np
 from geoh5py.objects import Points, Surface
-from SimPEG import utils
 
 
 def get_survey(workspace, n_receivers, n_lines):
@@ -16,11 +15,7 @@ def get_survey(workspace, n_receivers, n_lines):
     )
     Z = np.zeros_like(X)  # pylint: disable=invalid-name
 
-    vertices = np.c_[
-        utils.mkvc(X.T),
-        utils.mkvc(Y.T),
-        utils.mkvc(Z.T),
-    ]
+    vertices = np.c_[X.T.flatten(), Y.T.flatten(), Z.T.flatten()]
 
     return Points.create(
         workspace,

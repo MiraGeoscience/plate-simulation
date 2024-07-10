@@ -45,8 +45,8 @@ exclude = [
 [tool.poetry.dependencies]
 python = "^3.10, <3.11"
 
-numpy = "~1.23.5"  # also geoh5py, simpeg and geoana
-scipy = "~1.13"
+numpy = "~1.26"  # also geoh5py, simpeg and geoana
+scipy = "~1.14"
 discretize = "~0.10.0"
 Rtree = "~1.2.0"
 trimesh = "~4.1.3"
@@ -55,46 +55,61 @@ pydantic = "~2.5.2"
 
 ## Pip dependencies from Git repositories
 #----------------------------------------
-#geoh5py = {version = "~0.9.0-rc.5", source = "pypi", allow-prereleases = true}
-geoh5py = {url = "https://github.com/MiraGeoscience/geoh5py/archive/refs/heads/develop.zip"}
+#geoh5py = {version = "~0.9.0rc2", source = "pypi", allow-prereleases = true}
+#geoh5py = {url = "https://github.com/MiraGeoscience/geoh5py/archive/refs/heads/develop.zip"}
+geoh5py = {git = "https://github.com/MiraGeoscience/geoh5py.git", rev = "develop"}
+#geoh5py = {url = "http://localhost:8888/geoh5py.tar.gz#sha256="}
 
 #octree-creation-app = {version = "~0.1.0rc2", source = "pypi", allow-prereleases = true}
-octree-creation-app = {url = "https://github.com/MiraGeoscience/octree-creation-app/archive/refs/heads/develop.zip"}
+# already through simpeg-driver: do need to repeat until on PyPI, or conda-lock fails to resolve
+#octree-creation-app = {url = "https://github.com/MiraGeoscience/octree-creation-app/archive/refs/heads/GEOPY-1569.zip"}
+octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-app.git", rev = "develop"}
+#octree-creation-app = {url = "http://localhost:8888/octree-creation-app.tar.gz#sha256="}
 
-#geoapps-utils = {version = "~0.3.0rc4", source = "pypi", allow-prereleases = true}
-geoapps-utils = {url = "https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/develop.zip"}
+#geoapps-utils = {version = "~0.3.0rc3", source = "pypi", allow-prereleases = true}
+#geoapps-utils = {url = "https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/develop.zip"}
+geoapps-utils = {git = "https://github.com/MiraGeoscience/geoapps-utils.git", rev = "develop"}
+#geoapps-utils = {url = "http://localhost:8888/geoapps-utils.tar.gz#sha256="}
 
-#mira-simpeg = {version = ">=0.19.0.8rc3,<0.19.0.9.dev", source = "pypi", allow-prereleases = true}
-#mira-simpeg = {url = "https://github.com/MiraGeoscience/simpeg/archive/refs/heads/GEOPY-1524.zip"}
+#mira-simpeg = {version = ">=0.19.0.8rc1,<0.19.0.8.post999", source = "pypi", allow-prereleases = true, extras = ["dask"]}
+#mira-simpeg = {url = "https://github.com/MiraGeoscience/simpeg/archive/refs/heads/develop.zip", extras = ["dask"]}
+mira-simpeg = {git = "https://github.com/MiraGeoscience/simpeg.git", rev = "develop"}
+#mira-simpeg = {url = "http://localhost:8888/mira-simpeg.tar.gz#sha256=", extras = ["dask"]}
 
-#param-sweeps = {version = "~0.1.7rc1", source = "pypi", allow-prereleases = true}
-param-sweeps = {url = "https://github.com/MiraGeoscience/param-sweeps/archive/refs/heads/develop.zip"}
+#param-sweeps = {version = "~0.1.7rc2", source = "pypi", allow-prereleases = true}
+#param-sweeps = {url = "https://github.com/MiraGeoscience/param-sweeps/archive/refs/heads/develop.zip"}
+param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "develop"}
+#param-sweeps = {url = "http://localhost:8888/param-sweeps.tar.gz#sha256="}
 
-#simpeg-drivers = {version = "~0.1.0rc1", source = "pypi", allow-prereleases = true}
-simpeg-drivers = { url = "https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/GEOPY-1524.zip" }
+#simpeg-drivers = {version = "~0.1.0b4", source = "pypi", allow-prereleases = true}
+#simpeg-drivers = {url = "https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/develop.zip"}
+simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "GEOPY-1674"}
+#simpeg-drivers = {url = "http://localhost:8888/simpeg-drivers.tar.gz#sha256="}
 
+[tool.conda-lock.dependencies]
 ## indirect dependencies, forcing them here for installation through Conda not pip
 #---------------------------------------------------------------------------------
-dask = {version = "2022.10.*", extras = ["distributed"]}
-distributed = "2022.10.*"  # because conda-lock doesn't take dask extras into account
+dask = {version = "2024.6.*", extras = ["distributed"]}  # also in simpeg[dask]
+discretize = ">=0.10.0"  # also in simpeg, octree-creation-app
+distributed = "2024.6.*"  # because conda-lock doesn't take dask extras into account
+libblas = "*=*mkl"
+mkl = "2023.2.*"  # from simpeg
+Pillow = "10.3.*"
+pydiso = "0.0.5"  # from simpeg
+pymatsolver = "0.2.0"  # from simpeg
 fsspec = "2022.*"  # from simpeg[dask]
-geoana = "~0.4.0"  # from simpeg
-h5py = "^3.2.1" # from geoh5py
-matplotlib = "~3.7.1"  # from simpeg and geoana
-mkl = "2023.2.0"  # from simpeg
-pandas = "~2.2.1"  # from simpeg
-Pillow = "~10.3.0"  # from geoh5py
-pydiso = "~0.0.4"  # from simpeg
-intel-openmp = "2023.2.0"
-pymatsolver = "~0.2.0"  # from simpeg
-scikit-learn = "~1.4.0"  # from simpeg
-tqdm = "^4.66.1"  # from simpeg
-zarr = "~2.14.2"  # from simpeg using Dask
+geoana = ">=0.5.0"  # from simpeg
+h5py = ">=3.2.1"  # from geoh5py
+matplotlib = ">=3.8.4"  # from simpeg
+pandas = ">=2.2.1"  # from SimPEG, also used by targeting-workflow, petro-lingo
+pydantic = ">=2.5.2"  # from geoh5py
+scikit-learn = ">=1.4.0"  # from SimPEG, also used by geo-unsup-mapper, petro-lingo
+tqdm = ">=4.66.1"  # from simpeg
 
 # force some versions to resolve incompatible resolution between PyPI and Conda
 #------------------------------------------------------------------------------
-tbb = "2021.12.0"
-tzdata = "2023.4"  # through pandas from SimPEG
+tbb = ">=2021.12.0"  # through mkl from SimPEG
+tzdata = ">=2023.4.0"  # through pandas from SimPEG
 
 ## about pip dependencies
 # to be specified to work with conda-lock

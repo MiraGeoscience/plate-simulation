@@ -9,7 +9,6 @@
 
 import numpy as np
 from geoh5py.objects import Surface
-from geoh5py.ui_json import InputFile
 from octree_creation_app.driver import OctreeDriver
 from octree_creation_app.params import OctreeParams, default_ui_json
 

@@ -77,7 +77,7 @@ mira-simpeg = {git = "https://github.com/MiraGeoscience/simpeg.git", rev = "deve
 
 #simpeg-drivers = {version = "~0.1.8-alpha.1", source = "pypi", allow-prereleases = true}
 #simpeg-drivers = {url = "https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/develop.tar.gz"}
-simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "GEOPY-1674"}
+simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "develop"}
 #simpeg-drivers = {url = "http://localhost:8888/simpeg-drivers.tar.gz"}
 
 #param-sweeps = {version = "~0.1.8-alpha.1", source = "pypi", allow-prereleases = true}

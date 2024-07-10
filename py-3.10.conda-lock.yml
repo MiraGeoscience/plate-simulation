@@ -15,8 +15,8 @@
 version: 1
 metadata:
   content_hash:
-    win-64: 2569249b637c16cd12dfcf3abe8ef93d239a63f20d6a572e0fc23f92e4725b7d
-    linux-64: 0f349a64d7d828b32ca81f33827fe3d100143a050246a96536f9c9063ed4bdcc
+    win-64: 38f1121f75cdf0a3278a02aacfbf30adf50895c92bfcb498274bdf1280f6554b
+    linux-64: 391ae110831a0567a30e6a47bfeb4775c5596371c29a58abafcd426735f7f5c3
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -5345,27 +5345,27 @@ package:
   category: dev
   optional: true
 - name: tomlkit
-  version: 0.12.5
+  version: 0.13.0
   manager: conda
   platform: linux-64
   dependencies:
-    python: '>=3.7'
-  url: https://conda.anaconda.org/conda-forge/noarch/tomlkit-0.12.5-pyha770c72_0.conda
+    python: '>=3.8'
+  url: https://conda.anaconda.org/conda-forge/noarch/tomlkit-0.13.0-pyha770c72_0.conda
   hash:
-    md5: e5dde5caf905e9d95895e05f94967e14
-    sha256: 5117eff35992d896ca177dfffc08be8a9b3bf3d306ddc3d8bf4b699cdf1e1b79
+    md5: 810ba6f354ddef812d0ddc4669cc8de6
+    sha256: 8e61623213c620776f1328da4bee03f8828dbf2730f1a4fbd9b8af5398f5848e
   category: dev
   optional: true
 - name: tomlkit
-  version: 0.12.5
+  version: 0.13.0
   manager: conda
   platform: win-64
   dependencies:
-    python: '>=3.7'
-  url: https://conda.anaconda.org/conda-forge/noarch/tomlkit-0.12.5-pyha770c72_0.conda
+    python: '>=3.8'
+  url: https://conda.anaconda.org/conda-forge/noarch/tomlkit-0.13.0-pyha770c72_0.conda
   hash:
-    md5: e5dde5caf905e9d95895e05f94967e14
-    sha256: 5117eff35992d896ca177dfffc08be8a9b3bf3d306ddc3d8bf4b699cdf1e1b79
+    md5: 810ba6f354ddef812d0ddc4669cc8de6
+    sha256: 8e61623213c620776f1328da4bee03f8828dbf2730f1a4fbd9b8af5398f5848e
   category: dev
   optional: true
 - name: toolz
@@ -6484,13 +6484,13 @@ package:
     param-sweeps: 0.1.8a1
     scipy: '>=1.14.0,<1.15.0'
     zarr: '>=2.14.2,<2.15.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers@a399a3c4cddbdecf64cd99a39de8e86479585c92
+  url: git+https://github.com/MiraGeoscience/simpeg-drivers@fd8be7e934cabd6725de99d71e24d62c6a60814d
   hash:
-    sha256: a399a3c4cddbdecf64cd99a39de8e86479585c92
+    sha256: fd8be7e934cabd6725de99d71e24d62c6a60814d
   category: main
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers@a399a3c4cddbdecf64cd99a39de8e86479585c92
+    url: git+https://github.com/MiraGeoscience/simpeg-drivers@fd8be7e934cabd6725de99d71e24d62c6a60814d
   optional: false
 - name: simpeg-drivers
   version: 0.2.0a1
@@ -6508,13 +6508,13 @@ package:
     param-sweeps: 0.1.8a1
     scipy: '>=1.14.0,<1.15.0'
     zarr: '>=2.14.2,<2.15.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers@a399a3c4cddbdecf64cd99a39de8e86479585c92
+  url: git+https://github.com/MiraGeoscience/simpeg-drivers@fd8be7e934cabd6725de99d71e24d62c6a60814d
   hash:
-    sha256: a399a3c4cddbdecf64cd99a39de8e86479585c92
+    sha256: fd8be7e934cabd6725de99d71e24d62c6a60814d
   category: main
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers@a399a3c4cddbdecf64cd99a39de8e86479585c92
+    url: git+https://github.com/MiraGeoscience/simpeg-drivers@fd8be7e934cabd6725de99d71e24d62c6a60814d
   optional: false
 - name: zarr
   version: 2.14.2

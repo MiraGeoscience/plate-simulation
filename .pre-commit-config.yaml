@@ -21,7 +21,7 @@ repos:
 #        -   --unsafe-fixes
     -   id: ruff-format
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.6.1
+    rev: v1.11.0
     hooks:
     -   id: mypy
         additional_dependencies: [
@@ -31,7 +31,7 @@ repos:
             tomli # to read config from pyproject.toml
         ]
 -   repo: https://github.com/codingjoe/relint
-    rev: 3.1.0
+    rev: 3.1.1
     hooks:
     -   id: relint
         args: [-W]  # to fail on warnings
@@ -53,13 +53,13 @@ repos:
         types: [python]
         exclude: ^(devtools|docs)/
 -   repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.3.0
     hooks:
     -   id: codespell
         exclude: (-lock\.ya?ml|\benvironments/.*\.ya?ml|\.ipynb|^THIRD_PARTY_SOFTWARE\.rst)$
         entry: codespell -I .codespellignore
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
     -   id: trailing-whitespace
         exclude: \.mdj$
@@ -75,7 +75,7 @@ repos:
     -   id: mixed-line-ending
     -   id: name-tests-test
 -   repo: https://github.com/rstcheck/rstcheck
-    rev: v6.2.0
+    rev: v6.2.4
     hooks:
     -   id: rstcheck
         exclude: ^THIRD_PARTY_SOFTWARE.rst$

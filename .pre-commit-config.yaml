@@ -11,13 +11,8 @@ ci:
     autoupdate_schedule: monthly
 
 repos:
--   repo: https://github.com/hadialqattan/pycln
-    rev: v2.4.0
-    hooks:
-    -   id: pycln
-        args: [ --config=pyproject.toml ]
 -   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.4
+    rev: v0.5.5
     hooks:
     -   id: ruff
         args:
@@ -30,17 +25,24 @@ repos:
     hooks:
     -   id: mypy
         additional_dependencies: [
-            numpy==1.26.*,  # pre-commit CI does not provide numpy 1.23.*
+            numpy==1.23.*,
             types-toml,
             types-PyYAML,
-            tomli, # to read config from pyproject.toml
+            tomli # to read config from pyproject.toml
         ]
-        exclude: (conf\.py|tests)
 -   repo: https://github.com/codingjoe/relint
     rev: 3.1.0
     hooks:
     -   id: relint
         args: [-W]  # to fail on warnings
+-   repo: https://github.com/MiraGeoscience/pre-commit-hooks
+    rev: v1.0.1
+    hooks:
+    -   id: check-copyright
+        files: (^LICENSE|^README(|-dev).rst|\.py|\.pyi)$
+        exclude: (^\.|^docs/)
+    -   id: prepare-commit-msg
+    -   id: check-commit-msg
 -   repo: local
     hooks:
     -   id: pylint
@@ -50,23 +52,6 @@ repos:
         require_serial: true  # pylint does its own parallelism
         types: [python]
         exclude: ^(devtools|docs)/
-    -   id: check-copyright
-        name: Check copyright
-        entry: python devtools/check-copyright.py
-        language: python
-        types: [text]
-        files: (^LICENSE|^README(|-dev).rst|\.py|\.pyi)$
-        exclude: (^\.|^docs/)
-    -   id: prepare-commit-msg
-        stages: [prepare-commit-msg]
-        name: Prepare commit message
-        entry: python devtools/git_message_hook.py --prepare
-        language: python
-    -   id: check-commit-msg
-        stages: [commit-msg]
-        name: Check commit message
-        entry: python devtools/git_message_hook.py --check
-        language: python
 -   repo: https://github.com/codespell-project/codespell
     rev: v2.2.6
     hooks:

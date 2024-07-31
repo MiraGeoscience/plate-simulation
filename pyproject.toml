@@ -47,10 +47,10 @@ geoh5py = {url = "https://github.com/MiraGeoscience/geoh5py/archive/refs/heads/d
 octree-creation-app = {url = "https://github.com/MiraGeoscience/octree-creation-app/archive/refs/heads/main.zip"}
 
 #geoapps-utils = {version = "~0.3.0a3", source = "pypi", allow-prereleases = true}
-geoapps-utils = {url = "https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/main.zip"}
+geoapps-utils = {url = "https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/develop.zip"}
 
 #mira-simpeg = {version = "~0.19.0.dev8", source = "pypi"}
-mira-simpeg = {url = "https://github.com/MiraGeoscience/simpeg/archive/refs/heads/develop.zip"}
+mira-simpeg = {url = "https://github.com/MiraGeoscience/simpeg/archive/refs/heads/main.zip"}
 
 #param-sweeps = {version = "~0.1.7a4", source = "pypi", allow-prereleases = true}
 param-sweeps = {url = "https://github.com/MiraGeoscience/param-sweeps/archive/refs/heads/develop.zip"}

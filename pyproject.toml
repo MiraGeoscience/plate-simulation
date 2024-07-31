@@ -44,10 +44,10 @@ pydantic = "~2.5"
 geoh5py = {url = "https://github.com/MiraGeoscience/geoh5py/archive/refs/heads/develop.zip"}
 
 #octree-creation-app = {version = "~0.1.0a5", source = "pypi", allow-prereleases = true}
-octree-creation-app = {url = "https://github.com/MiraGeoscience/octree-creation-app/archive/refs/heads/develop.zip"}
+octree-creation-app = {url = "https://github.com/MiraGeoscience/octree-creation-app/archive/refs/heads/main.zip"}
 
 #geoapps-utils = {version = "~0.3.0a3", source = "pypi", allow-prereleases = true}
-geoapps-utils = {url = "https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/develop.zip"}
+geoapps-utils = {url = "https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/main.zip"}
 
 #mira-simpeg = {version = "~0.19.0.dev8", source = "pypi"}
 mira-simpeg = {url = "https://github.com/MiraGeoscience/simpeg/archive/refs/heads/develop.zip"}

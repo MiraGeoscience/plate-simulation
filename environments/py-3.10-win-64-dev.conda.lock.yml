@@ -172,10 +172,10 @@ dependencies:
   - zipp=3.17.0=pyhd8ed1ab_0
   - zstd=1.5.6=h0ea2cb4_0
   - pip:
-      - geoapps-utils @ https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/develop.zip
+      - geoapps-utils @ https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/main.zip
       - geoh5py @ https://github.com/MiraGeoscience/geoh5py/archive/refs/heads/develop.zip
       - mira-simpeg @ https://github.com/MiraGeoscience/simpeg/archive/refs/heads/develop.zip
-      - octree-creation-app @ https://github.com/MiraGeoscience/octree-creation-app/archive/refs/heads/develop.zip
+      - octree-creation-app @ https://github.com/MiraGeoscience/octree-creation-app/archive/refs/heads/main.zip
       - param-sweeps @ https://github.com/MiraGeoscience/param-sweeps/archive/refs/heads/develop.zip
       - simpeg-drivers @ https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/develop.zip
 

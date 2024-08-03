@@ -58,17 +58,17 @@ pydantic = "~2.5.2"
 #geoh5py = {version = "~0.10.0-alpha.1", source = "pypi", allow-prereleases = true}
 geoh5py = {git = "https://github.com/MiraGeoscience/geoh5py.git", rev = "develop"}
 
-#octree-creation-app = {version = "~0.2.0-alpha.1", source = "pypi", allow-prereleases = true}
-octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-app.git", rev = "develop"}
+#param-sweeps = {version = "~0.1.8-alpha.1", source = "pypi", allow-prereleases = true}
+param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "develop"}
 
 #geoapps-utils = {version = "~0.4.0-alpha.1", source = "pypi", allow-prereleases = true}
 geoapps-utils = {git = "https://github.com/MiraGeoscience/geoapps-utils.git", rev = "develop"}
 
+#octree-creation-app = {version = "~0.2.0-alpha.1", source = "pypi", allow-prereleases = true}
+octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-app.git", rev = "develop"}
+
 #mira-simpeg = {version = ">=0.21.2.1-alpha.1, <0.21.2.2.dev", source = "pypi", allow-prereleases = true}
 mira-simpeg = {git = "https://github.com/MiraGeoscience/simpeg.git", rev = "develop"}
-
-#param-sweeps = {version = "~0.1.8-alpha.1", source = "pypi", allow-prereleases = true}
-param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "develop"}
 
 #simpeg-drivers = {version = "~0.2.0-alpha.1", source = "pypi", allow-prereleases = true}
 simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "develop" }

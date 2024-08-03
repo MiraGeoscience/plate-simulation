@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 
-#  Copyright (c) 2022-2024 Mira Geoscience Ltd.
-#
-#  This file is part of plate-simulation package.
-#
-#  All rights reserved.
+# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+#  Copyright (c) 2022-2024 Mira Geoscience Ltd.                                        '
+#                                                                                      '
+#  This file is part of plate-simulation package.                                      '
+#                                                                                      '
+#  plate-simulation is distributed under the terms and conditions of the MIT License   '
+#  (see LICENSE file at the root of this source code package).                         '
+# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 from __future__ import annotations
 
 import re
 import sys
 from datetime import date
+
 
 if __name__ == "__main__":
     current_year = date.today().year

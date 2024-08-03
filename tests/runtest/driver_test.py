@@ -111,8 +111,8 @@ def test_plate_simulation(tmp_path):
     result = PlateSimulationDriver.start(
         Path(tmp_path / "test_plate_simulation.ui.json")
     )
-    with Workspace(result.options["geoh5"]) as ws:
-        out_group = ws.get_entity(UUID(result.options["out_group"]["value"]))[0]
+    with Workspace(result.out_group.options["geoh5"]) as ws:
+        out_group = ws.get_entity(UUID(result.out_group.options["out_group"]))[0]
         data = next(
             obj for obj in out_group.children if isinstance(obj, AirborneTEMReceivers)
         )
@@ -124,7 +124,7 @@ def test_plate_simulation(tmp_path):
             k.name in [f"Iteration_0_{i}" for i in "xyz"] for k in data.property_groups
         )
         assert all(len(k.properties) == 20 for k in data.property_groups)
-        assert mesh.n_cells == 11300
+        assert mesh.n_cells == 11517
         assert len(np.unique(model.values)) == 4
         assert all(
             k in np.unique(model.values) for k in [1.0 / 7500, 1.0 / 2000, 1.0 / 20]
@@ -187,7 +187,7 @@ def test_plate_simulation_params_from_input_file(tmp_path):
         params = PlateSimulationParams.build(ifile)
         assert isinstance(params.simulation, SimPEGGroup)
 
-        simulation_parameters = params.inversion_parameters()
+        simulation_parameters = params.simulation_parameters()
 
         assert simulation_parameters.inversion_type == "gravity"
         assert simulation_parameters.forward_only
@@ -207,10 +207,10 @@ def test_plate_simulation_params_from_input_file(tmp_path):
 
         assert isinstance(params.model, ModelParams)
         assert params.model.name == "test_gravity_plate_simulation"
-        assert params.model.background == 0.001
+        assert params.model.background == 1000.0
         assert params.model.overburden.thickness == 50.0
-        assert params.model.overburden.overburden == 0.2
-        assert params.model.plate.plate == 0.5
+        assert params.model.overburden.overburden == 5.0
+        assert params.model.plate.plate == 2.0
         assert params.model.plate.width == 100.0
         assert params.model.plate.strike_length == 100.0
         assert params.model.plate.dip_length == 100.0

@@ -12,7 +12,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 
 import numpy as np
-from geoapps_utils.transformations import rotate_xyz
+from geoapps_utils.utils.transformations import rotate_xyz
 from geoh5py.groups import Group
 from geoh5py.objects import Surface
 from geoh5py.ui_json.utils import fetch_active_workspace

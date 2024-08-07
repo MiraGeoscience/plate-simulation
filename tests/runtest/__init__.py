@@ -1,13 +1,14 @@
-#  Copyright (c) 2024 Mira Geoscience Ltd.
-#
-#  This file is part of plate-simulation package.
-#
-#  All rights reserved.
-#
+# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#                                                                                      '
+#  This file is part of plate-simulation package.                                      '
+#                                                                                      '
+#  plate-simulation is distributed under the terms and conditions of the MIT License   '
+#  (see LICENSE file at the root of this source code package).                         '
+# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 import numpy as np
 from geoh5py.objects import Points, Surface
-from SimPEG import utils
 
 
 def get_survey(workspace, n_receivers, n_lines):
@@ -16,11 +17,7 @@ def get_survey(workspace, n_receivers, n_lines):
     )
     Z = np.zeros_like(X)  # pylint: disable=invalid-name
 
-    vertices = np.c_[
-        utils.mkvc(X.T),
-        utils.mkvc(Y.T),
-        utils.mkvc(Z.T),
-    ]
+    vertices = np.c_[X.T.flatten(), Y.T.flatten(), Z.T.flatten()]
 
     return Points.create(
         workspace,

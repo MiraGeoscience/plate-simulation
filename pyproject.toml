@@ -1,16 +1,14 @@
 [tool.poetry]
 name = "plate-simulation"
-version = "0.1.0-alpha.1"
+version = "0.1.0-beta.2"
 license = "MIT"
 description = "plate-simulation is a Python package"
 authors = ["Mira Geoscience <support@mirageoscience.com>"]
-repository = "https://github.com/MiraGeoscience/plate-simulation"
-homepage = "https://mirageoscience.com"
 readme = "README.rst"
-packages = [
-     { include = "plate_simulation" },
-     { include = "plate_simulation-assets" },
-]
+repository = "https://github.com/MiraGeoscience/plate-simulation"
+documentation  = "https://mirageoscience-plate-simulation.readthedocs-hosted.com/"
+homepage = "https://mirageoscience.com"
+keywords = []
 
 # TODO: adjust classifiers
 classifiers = [
@@ -27,54 +25,52 @@ classifiers = [
     "Natural Language :: English",
 ]
 
+packages = [
+    { include = "plate_simulation" },
+    { include = "plate_simulation-assets" },
+]
+
+include = [
+    { path = "COPYING", format = ["sdist", "wheel"] },
+    { path = "COPYING.LESSER", format = ["sdist", "wheel"] },
+    { path = "LICENSE", format = ["sdist", "wheel"] },
+    { path = "README.rst", format = ["sdist", "wheel"] },
+    { path = "THIRD_PARTY_SOFTWARE.rst", format = ["sdist", "wheel"] },
+    { path = "docs/**/THIRD_PARTY_SOFTWARE.rst", format = ["sdist", "wheel"] },
+]
+
+exclude = [
+]
 
 [tool.poetry.dependencies]
 python = "^3.10, <3.11"
-numpy = "~1.23.5"  # also geoh5py, simpeg and geoana
-scipy = "~1.10.1"
-discretize = "~0.10.0"
+
+numpy = "~1.26.0"  # also in geoh5py, simpeg and geoana
+scipy = "~1.14.0"  # also in geoapps-utils
 Rtree = "~1.2.0"
 trimesh = "~4.1.3"
 threadpoolctl = "~3.3.0"
-pydantic = "~2.5"
+pydantic = "~2.5.2"
 
 ## Pip dependencies from Git repositories
 #----------------------------------------
-#geoh5py = {version = "~0.9.0a4", source = "pypi", allow-prereleases = true}
-geoh5py = {url = "https://github.com/MiraGeoscience/geoh5py/archive/refs/heads/develop.zip"}
+#geoh5py = {version = "~0.10.0-alpha.1", source = "pypi", allow-prereleases = true}
+geoh5py = {git = "https://github.com/MiraGeoscience/geoh5py.git", rev = "develop"}
 
-#octree-creation-app = {version = "~0.1.0a5", source = "pypi", allow-prereleases = true}
-octree-creation-app = {url = "https://github.com/MiraGeoscience/octree-creation-app/archive/refs/heads/develop.zip"}
+#param-sweeps = {version = "~0.1.8-alpha.1", source = "pypi", allow-prereleases = true}
+param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "develop"}
 
-#geoapps-utils = {version = "~0.3.0a3", source = "pypi", allow-prereleases = true}
-geoapps-utils = {url = "https://github.com/MiraGeoscience/geoapps-utils/archive/refs/heads/develop.zip"}
+#geoapps-utils = {version = "~0.4.0-alpha.1", source = "pypi", allow-prereleases = true}
+geoapps-utils = {git = "https://github.com/MiraGeoscience/geoapps-utils.git", rev = "develop"}
 
-#mira-simpeg = {version = "~0.19.0.dev8", source = "pypi"}
-mira-simpeg = {url = "https://github.com/MiraGeoscience/simpeg/archive/refs/heads/develop.zip"}
+#octree-creation-app = {version = "~0.2.0-alpha.1", source = "pypi", allow-prereleases = true}
+octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-app.git", rev = "develop"}
 
-#param-sweeps = {version = "~0.1.7a4", source = "pypi", allow-prereleases = true}
-param-sweeps = {url = "https://github.com/MiraGeoscience/param-sweeps/archive/refs/heads/develop.zip"}
+#mira-simpeg = {version = ">=0.21.2.1-alpha.1, <0.21.2.2.dev", source = "pypi", allow-prereleases = true}
+mira-simpeg = {git = "https://github.com/MiraGeoscience/simpeg.git", rev = "develop"}
 
-#simpeg-drivers = {version = "~0.1.0b6", source = "pypi", allow-prereleases = true}
-simpeg-drivers = { url = "https://github.com/MiraGeoscience/simpeg-drivers/archive/refs/heads/develop.zip"}
-
-## indirect dependencies, forcing them here for installation through Conda not pip
-#---------------------------------------------------------------------------------
-dask = {version = "2022.10.*", extras = ["distributed"]}
-distributed = "2022.10.*"  # because conda-lock doesn't take dask extras into account
-fsspec = "2022.*"  # from simpeg[dask]
-geoana = "~0.4.0"  # from simpeg
-h5py = "*"  # from geoh5py
-matplotlib = "~3.7.1"  # from simpeg and geoana
-mkl = "2022.*"  # from simpeg
-pandas = "~2.2.1"  # from simpeg
-Pillow = "*"  # from geoh5py
-pydiso = "~0.0.3"  # from simpeg
-pymatsolver = "~0.2.0"  # from simpeg
-scikit-learn = "~1.4.0"  # from simpeg
-tqdm = "^4.66.1"  # from simpeg
-tzdata = "2023.4"  # through pandas from SimPEG (constraint copied from simpeg-drivers)
-zarr = "~2.14.2"  # from simpeg using Dask
+#simpeg-drivers = {version = "~0.2.0-alpha.1", source = "pypi", allow-prereleases = true}
+simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "develop" }
 
 ## about pip dependencies
 # to be specified to work with conda-lock
@@ -84,6 +80,34 @@ zarr = "~2.14.2"  # from simpeg using Dask
 #   - for a branch: my_package = { url = "https://github.com/ORGANISATION/REPO/archive/refs/heads/BRANCH.zip#sha256=" }
 # Note - conda-lock does not support the syntax: my_package = { git = ... }
 #        while poetry2conda supports only { git = "...", tag = "..." }, and not { url = ... }
+
+
+[tool.conda-lock.dependencies]
+libblas = "*=*mkl"  # because simpeg already brings in the MKL
+
+## indirect dependencies, forcing them here for installation through Conda not pip
+#---------------------------------------------------------------------------------
+Pillow = ">=10.3.0, <10.4.0"  # from geoh5py
+dask = {version = "2024.6.*", extras = ["distributed"]}
+discretize = ">=0.10.0, <0.11.0"  # also in simpeg, simpeg-drivers, octree-creation-app
+distributed = "2024.6.*"  # because conda-lock doesn't take dask extras into account
+empymod = ">=2.2.1, <2.3.0"  # from simpeg and geoana
+fsspec = "2022.*"  # from simpeg[dask]
+geoana = ">=0.5.0, <0.6.0"  # from simpeg
+h5py = ">=3.2.1, <4.0.0"  # from geoh5py
+matplotlib-base = ">=3.8.4, <3.9.0"  # from simpeg
+mkl = "2023.2, <2023.3"  # from simpeg
+pandas = ">=2.2.1, <2.3.0"  # from simpeg
+pydiso = ">=0.0.5, <0.1.0"  # from simpeg
+pymatsolver = ">=0.2.0, <0.3.0"  # from simpeg
+scikit-learn = ">=1.4.0, <1.5.0"  # from simpeg
+tqdm = ">=4.66.1, <5.0.0"  # from curve-apps, peak-finder-app, simpeg
+zarr = ">=2.14.2, <2.15.0"  # from simpeg[dask], simpeg-drivers
+
+# force some versions to resolve incompatible resolution between PyPI and Conda
+#-------------------------------------------------------------------------------
+tbb = "2021.12.*"  # through mkl from SimPEG (constraint copied from simpeg-drivers)
+python-tzdata = "2023.4.*"  # through pandas from SimPEG (constraint copied from simpeg-drivers)
 
 [tool.poetry.dev-dependencies]
 Pygments = "*"
@@ -95,8 +119,8 @@ sphinx = "^5.0"
 readthedocs-sphinx-ext = "*"
 
 [tool.conda-lock]
-platforms = ['win-64', 'linux-64']
-channels = ['conda-forge']
+platforms = ["win-64", "linux-64"]
+channels = ["conda-forge"]
 
 [tool.ruff]
 target-version = "py310"

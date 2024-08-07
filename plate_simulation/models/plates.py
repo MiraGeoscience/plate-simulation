@@ -1,16 +1,18 @@
-#  Copyright (c) 2024 Mira Geoscience Ltd.
-#
-#  This file is part of plate-simulation package.
-#
-#  All rights reserved.
-#
+# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#                                                                                      '
+#  This file is part of plate-simulation package.                                      '
+#                                                                                      '
+#  plate-simulation is distributed under the terms and conditions of the MIT License   '
+#  (see LICENSE file at the root of this source code package).                         '
+# ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 from __future__ import annotations
 
 from collections.abc import Sequence
 
 import numpy as np
-from geoapps_utils.transformations import rotate_xyz
+from geoapps_utils.utils.transformations import rotate_xyz
 from geoh5py.groups import Group
 from geoh5py.objects import Surface
 from geoh5py.ui_json.utils import fetch_active_workspace

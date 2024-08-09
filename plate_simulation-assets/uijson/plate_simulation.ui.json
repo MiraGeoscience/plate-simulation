@@ -105,7 +105,7 @@
     "group": "Plate",
     "value": true,
     "enabled": true,
-    "tooltip": "If checked locations are relative to the survey center and either topography or overburden in z according to 'Depth reference' selecion."
+    "tooltip": "If checked locations are relative to the survey center and either topography or overburden in z according to 'Depth reference' selection."
   },
   "easting": {
     "label": "Easting (m)",

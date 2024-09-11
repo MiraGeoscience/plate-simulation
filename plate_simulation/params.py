@@ -55,7 +55,6 @@ class PlateSimulationParams(BaseData):
         result of the forward simulation.
         """
         simulation_options = deepcopy(self.simulation.options)
-        simulation_options["out_group"] = None
         simulation_options["geoh5"] = self.geoh5
 
         input_file = InputFile(ui_json=simulation_options, validate=False)

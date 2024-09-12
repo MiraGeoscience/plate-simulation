@@ -21,14 +21,14 @@
   "background": {
     "main": true,
     "group": "Basement",
-    "label": "Resistivity (ohm-m)",
+    "label": "Physical property (ohm-m, g/cc, SI)",
     "value": 2000.0,
     "enabled": true
   },
   "overburden": {
     "main": true,
     "group": "Overburden",
-    "label": "Resistivity (ohm-m)",
+    "label": "Physical property (ohm-m, g/cc, SI)",
     "value": 8000.0,
     "enabled": true
   },
@@ -56,7 +56,7 @@
   "plate": {
     "main": true,
     "group": "Plate",
-    "label": "Resistivity (ohm-m)",
+    "label": "Physical property (ohm-m, g/cc, SI)",
     "value": 20.0,
     "enabled": true
   },

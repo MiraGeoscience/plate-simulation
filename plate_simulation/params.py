@@ -14,15 +14,39 @@ from typing import ClassVar
 from geoapps_utils.driver.data import BaseData
 from geoh5py.groups import SimPEGGroup, UIJsonGroup
 from geoh5py.ui_json import InputFile
+from simpeg_drivers.electricals.direct_current.three_dimensions.params import (
+    DirectCurrent3DParams,
+)
+from simpeg_drivers.electromagnetics.frequency_domain.params import (
+    FrequencyDomainElectromagneticsParams,
+)
 from simpeg_drivers.electromagnetics.time_domain.params import (
     TimeDomainElectromagneticsParams,
 )
+from simpeg_drivers.natural_sources.magnetotellurics.params import (
+    MagnetotelluricsParams,
+)
+from simpeg_drivers.natural_sources.tipper.params import TipperParams
 from simpeg_drivers.params import InversionBaseParams
 from simpeg_drivers.potential_fields.gravity.params import GravityParams
+from simpeg_drivers.potential_fields.magnetic_vector.params import (
+    MagneticVectorParams,
+)
 
 from . import assets_path
 from .mesh.params import MeshParams
 from .models.params import ModelParams
+
+
+PARAM_MAP = {
+    "gravity": GravityParams,
+    "tdem": TimeDomainElectromagneticsParams,
+    "fem": FrequencyDomainElectromagneticsParams,
+    "magnetotellurics": MagnetotelluricsParams,
+    "direct current 3d": DirectCurrent3DParams,
+    "magnetic vector": MagneticVectorParams,
+    "tipper": TipperParams,
+}
 
 
 class PlateSimulationParams(BaseData):
@@ -66,12 +90,11 @@ class PlateSimulationParams(BaseData):
         if input_file.data is None:
             raise ValueError("Input file data must be set.")
 
-        if input_file.data["inversion_type"] == "gravity":
-            return GravityParams(input_file=input_file, validate=False)
-        if input_file.data["inversion_type"] == "tdem":
-            return TimeDomainElectromagneticsParams(
-                input_file=input_file, validate=False
+        if input_file.data["inversion_type"] in PARAM_MAP:
+            return PARAM_MAP[input_file.data["inversion_type"]](
+                input_file, validate=False
             )
+
         raise NotImplementedError(
             f"Unknown inversion type: {input_file.data['inversion_type']}"
         )

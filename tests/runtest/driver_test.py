@@ -52,26 +52,16 @@ def get_simulation_group(workspace: Workspace, survey: ObjectBase, topography: S
 
 def get_input_file(filepath: Path) -> InputFile:
     with Workspace(filepath / "test.geoh5") as ws:
-        with Workspace(assets_path() / "demo.geoh5") as demo_workspace:
+        with Workspace(assets_path() / "demo.geoh5", mode="r") as demo_workspace:
             survey = demo_workspace.get_entity("Simulation rx")[0].copy(
                 parent=ws, copy_children=False
             )
             topography = demo_workspace.get_entity("Topography")[0].copy(parent=ws)
-
             mask = np.zeros(survey.n_vertices, dtype=bool)
             mask[::10] = True
-            new_survey = survey.copy(mask=mask)
-            new_survey.cells = np.c_[
-                np.arange(new_survey.n_vertices - 1),
-                np.arange(1, new_survey.n_vertices),
-            ]
-            new_survey.transmitters.cells = np.c_[
-                np.arange(new_survey.n_vertices - 1),
-                np.arange(1, new_survey.n_vertices),
-            ]
+            new_survey = survey.copy(mask=mask, cell_mask=mask[:-1])
 
         simulation = get_simulation_group(ws, new_survey, topography)
-
         ifile = InputFile.read_ui_json(
             assets_path() / "uijson" / "plate_simulation.ui.json", validate=False
         )
@@ -112,7 +102,9 @@ def test_plate_simulation(tmp_path):
         Path(tmp_path / "test_plate_simulation.ui.json")
     )
     with Workspace(result.out_group.options["geoh5"]) as ws:
-        out_group = ws.get_entity(UUID(result.out_group.options["out_group"]))[0]
+        out_group = ws.get_entity(UUID(result.out_group.options["out_group"]["value"]))[
+            0
+        ]
         data = next(
             obj for obj in out_group.children if isinstance(obj, AirborneTEMReceivers)
         )
@@ -124,7 +116,7 @@ def test_plate_simulation(tmp_path):
             k.name in [f"Iteration_0_{i}" for i in "xyz"] for k in data.property_groups
         )
         assert all(len(k.properties) == 20 for k in data.property_groups)
-        assert mesh.n_cells == 11517
+        assert mesh.n_cells == 11132
         assert len(np.unique(model.values)) == 4
         assert all(
             k in np.unique(model.values) for k in [1.0 / 7500, 1.0 / 2000, 1.0 / 20]

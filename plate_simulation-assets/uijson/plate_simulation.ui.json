@@ -21,15 +21,17 @@
   "background": {
     "main": true,
     "group": "Basement",
-    "label": "Resistivity (ohm-m)",
+    "label": "Physical property (SI)",
     "value": 2000.0,
+    "tooltip": "Value of resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
     "enabled": true
   },
   "overburden": {
     "main": true,
     "group": "Overburden",
-    "label": "Resistivity (ohm-m)",
+    "label": "Physical property (SI)",
     "value": 8000.0,
+    "tooltip": "Value of resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
     "enabled": true
   },
   "thickness": {
@@ -56,8 +58,9 @@
   "plate": {
     "main": true,
     "group": "Plate",
-    "label": "Resistivity (ohm-m)",
+    "label": "Physical property (SI)",
     "value": 20.0,
+    "tooltip": "Value of resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
     "enabled": true
   },
   "width": {

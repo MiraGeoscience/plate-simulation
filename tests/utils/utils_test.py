@@ -23,7 +23,7 @@ def test_azimuth_to_unit_vector():
 
 
 def test_replicate_even(tmp_path):
-    workspace = Workspace(tmp_path / "test.geoh5")
+    workspace = Workspace.create(tmp_path / "test.geoh5")
     surface = Surface.create(
         workspace,
         name="test",
@@ -40,7 +40,7 @@ def test_replicate_even(tmp_path):
 
 
 def test_replicate_odd(tmp_path):
-    workspace = Workspace(tmp_path / "test.geoh5")
+    workspace = Workspace.create(tmp_path / "test.geoh5")
     surface = Surface.create(
         workspace,
         name="test",

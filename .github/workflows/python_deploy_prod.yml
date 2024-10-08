@@ -2,7 +2,7 @@ name: Deploy python package in production
 
 on:
   release:
-    types: [published] # Trigger for draft release
+    types: [published]
 
 jobs:
   call-workflow-conda-publish:

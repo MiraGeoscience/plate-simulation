@@ -148,4 +148,3 @@ dmypy.json
 # tempory generated files
 pyproject-sha.toml
 .idea/plate-simulation.iml
-/.jfrog/projects/poetry.yaml

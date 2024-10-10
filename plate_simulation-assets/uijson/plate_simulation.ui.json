@@ -10,20 +10,22 @@
     "label": "TEM SimPEG Group",
     "groupType": "{55ed3daf-c192-4d4b-a439-60fa987fe2b8}",
     "value": "",
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Forward modelling SimPEG group with at least the topogarphy and survey set. "
   },
   "name": {
     "main": true,
     "label": "Label",
     "value": "simulation",
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Provide the name for the result group."
   },
   "background": {
     "main": true,
     "group": "Basement",
     "label": "Physical property (SI)",
     "value": 2000.0,
-    "tooltip": "Value of resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
+    "tooltip": "Value of the basement resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
     "enabled": true
   },
   "overburden": {
@@ -31,7 +33,7 @@
     "group": "Overburden",
     "label": "Physical property (SI)",
     "value": 8000.0,
-    "tooltip": "Value of resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
+    "tooltip": "Value of the overburden resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
     "enabled": true
   },
   "thickness": {
@@ -39,28 +41,31 @@
     "group": "Overburden",
     "label": "Thickness",
     "value": 200.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Thickness of the overburden."
   },
   "number": {
     "main": true,
     "group": "Plate",
     "label": "Number of plates",
     "value": 1,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "If more than one the plates will be parallel, equally spaced over the center of the model."
   },
   "spacing": {
     "main": true,
     "group": "Plate",
     "label": "Spacing (m)",
     "value": 0.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Spacing between plates."
   },
   "plate": {
     "main": true,
     "group": "Plate",
     "label": "Physical property (SI)",
     "value": 20.0,
-    "tooltip": "Value of resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
+    "tooltip": "Value of the plate resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
     "enabled": true
   },
   "width": {
@@ -68,21 +73,24 @@
     "group": "Plate",
     "main": true,
     "value": 90.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Thickness of the plate."
   },
   "strike_length": {
     "label": "Strike Length",
     "group": "Plate",
     "main": true,
     "value": 800.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Length of the plate along the strike direction."
   },
   "dip_length": {
     "label": "Dip Length",
     "group": "Plate",
     "main": true,
     "value": 800.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Length of the plate along the dip direction."
   },
   "dip": {
     "label": "Dip",
@@ -91,7 +99,8 @@
     "value": 60.0,
     "enabled": true,
     "min": 0.0,
-    "max": 90.0
+    "max": 90.0,
+    "tooltip": "Dip of the plate in degrees from horizontal."
   },
   "dip_direction": {
     "label": "Dip Direction",
@@ -100,7 +109,8 @@
     "value": 90.0,
     "enabled": true,
     "min": 0.0,
-    "max": 360.0
+    "max": 360.0,
+    "tooltip": "Direction of the dip vector in degrees from North."
   },
   "relative_locations": {
     "label": "Relative locations",

@@ -54,34 +54,38 @@ pydantic = "~2.5.2"
 
 ## Pip dependencies from Git repositories
 #----------------------------------------
-geoh5py = {version = "~0.10.0-alpha.1", allow-prereleases = true}
-#geoh5py = {git = "https://github.com/MiraGeoscience/geoh5py.git", rev = "release/0.10.0"}
+#geoh5py = {version = "~0.10.0-alpha.1", allow-prereleases = true}
+geoh5py = {git = "https://github.com/MiraGeoscience/geoh5py.git", rev = "release/0.10.0"}
 
-param-sweeps = {version = "~0.2.0-alpha.1", allow-prereleases = true}
+#param-sweeps = {version = "~0.2.0-alpha.1", allow-prereleases = true}
 #param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "develop"}
+param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "release/0.2.0"}
 
-geoapps-utils = {version = "~0.4.0-alpha.1", allow-prereleases = true}
+#geoapps-utils = {version = "~0.4.0-alpha.1", allow-prereleases = true}
 #geoapps-utils = {git = "https://github.com/MiraGeoscience/geoapps-utils.git", rev = "develop"}
+geoapps-utils = {git = "https://github.com/MiraGeoscience/geoapps-utils.git", rev = "release/0.4.0"}
 
-octree-creation-app = {version = "~0.2.0-alpha.1", allow-prereleases = true}
+#octree-creation-app = {version = "~0.2.0-alpha.1", allow-prereleases = true}
 #octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-app.git", rev = "develop"}
+octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-app.git", rev = "release/0.2.0"}
 
 #mira-simpeg = {version = ">=0.21.2.1.alpha-0, <0.21.2.2.dev", allow-prereleases = true}
 mira-simpeg = {git = "https://github.com/MiraGeoscience/simpeg.git", rev = "develop"}
 
-simpeg-drivers = {version = "~0.2.0-alpha.1", allow-prereleases = true}
+#simpeg-drivers = {version = "~0.2.0-alpha.1", allow-prereleases = true}
 #simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "develop" }
+simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "release/0.2.0" }
+
 
 ## about pip dependencies
 # to be specified to work with conda-lock
 # - from PyPI: my_package = { version = "1.2.3", source = "pypi" }
-# - from JFrog Artifactory: my_package = { version = "1.2.3", source = "jfrog-server" }
+# - from JFrog Artifactory: my_package = { version = "1.2.3" }
 # - from URL:
 #   - for a tags:   my_package = { url = "https://github.com/ORGANISATION/REPO/archive/refs/tags/VERSION_TAG.zip#sha256=" }
 #   - for a branch: my_package = { url = "https://github.com/ORGANISATION/REPO/archive/refs/heads/BRANCH.zip#sha256=" }
 # Note - conda-lock does not support the syntax: my_package = { git = ... }
 #        while poetry2conda supports only { git = "...", tag = "..." }, and not { url = ... }
-
 
 [tool.conda-lock.dependencies]
 libblas = "*=*mkl"  # because simpeg already brings in the MKL

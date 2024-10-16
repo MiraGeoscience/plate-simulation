@@ -34,11 +34,11 @@ requirements:
     - mira-simpeg >=0.21.2.1a0.dev0,<0.22.0
     - simpeg-drivers >=0.2.0a0.dev0,<0.3.0
     - pillow >=10.3.0,<10.4.0
-    - dask 2024.6.* 
+    - dask 2024.6.*
     - discretize >=0.10.0,<0.11.0
-    - distributed 2024.6.* 
+    - distributed 2024.6.*
     - empymod >=2.2.1,<2.3.0
-    - fsspec 2022.* 
+    - fsspec 2022.*
     - geoana >=0.5.0,<0.6.0
     - h5py >=3.2.1,<4.0.0
     - matplotlib-base >=3.8.4,<3.9.0

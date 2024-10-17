@@ -90,8 +90,8 @@ simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", 
 [tool.conda-lock.dependencies]
 libblas = "*=*mkl"  # because simpeg already brings in the MKL
 
-# force some versions to resolve incompatible resolution between PyPI and Conda 
-#------------------------------------------------------------------------------- 
+# force some versions to resolve incompatible resolution between PyPI and Conda
+#-------------------------------------------------------------------------------
 pymatsolver = { version = ">=0.2.0, <0.3.0", source = "pypi" }
 
 ## indirect dependencies, forcing them here for installation through Conda not pip

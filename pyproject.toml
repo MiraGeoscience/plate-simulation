@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "plate-simulation"
-version = "0.2.0-alpha.1"
+version = "0.1.0-beta.3"
 license = "MIT"
 description = "plate-simulation is a Python package"
 authors = ["Mira Geoscience <support@mirageoscience.com>"]
@@ -43,7 +43,7 @@ exclude = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10, <3.12"
+python = "^3.10, <3.12"# no Python 3.12 yet for simpeg-drivers
 
 numpy = "~1.26.0"  # also in geoh5py, simpeg and geoana
 scipy = "~1.14.0"  # also in geoapps-utils
@@ -57,7 +57,7 @@ pydantic = "~2.5.2"
 #geoh5py = {version = "~0.10.0-alpha.1", source = "pypi", allow-prereleases = true}
 geoh5py = {git = "https://github.com/MiraGeoscience/geoh5py.git", rev = "release/0.10.0"}
 
-#param-sweeps = {version = "~0.2.0-alpha.1", allow-prereleases = true}
+#param-sweeps = {version = "~0.1.8-alpha.1", source = "pypi", allow-prereleases = true}
 #param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "develop"}
 param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "release/0.2.0"}
 

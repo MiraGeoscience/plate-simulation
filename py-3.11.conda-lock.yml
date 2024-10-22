@@ -15,8 +15,8 @@
 version: 1
 metadata:
   content_hash:
-    win-64: df2d94c4d788dcb6ff8aad285615d34ad4a87a3866582bcf0dc2a5bef20f6da9
-    linux-64: b0d5537e54e8a38ef875f820dd4ed5d9409481ee4a1b99dde93652eca58b1d00
+    win-64: 0bad14b9fb51e367424d0eb4c0cd35a45ed722bfdedbb8ee5aa118c20731108a
+    linux-64: d7f9cd5b431a4578885a3f33772e9b2d5a7950e99b664d94743cf13a011c006f
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -1091,10 +1091,10 @@ package:
     numpy: '>=1.19,<3'
     python: '>=3.11,<3.12.0a0'
     python_abi: 3.11.*
-  url: https://conda.anaconda.org/conda-forge/linux-64/h5py-3.12.1-nompi_py311hb639ac4_100.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/h5py-3.12.1-nompi_py311hb639ac4_101.conda
   hash:
-    md5: 4a51742012213f78157d8712eb93556f
-    sha256: bc927298b6ffb4911dea6dc8183793df592bb0ce5b2e10a6fa0628c2809ff86c
+    md5: 2997f66fdd6e919b1dafa93c95289d24
+    sha256: 7c0a2b66a8ebde83f19532d7a1f9b87adf9447328bcc95d345bb8865133d1ff5
   category: main
   optional: false
 - name: h5py
@@ -1110,10 +1110,10 @@ package:
     ucrt: '>=10.0.20348.0'
     vc: '>=14.2,<15'
     vc14_runtime: '>=14.29.30139'
-  url: https://conda.anaconda.org/conda-forge/win-64/h5py-3.12.1-nompi_py311h67016bb_100.conda
+  url: https://conda.anaconda.org/conda-forge/win-64/h5py-3.12.1-nompi_py311h67016bb_101.conda
   hash:
-    md5: d6e2e9e14dd8620d3c7eaf04b45dfb20
-    sha256: 3a408e2310418a85c047b46a6c2cd9e5459c42e50a5f203e3d98300ca7dba908
+    md5: 277648c353944e84b0660e0ead4438a2
+    sha256: 0663340fc65417677e196de2504d9c7b11e490241f260d25cb2b9191e71cb5b8
   category: main
   optional: false
 - name: hdf5
@@ -1793,29 +1793,29 @@ package:
   category: main
   optional: false
 - name: libdlf
-  version: 0.2.0
+  version: 0.3.0
   manager: conda
   platform: linux-64
   dependencies:
     numpy: ''
-    python: '>=3.6'
-  url: https://conda.anaconda.org/conda-forge/noarch/libdlf-0.2.0-pyhd8ed1ab_0.tar.bz2
+    python: '>=3.10'
+  url: https://conda.anaconda.org/conda-forge/noarch/libdlf-0.3.0-pyhd8ed1ab_0.conda
   hash:
-    md5: 302f29a6b23069f2605a7842654360c5
-    sha256: a71d6cc5eed68ce3089033901ae792b61585e1494413af801b6c7d837b62aca4
+    md5: ff65061dc3b6e12167fe5061f0845626
+    sha256: 5fb56cb230682a7336136423340a70dc524291d8a20474778d740d4186f18c41
   category: main
   optional: false
 - name: libdlf
-  version: 0.2.0
+  version: 0.3.0
   manager: conda
   platform: win-64
   dependencies:
     numpy: ''
-    python: '>=3.6'
-  url: https://conda.anaconda.org/conda-forge/noarch/libdlf-0.2.0-pyhd8ed1ab_0.tar.bz2
+    python: '>=3.10'
+  url: https://conda.anaconda.org/conda-forge/noarch/libdlf-0.3.0-pyhd8ed1ab_0.conda
   hash:
-    md5: 302f29a6b23069f2605a7842654360c5
-    sha256: a71d6cc5eed68ce3089033901ae792b61585e1494413af801b6c7d837b62aca4
+    md5: ff65061dc3b6e12167fe5061f0845626
+    sha256: 5fb56cb230682a7336136423340a70dc524291d8a20474778d740d4186f18c41
   category: main
   optional: false
 - name: libedit
@@ -3428,6 +3428,60 @@ package:
     sha256: 35c0b0f3b8b0585fee0966f5a09b7bd43519a5bca58a9f29f502dd8442a9b14c
   category: dev
   optional: true
+- name: pymatsolver
+  version: 0.2.0
+  manager: conda
+  platform: linux-64
+  dependencies:
+    pydiso: ''
+    pymatsolver-base: 0.2.0
+  url: https://conda.anaconda.org/conda-forge/noarch/pymatsolver-0.2.0-ha770c72_3.conda
+  hash:
+    md5: 71c5698e2f1f19b16164bae528b143ca
+    sha256: 8d16b3c276ffd5f35890bba6539f3f526cc93061b0320eee2c8d488e7d5089de
+  category: main
+  optional: false
+- name: pymatsolver
+  version: 0.2.0
+  manager: conda
+  platform: win-64
+  dependencies:
+    pydiso: ''
+    pymatsolver-base: 0.2.0
+  url: https://conda.anaconda.org/conda-forge/noarch/pymatsolver-0.2.0-ha770c72_3.conda
+  hash:
+    md5: 71c5698e2f1f19b16164bae528b143ca
+    sha256: 8d16b3c276ffd5f35890bba6539f3f526cc93061b0320eee2c8d488e7d5089de
+  category: main
+  optional: false
+- name: pymatsolver-base
+  version: 0.2.0
+  manager: conda
+  platform: linux-64
+  dependencies:
+    numpy: ''
+    python: ''
+    scipy: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/pymatsolver-base-0.2.0-pyh44b312d_3.conda
+  hash:
+    md5: d3843c2374465a0d1a0eb15cc87669c4
+    sha256: d03fd3f24f87d7c07675b15129b6e481485500304e03aae35eb93224e2f757b1
+  category: main
+  optional: false
+- name: pymatsolver-base
+  version: 0.2.0
+  manager: conda
+  platform: win-64
+  dependencies:
+    numpy: ''
+    python: ''
+    scipy: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/pymatsolver-base-0.2.0-pyh44b312d_3.conda
+  hash:
+    md5: d3843c2374465a0d1a0eb15cc87669c4
+    sha256: d03fd3f24f87d7c07675b15129b6e481485500304e03aae35eb93224e2f757b1
+  category: main
+  optional: false
 - name: pyparsing
   version: 3.2.0
   manager: conda
@@ -5006,49 +5060,57 @@ package:
   category: main
   optional: false
 - name: mira-simpeg
-  version: 0.21.2.1.dev24+g61e50d11b
+  version: 0.21.2.1.dev44+g75da3b3f6
   manager: pip
   platform: linux-64
   dependencies:
+    dask: '*'
     discretize: '>=0.10.0'
+    distributed: '*'
     empymod: '>=2.0.0'
+    fsspec: '>=0.3.3'
     geoana: '>=0.5.0'
     geoh5py: '>=0.9.1,<0.11'
     matplotlib: '*'
     numpy: '>=1.20'
     pandas: '*'
-    pymatsolver: '>=0.2'
+    pymatsolver: '>=0.2,<0.3.0'
     scikit-learn: '>=1.2'
     scipy: '>=1.8.0'
-  url: git+https://github.com/MiraGeoscience/simpeg.git@7a5835109cde1fca5d5c34b7558d5c43c018d4d2
+    zarr: '*'
+  url: git+https://github.com/MiraGeoscience/simpeg.git@75da3b3f62ca59c5b87c9739633e2fa68939f99b
   hash:
-    sha256: 7a5835109cde1fca5d5c34b7558d5c43c018d4d2
+    sha256: 75da3b3f62ca59c5b87c9739633e2fa68939f99b
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg.git@7a5835109cde1fca5d5c34b7558d5c43c018d4d2
+    url: git+https://github.com/MiraGeoscience/simpeg.git@75da3b3f62ca59c5b87c9739633e2fa68939f99b
   category: main
   optional: false
 - name: mira-simpeg
-  version: 0.21.2.1.dev24+g61e50d11b
+  version: 0.21.2.1.dev44+g75da3b3f6
   manager: pip
   platform: win-64
   dependencies:
+    dask: '*'
     discretize: '>=0.10.0'
+    distributed: '*'
     empymod: '>=2.0.0'
+    fsspec: '>=0.3.3'
     geoana: '>=0.5.0'
     geoh5py: '>=0.9.1,<0.11'
     matplotlib: '*'
     numpy: '>=1.20'
     pandas: '*'
-    pymatsolver: '>=0.2'
+    pymatsolver: '>=0.2,<0.3.0'
     scikit-learn: '>=1.2'
     scipy: '>=1.8.0'
-  url: git+https://github.com/MiraGeoscience/simpeg.git@7a5835109cde1fca5d5c34b7558d5c43c018d4d2
+    zarr: '*'
+  url: git+https://github.com/MiraGeoscience/simpeg.git@75da3b3f62ca59c5b87c9739633e2fa68939f99b
   hash:
-    sha256: 7a5835109cde1fca5d5c34b7558d5c43c018d4d2
+    sha256: 75da3b3f62ca59c5b87c9739633e2fa68939f99b
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg.git@7a5835109cde1fca5d5c34b7558d5c43c018d4d2
+    url: git+https://github.com/MiraGeoscience/simpeg.git@75da3b3f62ca59c5b87c9739633e2fa68939f99b
   category: main
   optional: false
 - name: octree-creation-app
@@ -5064,12 +5126,12 @@ package:
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@f814a8fe4b647a70997abef540f5362b83d2dbe5
+  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@d5f7b1bd9335803b4602f95e27a171462e65a955
   hash:
-    sha256: f814a8fe4b647a70997abef540f5362b83d2dbe5
+    sha256: d5f7b1bd9335803b4602f95e27a171462e65a955
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@f814a8fe4b647a70997abef540f5362b83d2dbe5
+    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@d5f7b1bd9335803b4602f95e27a171462e65a955
   category: main
   optional: false
 - name: octree-creation-app
@@ -5085,12 +5147,12 @@ package:
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@f814a8fe4b647a70997abef540f5362b83d2dbe5
+  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@d5f7b1bd9335803b4602f95e27a171462e65a955
   hash:
-    sha256: f814a8fe4b647a70997abef540f5362b83d2dbe5
+    sha256: d5f7b1bd9335803b4602f95e27a171462e65a955
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@f814a8fe4b647a70997abef540f5362b83d2dbe5
+    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@d5f7b1bd9335803b4602f95e27a171462e65a955
   category: main
   optional: false
 - name: param-sweeps
@@ -5100,12 +5162,12 @@ package:
   dependencies:
     geoh5py: 0.10.0-alpha.1
     numpy: '>=1.26.0,<1.27.0'
-  url: git+https://github.com/MiraGeoscience/param-sweeps.git@7ffcedc692bea8de4c2c9eca479b50231e2d22bd
+  url: git+https://github.com/MiraGeoscience/param-sweeps.git@0593ba343681cf2bc7edd2916f2755896899b3fa
   hash:
-    sha256: 7ffcedc692bea8de4c2c9eca479b50231e2d22bd
+    sha256: 0593ba343681cf2bc7edd2916f2755896899b3fa
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/param-sweeps.git@7ffcedc692bea8de4c2c9eca479b50231e2d22bd
+    url: git+https://github.com/MiraGeoscience/param-sweeps.git@0593ba343681cf2bc7edd2916f2755896899b3fa
   category: main
   optional: false
 - name: param-sweeps
@@ -5115,38 +5177,12 @@ package:
   dependencies:
     geoh5py: 0.10.0-alpha.1
     numpy: '>=1.26.0,<1.27.0'
-  url: git+https://github.com/MiraGeoscience/param-sweeps.git@7ffcedc692bea8de4c2c9eca479b50231e2d22bd
+  url: git+https://github.com/MiraGeoscience/param-sweeps.git@0593ba343681cf2bc7edd2916f2755896899b3fa
   hash:
-    sha256: 7ffcedc692bea8de4c2c9eca479b50231e2d22bd
+    sha256: 0593ba343681cf2bc7edd2916f2755896899b3fa
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/param-sweeps.git@7ffcedc692bea8de4c2c9eca479b50231e2d22bd
-  category: main
-  optional: false
-- name: pymatsolver
-  version: 0.3.1
-  manager: pip
-  platform: linux-64
-  dependencies:
-    numpy: '>=1.21'
-    packaging: '*'
-    scipy: '>=1.8'
-  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/public-pypi-dev/packages/packages/d9/e8/3fd89c623e1d8ecd37b6674d21e627c829cd6d4e8e770afd41b3ec75fc26/pymatsolver-0.3.1.tar.gz
-  hash:
-    sha256: 24b02d1022eaca2ec0199fa25052f5c0fa8ebee73ab26523c441385b4ece0651
-  category: main
-  optional: false
-- name: pymatsolver
-  version: 0.3.1
-  manager: pip
-  platform: win-64
-  dependencies:
-    numpy: '>=1.21'
-    packaging: '*'
-    scipy: '>=1.8'
-  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/public-pypi-dev/packages/packages/d9/e8/3fd89c623e1d8ecd37b6674d21e627c829cd6d4e8e770afd41b3ec75fc26/pymatsolver-0.3.1.tar.gz
-  hash:
-    sha256: 24b02d1022eaca2ec0199fa25052f5c0fa8ebee73ab26523c441385b4ece0651
+    url: git+https://github.com/MiraGeoscience/param-sweeps.git@0593ba343681cf2bc7edd2916f2755896899b3fa
   category: main
   optional: false
 - name: simpeg-drivers
@@ -5159,17 +5195,18 @@ package:
     distributed: ==2024.6.*
     geoapps-utils: 0.4.0-alpha.1
     geoh5py: 0.10.0-alpha.1
-    mira-simpeg: 0.21.2.1.dev24+g61e50d11b
+    mira-simpeg: 0.21.2.1.dev44+g75da3b3f6
     numpy: '>=1.26.0,<1.27.0'
     octree-creation-app: 0.2.0-alpha.1
     param-sweeps: 0.2.0-alpha.1
+    pymatsolver: '>=0.2.0,<0.3.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@5077211fab595eab1171fd04919dd34e30773829
+  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@cc4d57caa790e7737f391839e12cc1b18605c753
   hash:
-    sha256: 5077211fab595eab1171fd04919dd34e30773829
+    sha256: cc4d57caa790e7737f391839e12cc1b18605c753
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@5077211fab595eab1171fd04919dd34e30773829
+    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@cc4d57caa790e7737f391839e12cc1b18605c753
   category: main
   optional: false
 - name: simpeg-drivers
@@ -5182,16 +5219,17 @@ package:
     distributed: ==2024.6.*
     geoapps-utils: 0.4.0-alpha.1
     geoh5py: 0.10.0-alpha.1
-    mira-simpeg: 0.21.2.1.dev24+g61e50d11b
+    mira-simpeg: 0.21.2.1.dev44+g75da3b3f6
     numpy: '>=1.26.0,<1.27.0'
     octree-creation-app: 0.2.0-alpha.1
     param-sweeps: 0.2.0-alpha.1
+    pymatsolver: '>=0.2.0,<0.3.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@5077211fab595eab1171fd04919dd34e30773829
+  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@cc4d57caa790e7737f391839e12cc1b18605c753
   hash:
-    sha256: 5077211fab595eab1171fd04919dd34e30773829
+    sha256: cc4d57caa790e7737f391839e12cc1b18605c753
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@5077211fab595eab1171fd04919dd34e30773829
+    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@cc4d57caa790e7737f391839e12cc1b18605c753
   category: main
   optional: false

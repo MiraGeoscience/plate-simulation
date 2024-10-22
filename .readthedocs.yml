@@ -30,4 +30,4 @@ sphinx:
   fail_on_warning: true
 
 conda:
-    environment: docs/source/environnment.yml
+    environment: docs/source/environment.yml

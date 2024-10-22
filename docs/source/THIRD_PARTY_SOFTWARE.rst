@@ -1,3 +1,6 @@
+Third Party Software
+====================
+
 The plate-simulation repository and source distributions bundle several libraries that are
 compatibly licensed.  We list these here.
 

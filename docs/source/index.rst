@@ -20,6 +20,7 @@ details are parameterized in a ui.json file that can be rendered in
    getting_started
    usage
    methodology
+   THIRD_PARTY_SOFTWARE
 
 
 License

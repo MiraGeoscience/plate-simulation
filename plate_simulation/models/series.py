@@ -102,6 +102,7 @@ class Scenario(Series):
     def __init__(
         self,
         workspace: Workspace,
+        *,
         mesh: Octree,
         background: float,
         history: Sequence[Event | Series],

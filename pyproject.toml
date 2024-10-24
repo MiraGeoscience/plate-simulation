@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "plate-simulation"
-version = "0.2.0-alpha.1"
+version = "0.1.0-beta.3"
 license = "MIT"
 description = "plate-simulation is a Python package"
 authors = ["Mira Geoscience <support@mirageoscience.com>"]
@@ -66,8 +66,8 @@ geoapps-utils = {git = "https://github.com/MiraGeoscience/geoapps-utils.git", re
 #octree-creation-app = {version = "~0.2.0-alpha.1", source = "pypi", allow-prereleases = true}
 octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-app.git", rev = "release/0.2.0"}
 
-#mira-simpeg = {version = ">=0.21.2.1-alpha.1, <0.21.2.2.dev", source = "pypi", allow-prereleases = true}
-mira-simpeg = {git = "https://github.com/MiraGeoscience/simpeg.git", rev = "develop", extras = ["dask"]}
+#mira-simpeg = {version = ">=0.21.2.1-alpha.1, <0.21.2.2.dev", source="pypi", allow-prereleases = true, extras = ["dask"]}
+mira-simpeg = {git = "https://github.com/MiraGeoscience/simpeg.git", rev = "release/0.21.2.1", extras = ["dask"]}
 
 #simpeg-drivers = {version = "~0.2.0-alpha.1", source = "pypi", allow-prereleases = true}
 simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "release/0.2.0" }
@@ -75,11 +75,12 @@ simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", 
 ## about pip dependencies
 # to be specified to work with conda-lock
 # - from PyPI: my_package = { version = "1.2.3", source = "pypi" }
-# - from URL: !!! no actual lock, as tag or branch can move and installation will fetch current !!!
-#   - for a tag:    my_package = { url = "https://github.com/ORGANISATION/REPO/archive/refs/tags/TAG.tar.gz" }
-#   - for a branch: my_package = { url = "https://github.com/ORGANISATION/REPO/archive/refs/heads/BRANCH.tar.gz" }
-# - to actually lock on a revision: my_package = { git = "https://github.com/ORGANISATION/REPO.git", rev = "GIT_REV" }
-#   (where rev value is a tag, a branch name or a commit hash). Can also use ``branch`` or ``tag`` instead of ``rev``
+# - from JFrog Artifactory: my_package = { version = "1.2.3" }
+# - from URL:
+#   - for a tags:   my_package = { url = "https://github.com/ORGANISATION/REPO/archive/refs/tags/VERSION_TAG.zip#sha256=" }
+#   - for a branch: my_package = { url = "https://github.com/ORGANISATION/REPO/archive/refs/heads/BRANCH.zip#sha256=" }
+# Note - conda-lock does not support the syntax: my_package = { git = ... }
+#        while poetry2conda supports only { git = "...", tag = "..." }, and not { url = ... }
 
 [tool.conda-lock.dependencies]
 libblas = "*=*mkl"  # because simpeg already brings in the MKL
@@ -97,7 +98,7 @@ h5py = ">=3.2.1, <4.0.0"  # from geoh5py
 matplotlib-base = ">=3.8.4, <3.9.0"  # from simpeg
 mkl = "2023.2, <2023.3"  # from simpeg
 pandas = ">=2.2.1, <2.3.0"  # from simpeg
-pydiso = ">=0.0.5, <0.1.0"  # from simpeg
+pydiso = ">=0.1.0, <0.2.0"  # from simpeg
 pymatsolver = ">=0.2.0, <0.3.0"  # from simpeg
 scikit-learn = ">=1.4.0, <1.5.0"  # from simpeg
 tqdm = ">=4.66.1, <5.0.0"  # from curve-apps, peak-finder-app, simpeg
@@ -113,9 +114,15 @@ Pygments = "*"
 pylint = "*"
 pytest = "*"
 pytest-cov = "*"
+pyyaml = '*'
+jinja2 = '*'
+packaging = '*'
 tomli = "*"
 sphinx = "^5.0"
 readthedocs-sphinx-ext = "*"
+
+## about jfrog repository
+# change url to have access to other repo (e.g. public-pypi-prod, public-pypi-dev)
 
 [tool.conda-lock]
 platforms = ["win-64", "linux-64"]

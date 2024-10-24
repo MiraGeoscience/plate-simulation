@@ -1,8 +1,8 @@
 
 default_language_version:
     python: python3
-exclude: (^docs/(conf.py|_ext/)|^plate_simulation-assets/)
-default_stages: [commit,push]
+exclude: ^docs/(conf.py|_ext/)
+default_stages: [pre-commit,pre-push]
 fail_fast: false
 
 ci:
@@ -12,7 +12,7 @@ ci:
 
 repos:
 -   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.5.5
+    rev: v0.7.0
     hooks:
     -   id: ruff
         args:
@@ -21,7 +21,7 @@ repos:
 #        -   --unsafe-fixes
     -   id: ruff-format
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.11.0
+    rev: v1.13.0
     hooks:
     -   id: mypy
         additional_dependencies: [
@@ -30,9 +30,9 @@ repos:
             types-PyYAML,
             tomli # to read config from pyproject.toml
         ]
-        exclude: (conf\.py|tests)
+        exclude: (conf\.py|plate_simulation-assets/)
 -   repo: https://github.com/codingjoe/relint
-    rev: 3.1.1
+    rev: 3.3.0
     hooks:
     -   id: relint
         args: [-W]  # to fail on warnings
@@ -52,7 +52,7 @@ repos:
         language: system
         require_serial: true  # pylint does its own parallelism
         types: [python]
-        exclude: ^(devtools|docs)/
+        exclude: ^(devtools|docs|plate_simulation-assets)/
 -   repo: https://github.com/codespell-project/codespell
     rev: v2.3.0
     hooks:
@@ -60,13 +60,14 @@ repos:
         exclude: (-lock\.ya?ml|\benvironments/.*\.ya?ml|\.ipynb|^THIRD_PARTY_SOFTWARE\.rst)$
         entry: codespell -I .codespellignore
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
     -   id: trailing-whitespace
         exclude: \.mdj$
     -   id: check-toml
     -   id: check-yaml
-#    -   id: check-added-large-files # crashing on some configuration. To be investigated
+        exclude: ^meta.yaml$
+    -   id: check-added-large-files
     -   id: check-case-conflict
     -   id: check-merge-conflict
     -   id: debug-statements

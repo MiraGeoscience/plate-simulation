@@ -34,9 +34,9 @@ From command line
 -----------------
 
 The application can also be run from the command line if all required fields in the ui.json are provided.
-This is useful for more advanced users that may want to automate the mesh creation process, or re-run an existing mesh with different parameters.
+This is useful for more advanced users wanting to automate the mesh creation process or re-run an existing mesh with different parameters.
 
-To run the application from the command line, use the following command in an Anaconda Prompt:
+To run the application from the command line, use the following command in a Conda Prompt:
 
 ``conda activate plate-simulation``
 

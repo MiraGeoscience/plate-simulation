@@ -150,7 +150,7 @@ dependencies:
       - mira-simpeg == 0.21.2.1b2 --hash=sha256:c708a0140738a701df67c2ca540f0aaacf9b034a376d7d2d689f588ab6d6e45a
       - octree-creation-app == 0.2.0b1 --hash=sha256:76075c147122cd2c7f282c799ea456f161d72253d8e6ffdc528fbb4cc28088a3
       - param-sweeps == 0.2.0b1 --hash=sha256:a6a7448f67b5c20f93f97f32e4599afe7ab6d874bed01e909665e9dd2190a946
-      - simpeg-drivers == 0.2.0b1 --hash=sha256:d057604c6d84964d965498e2abe27ec408fce3b46a0606085adaf487d7e8ea69
+      - simpeg-drivers == 0.2.0b2 --hash=sha256:13c13c98dbd3e01352d71c7f4e94504bd6528b47581401a7c2450de07ec56005
 
 variables:
   KMP_WARNINGS: 0

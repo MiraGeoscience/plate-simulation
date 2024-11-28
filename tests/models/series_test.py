@@ -93,7 +93,6 @@ def test_scenario(tmp_path):
                 mesh=octree,
                 background=0.0,
                 history=[lithology, erosion, overburden],
-                name="model",
             )
 
         with pytest.raises(
@@ -105,7 +104,6 @@ def test_scenario(tmp_path):
                 mesh=octree,
                 background=0.0,
                 history=[overburden, lithology],
-                name="model",
             )
 
         scenario = Scenario(
@@ -113,20 +111,19 @@ def test_scenario(tmp_path):
             mesh=octree,
             background=100.0,
             history=[lithology, overburden, erosion],
-            name="model",
         )
         model = scenario.geologize()
-        assert model.values is not None
+        assert model is not None
 
         ind = octree.centroids[:, 2] > 0.0
-        assert all(np.isnan(model.values[ind]))
+        assert all(np.isnan(model[ind]))
         ind = (octree.centroids[:, 2] < 0.0) & (octree.centroids[:, 2] > -1.0)
-        assert all(model.values[ind] == 0.1)
+        assert all(model[ind] == 10.0)
         ind = (octree.centroids[:, 2] < -1.0) & (octree.centroids[:, 2] > -2.0)
-        assert all(model.values[ind] == 0.01)
+        assert all(model[ind] == 100.0)
         ind = (octree.centroids[:, 2] < -2.0) & (octree.centroids[:, 2] > -5.0)
-        assert all(model.values[ind] == 1.0)
+        assert all(model[ind] == 1.0)
         ind = (octree.centroids[:, 2] < -5.0) & (octree.centroids[:, 2] > -10.0)
-        assert all(model.values[ind] == 0.5)
+        assert all(model[ind] == 2.0)
         ind = octree.centroids[:, 2] < -10.0
-        np.testing.assert_allclose(model.values[ind], 1 / 3.0)
+        np.testing.assert_allclose(model[ind], 3.0)

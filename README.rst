@@ -1,9 +1,9 @@
 |coverage| |maintainability| |precommit_ci| |docs| |style| |version| |status| |pyversions|
 
 
-.. |docs| image:: https://readthedocs.org/projects/plate-simulation/badge/
+.. |docs| image:: https://readthedocs.com/projects/mirageoscience-plate-simulation/badge/?version=latest
     :alt: Documentation Status
-    :target: https://plate-simulation.readthedocs.io/en/latest/?badge=latest
+    :target: https://mirageoscience-plate-simulation.readthedocs-hosted.com/en/latest/?badge=latest
 
 .. |coverage| image:: https://codecov.io/gh/MiraGeoscience/plate-simulation/branch/develop/graph/badge.svg
     :alt: Code coverage
@@ -45,7 +45,7 @@ a particular parameterization of the halfspace + overburden and plate geological
 
 Documentation
 ^^^^^^^^^^^^^
-`Online documentation <https://plate-simulation.readthedocs.io/en/latest/>`_
+`Online documentation <https://mirageoscience-plate-simulation.readthedocs-hosted.com/en/latest/>`_
 
 
 Installation

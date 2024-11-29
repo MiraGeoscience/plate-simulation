@@ -9,6 +9,7 @@
 
 from copy import deepcopy
 
+import numpy as np
 from geoh5py import Workspace
 from geoh5py.groups import SimPEGGroup
 from simpeg_drivers.constants import default_ui_json
@@ -35,11 +36,11 @@ def test_gravity_plate_simulation(tmp_path):
             max_distance=200.0,
         )
 
-        overburden_params = OverburdenParams(thickness=50.0, overburden=5.0)
+        overburden_params = OverburdenParams(thickness=50.0, overburden=0.2)
 
         plate_params = PlateParams(
             name="plate",
-            plate=2.0,
+            plate=0.5,
             elevation=-250.0,
             width=100.0,
             strike_length=100.0,
@@ -51,7 +52,7 @@ def test_gravity_plate_simulation(tmp_path):
 
         model_params = ModelParams(
             name="density",
-            background=1000.0,
+            background=0.0,
             overburden=overburden_params,
             plate=plate_params,
         )
@@ -77,3 +78,5 @@ def test_gravity_plate_simulation(tmp_path):
         )
         driver = PlateSimulationDriver(params)
         driver.run()
+
+        assert np.nanmax(driver.model.values) == 0.5

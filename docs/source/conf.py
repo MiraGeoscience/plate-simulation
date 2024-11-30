@@ -54,7 +54,7 @@ html_theme = "alabaster"
 html_theme_options = {
     "description": f"version {release}",
 }
-html_static_path = ["_static"]
+html_static_path = []
 
 
 def get_copyright_notice():

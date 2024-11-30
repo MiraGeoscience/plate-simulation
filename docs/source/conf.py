@@ -7,8 +7,9 @@
 #  (see LICENSE file at the root of this source code package).                         '
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-from importlib.metadata import version
 from datetime import datetime
+from importlib.metadata import version
+
 
 # Configuration file for the Sphinx documentation builder.
 #
@@ -26,7 +27,7 @@ project_copyright = "%Y, Mira Geoscience Ltd"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 # The full version, including alpha/beta/rc tags.
-release = version("surface-apps")
+release = version("plate-simulation")
 # The short X.Y.Z version.
 version = ".".join(release.split(".")[:3])
 
@@ -51,12 +52,14 @@ exclude_patterns = []
 
 html_theme = "alabaster"
 html_theme_options = {
-    'description': f"version {release}",
+    "description": f"version {release}",
 }
 html_static_path = ["_static"]
 
+
 def get_copyright_notice():
     return f"Copyright {datetime.now().strftime(project_copyright)}"
+
 
 rst_epilog = f"""
 .. |copyright_notice| replace:: {get_copyright_notice()}.

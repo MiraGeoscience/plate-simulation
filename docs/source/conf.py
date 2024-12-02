@@ -7,8 +7,9 @@
 #  (see LICENSE file at the root of this source code package).                         '
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-from importlib.metadata import version
 from datetime import datetime
+from importlib.metadata import version
+
 
 # Configuration file for the Sphinx documentation builder.
 #
@@ -51,12 +52,14 @@ exclude_patterns = []
 
 html_theme = "alabaster"
 html_theme_options = {
-    'description': f"version {release}",
+    "description": f"version {release}",
 }
 html_static_path = ["_static"]
 
+
 def get_copyright_notice():
     return f"Copyright {datetime.now().strftime(project_copyright)}"
+
 
 rst_epilog = f"""
 .. |copyright_notice| replace:: {get_copyright_notice()}.

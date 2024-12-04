@@ -27,7 +27,7 @@ project_copyright = "%Y, Mira Geoscience Ltd"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 # The full version, including alpha/beta/rc tags.
-release = version("surface-apps")
+release = version("plate-simulation")
 # The short X.Y.Z version.
 version = ".".join(release.split(".")[:3])
 
@@ -54,7 +54,7 @@ html_theme = "alabaster"
 html_theme_options = {
     "description": f"version {release}",
 }
-html_static_path = ["_static"]
+html_static_path = []
 
 
 def get_copyright_notice():

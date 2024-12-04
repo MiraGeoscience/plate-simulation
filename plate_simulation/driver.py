@@ -237,10 +237,19 @@ class PlateSimulationDriver:
             mesh=self.mesh,
             background=self.params.model.background,
             history=[dikes, overburden, erosion],
-            name=self.params.model.name,
         )
 
-        return scenario.geologize()
+        geology = scenario.geologize()
+
+        if self.simulation_parameters.physical_property == "conductivity":
+            geology **= -1.0
+
+        with fetch_active_workspace(self.params.geoh5, mode="r+"):
+            model: FloatData = self.mesh.add_data(  # type: ignore
+                {self.params.model.name: {"values": geology}}
+            )
+
+        return model
 
     @staticmethod
     def start(ifile: str | Path | InputFile):

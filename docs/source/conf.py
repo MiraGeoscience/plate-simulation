@@ -57,7 +57,6 @@ html_theme_options = {
 html_static_path = []
 
 
-
 def get_copyright_notice():
     return f"Copyright {datetime.now().strftime(project_copyright)}"
 

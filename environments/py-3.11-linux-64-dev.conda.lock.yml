@@ -29,7 +29,7 @@ dependencies:
   - colorama=0.4.6=pyhd8ed1ab_1
   - contourpy=1.3.1=py311hd18a35c_0
   - coverage=7.6.8=py311h2dc5d0c_0
-  - cycler=0.12.1=pyhd8ed1ab_0
+  - cycler=0.12.1=pyhd8ed1ab_1
   - cytoolz=1.0.0=py311h9ecbd09_1
   - dask-core=2024.6.2=pyhd8ed1ab_0
   - dill=0.3.9=pyhd8ed1ab_1
@@ -43,11 +43,11 @@ dependencies:
   - freetype=2.12.1=h267a509_2
   - fsspec=2022.11.0=pyhd8ed1ab_0
   - geoana=0.5.0=py311h92ebd52_4
-  - h2=4.1.0=pyhd8ed1ab_0
+  - h2=4.1.0=pyhd8ed1ab_1
   - h5py=3.12.1=nompi_py311hb639ac4_102
   - hdf5=1.14.3=nompi_h2d575fe_107
-  - hpack=4.0.0=pyh9f0ad1d_0
-  - hyperframe=6.0.1=pyhd8ed1ab_0
+  - hpack=4.0.0=pyhd8ed1ab_1
+  - hyperframe=6.0.1=pyhd8ed1ab_1
   - idna=3.10=pyhd8ed1ab_1
   - imagesize=1.4.1=pyhd8ed1ab_0
   - importlib-metadata=8.5.0=pyha770c72_1
@@ -84,6 +84,7 @@ dependencies:
   - libjpeg-turbo=3.0.0=hd590300_1
   - liblapack=3.9.0=20_linux64_mkl
   - libllvm14=14.0.6=hcd5def8_4
+  - liblzma=5.6.3=hb9d3cd8_1
   - libnghttp2=1.64.0=h161d5f1_0
   - libnsl=2.0.1=hd590300_0
   - libpng=1.6.44=hadc24fc_0
@@ -92,14 +93,14 @@ dependencies:
   - libssh2=1.11.1=hf672d98_0
   - libstdcxx=14.2.0=hc0a3c3a_1
   - libstdcxx-ng=14.2.0=h4852527_1
-  - libtiff=4.7.0=he137b08_1
+  - libtiff=4.7.0=hc4654cb_2
   - libuuid=2.38.1=h0b41bf4_0
   - libwebp-base=1.4.0=hd590300_0
   - libxcb=1.17.0=h8a09558_0
   - libxcrypt=4.4.36=hd590300_1
-  - libxml2=2.13.5=h064dc61_0
+  - libxml2=2.13.5=h0d44e9d_1
   - libzlib=1.3.1=hb9d3cd8_2
-  - llvm-openmp=19.1.4=h024ca30_0
+  - llvm-openmp=19.1.5=h024ca30_0
   - llvmlite=0.43.0=py311h9c9ff8c_1
   - locket=1.0.0=pyhd8ed1ab_0
   - markupsafe=3.0.2=py311h2dc5d0c_1
@@ -135,7 +136,7 @@ dependencies:
   - pysocks=1.7.1=pyha55dd90_7
   - pytest=8.3.4=pyhd8ed1ab_1
   - pytest-cov=6.0.0=pyhd8ed1ab_1
-  - python=3.11.10=hc5c86c4_3_cpython
+  - python=3.11.11=h9e4cc4f_1_cpython
   - python-dateutil=2.9.0.post0=pyhff2d567_1
   - python-tzdata=2023.4=pyhd8ed1ab_0
   - python_abi=3.11=5_cp311
@@ -148,7 +149,7 @@ dependencies:
   - scikit-learn=1.4.2=py311he08f58d_1
   - scipy=1.14.1=py311he9a78e4_1
   - setuptools=75.6.0=pyhff2d567_1
-  - six=1.16.0=pyhd8ed1ab_1
+  - six=1.17.0=pyhd8ed1ab_0
   - snowballstemmer=2.2.0=pyhd8ed1ab_0
   - sortedcontainers=2.4.0=pyhd8ed1ab_0
   - sphinx=5.3.0=pyhd8ed1ab_0
@@ -177,7 +178,6 @@ dependencies:
   - wheel=0.45.1=pyhd8ed1ab_1
   - xorg-libxau=1.0.11=hb9d3cd8_1
   - xorg-libxdmcp=1.1.5=hb9d3cd8_0
-  - xz=5.2.6=h166bdaf_0
   - yaml=0.2.5=h7f98852_2
   - zarr=2.14.2=pyhd8ed1ab_0
   - zict=3.0.0=pyhd8ed1ab_1
@@ -185,12 +185,12 @@ dependencies:
   - zstandard=0.23.0=py311hbc35293_1
   - zstd=1.5.6=ha6fb4c9_0
   - pip:
-      - geoapps-utils @ git+https://github.com/MiraGeoscience/geoapps-utils.git@dfadf196e7d21ad42bbdb5786c0a52696a467a9c
-      - geoh5py @ git+https://github.com/MiraGeoscience/geoh5py.git@58c8d832c1a5afcb083cb36b9de9d3a985fd3d81
+      - geoapps-utils @ git+https://github.com/MiraGeoscience/geoapps-utils.git@a2a851feabdeacf58dcd9acc083086ffbe9f27fa
+      - geoh5py @ git+https://github.com/MiraGeoscience/geoh5py.git@fe9db0338ad1f77427f1e5e64bf49356d0c14c18
       - mira-simpeg @ git+https://github.com/MiraGeoscience/simpeg.git@59133afc4586f2924236098f5f001d402f162667
-      - octree-creation-app @ git+https://github.com/MiraGeoscience/octree-creation-app.git@2bf58535d1033dec73fdbe3d807343e44723cd25
+      - octree-creation-app @ git+https://github.com/MiraGeoscience/octree-creation-app.git@ac05f803c7c86a475ddb9e5ba6ea8cabd1bc5924
       - param-sweeps @ git+https://github.com/MiraGeoscience/param-sweeps.git@644febfba1e81b1777a8ebf86744541c8e1fce09
-      - simpeg-drivers @ git+https://github.com/MiraGeoscience/simpeg-drivers.git@8f78925217ff9b03b6fcf6b51f699689ad326c0e
+      - simpeg-drivers @ git+https://github.com/MiraGeoscience/simpeg-drivers.git@852e4ef3e604d24171a67fd63eba6f8a91632660
 
 variables:
   KMP_WARNINGS: 0

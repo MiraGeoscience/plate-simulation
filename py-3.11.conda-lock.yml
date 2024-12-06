@@ -614,11 +614,11 @@ package:
   manager: conda
   platform: linux-64
   dependencies:
-    python: '>=3.8'
-  url: https://conda.anaconda.org/conda-forge/noarch/cycler-0.12.1-pyhd8ed1ab_0.conda
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/cycler-0.12.1-pyhd8ed1ab_1.conda
   hash:
-    md5: 5cd86562580f274031ede6aa6aa24441
-    sha256: f221233f21b1d06971792d491445fd548224641af9443739b4b7b6d5d72954a8
+    md5: 44600c4667a319d67dbe0681fc0bc833
+    sha256: 9827efa891e507a91a8a2acf64e210d2aff394e1cde432ad08e1f8c66b12293c
   category: main
   optional: false
 - name: cycler
@@ -626,11 +626,11 @@ package:
   manager: conda
   platform: win-64
   dependencies:
-    python: '>=3.8'
-  url: https://conda.anaconda.org/conda-forge/noarch/cycler-0.12.1-pyhd8ed1ab_0.conda
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/cycler-0.12.1-pyhd8ed1ab_1.conda
   hash:
-    md5: 5cd86562580f274031ede6aa6aa24441
-    sha256: f221233f21b1d06971792d491445fd548224641af9443739b4b7b6d5d72954a8
+    md5: 44600c4667a319d67dbe0681fc0bc833
+    sha256: 9827efa891e507a91a8a2acf64e210d2aff394e1cde432ad08e1f8c66b12293c
   category: main
   optional: false
 - name: cytoolz
@@ -1058,11 +1058,11 @@ package:
   dependencies:
     hpack: '>=4.0,<5'
     hyperframe: '>=6.0,<7'
-    python: '>=3.6.1'
-  url: https://conda.anaconda.org/conda-forge/noarch/h2-4.1.0-pyhd8ed1ab_0.tar.bz2
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/h2-4.1.0-pyhd8ed1ab_1.conda
   hash:
-    md5: b748fbf7060927a6e82df7cb5ee8f097
-    sha256: bfc6a23849953647f4e255c782e74a0e18fe16f7e25c7bb0bc57b83bb6762c7a
+    md5: 825927dc7b0f287ef8d4d0011bb113b1
+    sha256: 843ddad410c370672a8250470697027618f104153612439076d4d7b91eeb7b5c
   category: main
   optional: false
 - name: h2
@@ -1072,11 +1072,11 @@ package:
   dependencies:
     hpack: '>=4.0,<5'
     hyperframe: '>=6.0,<7'
-    python: '>=3.6.1'
-  url: https://conda.anaconda.org/conda-forge/noarch/h2-4.1.0-pyhd8ed1ab_0.tar.bz2
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/h2-4.1.0-pyhd8ed1ab_1.conda
   hash:
-    md5: b748fbf7060927a6e82df7cb5ee8f097
-    sha256: bfc6a23849953647f4e255c782e74a0e18fe16f7e25c7bb0bc57b83bb6762c7a
+    md5: 825927dc7b0f287ef8d4d0011bb113b1
+    sha256: 843ddad410c370672a8250470697027618f104153612439076d4d7b91eeb7b5c
   category: main
   optional: false
 - name: h5py
@@ -1159,11 +1159,11 @@ package:
   manager: conda
   platform: linux-64
   dependencies:
-    python: ''
-  url: https://conda.anaconda.org/conda-forge/noarch/hpack-4.0.0-pyh9f0ad1d_0.tar.bz2
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/hpack-4.0.0-pyhd8ed1ab_1.conda
   hash:
-    md5: 914d6646c4dbb1fd3ff539830a12fd71
-    sha256: 5dec948932c4f740674b1afb551223ada0c55103f4c7bf86a110454da3d27cb8
+    md5: 2aa5ff7fa34a81b9196532c84c10d865
+    sha256: ec89b7e5b8aa2f0219f666084446e1fb7b54545861e9caa892acb24d125761b5
   category: main
   optional: false
 - name: hpack
@@ -1171,11 +1171,11 @@ package:
   manager: conda
   platform: win-64
   dependencies:
-    python: ''
-  url: https://conda.anaconda.org/conda-forge/noarch/hpack-4.0.0-pyh9f0ad1d_0.tar.bz2
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/hpack-4.0.0-pyhd8ed1ab_1.conda
   hash:
-    md5: 914d6646c4dbb1fd3ff539830a12fd71
-    sha256: 5dec948932c4f740674b1afb551223ada0c55103f4c7bf86a110454da3d27cb8
+    md5: 2aa5ff7fa34a81b9196532c84c10d865
+    sha256: ec89b7e5b8aa2f0219f666084446e1fb7b54545861e9caa892acb24d125761b5
   category: main
   optional: false
 - name: hyperframe
@@ -1183,11 +1183,11 @@ package:
   manager: conda
   platform: linux-64
   dependencies:
-    python: '>=3.6'
-  url: https://conda.anaconda.org/conda-forge/noarch/hyperframe-6.0.1-pyhd8ed1ab_0.tar.bz2
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/hyperframe-6.0.1-pyhd8ed1ab_1.conda
   hash:
-    md5: 9f765cbfab6870c8435b9eefecd7a1f4
-    sha256: e374a9d0f53149328134a8d86f5d72bca4c6dcebed3c0ecfa968c02996289330
+    md5: 566e75c90c1d0c8c459eb0ad9833dc7a
+    sha256: e91c6ef09d076e1d9a02819cd00fa7ee18ecf30cdd667605c853980216584d1b
   category: main
   optional: false
 - name: hyperframe
@@ -1195,11 +1195,11 @@ package:
   manager: conda
   platform: win-64
   dependencies:
-    python: '>=3.6'
-  url: https://conda.anaconda.org/conda-forge/noarch/hyperframe-6.0.1-pyhd8ed1ab_0.tar.bz2
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/hyperframe-6.0.1-pyhd8ed1ab_1.conda
   hash:
-    md5: 9f765cbfab6870c8435b9eefecd7a1f4
-    sha256: e374a9d0f53149328134a8d86f5d72bca4c6dcebed3c0ecfa968c02996289330
+    md5: 566e75c90c1d0c8c459eb0ad9833dc7a
+    sha256: e91c6ef09d076e1d9a02819cd00fa7ee18ecf30cdd667605c853980216584d1b
   category: main
   optional: false
 - name: idna
@@ -2052,6 +2052,33 @@ package:
     sha256: 225cc7c3b20ac1db1bdb37fa18c95bf8aecef4388e984ab2f7540a9f4382106a
   category: main
   optional: false
+- name: liblzma
+  version: 5.6.3
+  manager: conda
+  platform: linux-64
+  dependencies:
+    __glibc: '>=2.17,<3.0.a0'
+    libgcc: '>=13'
+  url: https://conda.anaconda.org/conda-forge/linux-64/liblzma-5.6.3-hb9d3cd8_1.conda
+  hash:
+    md5: 2ecf2f1c7e4e21fcfe6423a51a992d84
+    sha256: e6e425252f3839e2756e4af1ea2074dffd3396c161bf460629f9dfd6a65f15c6
+  category: main
+  optional: false
+- name: liblzma
+  version: 5.6.3
+  manager: conda
+  platform: win-64
+  dependencies:
+    ucrt: '>=10.0.20348.0'
+    vc: '>=14.2,<15'
+    vc14_runtime: '>=14.29.30139'
+  url: https://conda.anaconda.org/conda-forge/win-64/liblzma-5.6.3-h2466b09_1.conda
+  hash:
+    md5: 015b9c0bd1eef60729ab577a38aaf0b5
+    sha256: 24d04bd55adfa44c421c99ce169df38cb1ad2bba5f43151bc847fc802496a1fa
+  category: main
+  optional: false
 - name: libnghttp2
   version: 1.64.0
   manager: conda
@@ -2232,15 +2259,15 @@ package:
     libdeflate: '>=1.22,<1.23.0a0'
     libgcc: '>=13'
     libjpeg-turbo: '>=3.0.0,<4.0a0'
+    liblzma: '>=5.6.3,<6.0a0'
     libstdcxx: '>=13'
     libwebp-base: '>=1.4.0,<2.0a0'
     libzlib: '>=1.3.1,<2.0a0'
-    xz: '>=5.2.6,<6.0a0'
     zstd: '>=1.5.6,<1.6.0a0'
-  url: https://conda.anaconda.org/conda-forge/linux-64/libtiff-4.7.0-he137b08_1.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libtiff-4.7.0-hc4654cb_2.conda
   hash:
-    md5: 63872517c98aa305da58a757c443698e
-    sha256: 9890121db85f6ef463fe12eb04ef1471176e3ef3b5e2d62e8d6dac713df00df4
+    md5: be54fb40ea32e8fe9dbaa94d4528b57e
+    sha256: 18653b4a5c73e19c5e86ff72dab9bf59f5cc43d7f404a6be705d152dfd5e0660
   category: main
   optional: false
 - name: libtiff
@@ -2251,16 +2278,16 @@ package:
     lerc: '>=4.0.0,<5.0a0'
     libdeflate: '>=1.22,<1.23.0a0'
     libjpeg-turbo: '>=3.0.0,<4.0a0'
+    liblzma: '>=5.6.3,<6.0a0'
     libzlib: '>=1.3.1,<2.0a0'
     ucrt: '>=10.0.20348.0'
     vc: '>=14.2,<15'
     vc14_runtime: '>=14.29.30139'
-    xz: '>=5.2.6,<6.0a0'
     zstd: '>=1.5.6,<1.6.0a0'
-  url: https://conda.anaconda.org/conda-forge/win-64/libtiff-4.7.0-hfc51747_1.conda
+  url: https://conda.anaconda.org/conda-forge/win-64/libtiff-4.7.0-hdefb170_2.conda
   hash:
-    md5: eac317ed1cc6b9c0af0c27297e364665
-    sha256: 902cb9f7f54d17dcfd54ce050b1ce2bc944b9bbd1748913342c2ea1e1140f8bb
+    md5: 49434938b99a5ba78c9afe573d158c1e
+    sha256: e297d10f0a1019e71e52fc53ceaa61b0a376bf7e0e3813318dc842e9c25de140
   category: main
   optional: false
 - name: libuuid
@@ -2353,12 +2380,12 @@ package:
     __glibc: '>=2.17,<3.0.a0'
     libgcc: '>=13'
     libiconv: '>=1.17,<2.0a0'
+    liblzma: '>=5.6.3,<6.0a0'
     libzlib: '>=1.3.1,<2.0a0'
-    xz: '>=5.2.6,<6.0a0'
-  url: https://conda.anaconda.org/conda-forge/linux-64/libxml2-2.13.5-h064dc61_0.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libxml2-2.13.5-h0d44e9d_1.conda
   hash:
-    md5: fb16b85a5be1328ac1c44b098b74c570
-    sha256: 7ab7fb45a0014981d35247cd5b09057fc8ed3c07378086a6c7ad552915928647
+    md5: f5b05674697ae7d2c5932766695945e1
+    sha256: 306e18aa647d8208ad2cd0e62d84933222b2fbe93d2d53cd5283d2256b1d54de
   category: main
   optional: false
 - name: libxml2
@@ -2371,10 +2398,10 @@ package:
     ucrt: '>=10.0.20348.0'
     vc: '>=14.2,<15'
     vc14_runtime: '>=14.29.30139'
-  url: https://conda.anaconda.org/conda-forge/win-64/libxml2-2.13.5-h442d1da_0.conda
+  url: https://conda.anaconda.org/conda-forge/win-64/libxml2-2.13.5-he286e8c_1.conda
   hash:
-    md5: 1fbabbec60a3c7c519a5973b06c3b2f4
-    sha256: 020466b17c143190bd5a6540be2ceef4c1f8d514408bd5f0adaafcd9d0057b5c
+    md5: 77eaa84f90fc90643c5a0be0aa9bdd1b
+    sha256: 084dd4dde342f13c43ee418d153ac5b2610f95be029073a15fa9dda22b130d06
   category: main
   optional: false
 - name: libzlib
@@ -2405,15 +2432,15 @@ package:
   category: main
   optional: false
 - name: llvm-openmp
-  version: 19.1.4
+  version: 19.1.5
   manager: conda
   platform: linux-64
   dependencies:
     __glibc: '>=2.17,<3.0.a0'
-  url: https://conda.anaconda.org/conda-forge/linux-64/llvm-openmp-19.1.4-h024ca30_0.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/llvm-openmp-19.1.5-h024ca30_0.conda
   hash:
-    md5: 9370a10ba6a13079cc0c0e09d2ec13a8
-    sha256: 5ef60133379c3146d369672d39729690cf0735116fc1a8b6b32788618199ce17
+    md5: dc90d15c25a57f641f0b84c271e4761e
+    sha256: e319db1e18dabe23ddeb4a1e04ff1ab5e331069a5a558891ffeb60c8b76d5e6a
   category: main
   optional: false
 - name: llvmlite
@@ -3577,56 +3604,56 @@ package:
   category: dev
   optional: true
 - name: python
-  version: 3.11.10
+  version: 3.11.11
   manager: conda
   platform: linux-64
   dependencies:
     __glibc: '>=2.17,<3.0.a0'
     bzip2: '>=1.0.8,<2.0a0'
     ld_impl_linux-64: '>=2.36.1'
-    libexpat: '>=2.6.3,<3.0a0'
+    libexpat: '>=2.6.4,<3.0a0'
     libffi: '>=3.4,<4.0a0'
     libgcc: '>=13'
+    liblzma: '>=5.6.3,<6.0a0'
     libnsl: '>=2.0.1,<2.1.0a0'
-    libsqlite: '>=3.46.1,<4.0a0'
+    libsqlite: '>=3.47.0,<4.0a0'
     libuuid: '>=2.38.1,<3.0a0'
     libxcrypt: '>=4.4.36'
     libzlib: '>=1.3.1,<2.0a0'
     ncurses: '>=6.5,<7.0a0'
-    openssl: '>=3.3.2,<4.0a0'
+    openssl: '>=3.4.0,<4.0a0'
     pip: ''
     readline: '>=8.2,<9.0a0'
     tk: '>=8.6.13,<8.7.0a0'
     tzdata: ''
-    xz: '>=5.2.6,<6.0a0'
-  url: https://conda.anaconda.org/conda-forge/linux-64/python-3.11.10-hc5c86c4_3_cpython.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/python-3.11.11-h9e4cc4f_1_cpython.conda
   hash:
-    md5: 9e1ad55c87368e662177661a998feed5
-    sha256: b7fa3bd48e3a3d30f65608e07759cefd27885c6388b3f612af85ce40282e6936
+    md5: 8387070aa413ce9a8cc35a509fae938b
+    sha256: b29ce0836fce55bdff8d5c5b71c4921a23f87d3b950aea89a9e75784120b06b0
   category: main
   optional: false
 - name: python
-  version: 3.11.10
+  version: 3.11.11
   manager: conda
   platform: win-64
   dependencies:
     bzip2: '>=1.0.8,<2.0a0'
-    libexpat: '>=2.6.3,<3.0a0'
+    libexpat: '>=2.6.4,<3.0a0'
     libffi: '>=3.4,<4.0a0'
-    libsqlite: '>=3.46.1,<4.0a0'
+    liblzma: '>=5.6.3,<6.0a0'
+    libsqlite: '>=3.47.0,<4.0a0'
     libzlib: '>=1.3.1,<2.0a0'
-    openssl: '>=3.3.2,<4.0a0'
+    openssl: '>=3.4.0,<4.0a0'
     pip: ''
     tk: '>=8.6.13,<8.7.0a0'
     tzdata: ''
     ucrt: '>=10.0.20348.0'
     vc: '>=14.2,<15'
     vc14_runtime: '>=14.29.30139'
-    xz: '>=5.2.6,<6.0a0'
-  url: https://conda.anaconda.org/conda-forge/win-64/python-3.11.10-hce54a09_3_cpython.conda
+  url: https://conda.anaconda.org/conda-forge/win-64/python-3.11.11-h3f84c4b_1_cpython.conda
   hash:
-    md5: 5d54d429c0eb2273d1cc69763de6edaf
-    sha256: 3931c546219d069918389e4dbe12057af4cc68a1060577a04014c6b5fc618aa0
+    md5: 4d490a426481298bdd89a502253a7fd4
+    sha256: 5be6181ab6d655ad761490b7808584c5e78e5d7139846685b1850a8b7ef6c5df
   category: main
   optional: false
 - name: python-dateutil
@@ -3968,27 +3995,27 @@ package:
   category: main
   optional: false
 - name: six
-  version: 1.16.0
+  version: 1.17.0
   manager: conda
   platform: linux-64
   dependencies:
     python: '>=3.9'
-  url: https://conda.anaconda.org/conda-forge/noarch/six-1.16.0-pyhd8ed1ab_1.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/six-1.17.0-pyhd8ed1ab_0.conda
   hash:
-    md5: a516da6cfe1ec0a55e49737f017b4965
-    sha256: 761b96fe7bea080b9c35dd2f87f788eb94b61d462645bd16f361e80ae0ff017c
+    md5: a451d576819089b0d672f18768be0f65
+    sha256: 41db0180680cc67c3fa76544ffd48d6a5679d96f4b71d7498a759e94edc9a2db
   category: main
   optional: false
 - name: six
-  version: 1.16.0
+  version: 1.17.0
   manager: conda
   platform: win-64
   dependencies:
     python: '>=3.9'
-  url: https://conda.anaconda.org/conda-forge/noarch/six-1.16.0-pyhd8ed1ab_1.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/six-1.17.0-pyhd8ed1ab_0.conda
   hash:
-    md5: a516da6cfe1ec0a55e49737f017b4965
-    sha256: 761b96fe7bea080b9c35dd2f87f788eb94b61d462645bd16f361e80ae0ff017c
+    md5: a451d576819089b0d672f18768be0f65
+    sha256: 41db0180680cc67c3fa76544ffd48d6a5679d96f4b71d7498a759e94edc9a2db
   category: main
   optional: false
 - name: snowballstemmer
@@ -4805,31 +4832,6 @@ package:
     sha256: f51205d33c07d744ec177243e5d9b874002910c731954f2c8da82459be462b93
   category: main
   optional: false
-- name: xz
-  version: 5.2.6
-  manager: conda
-  platform: linux-64
-  dependencies:
-    libgcc-ng: '>=12'
-  url: https://conda.anaconda.org/conda-forge/linux-64/xz-5.2.6-h166bdaf_0.tar.bz2
-  hash:
-    md5: 2161070d867d1b1204ea749c8eec4ef0
-    sha256: 03a6d28ded42af8a347345f82f3eebdd6807a08526d47899a42d62d319609162
-  category: main
-  optional: false
-- name: xz
-  version: 5.2.6
-  manager: conda
-  platform: win-64
-  dependencies:
-    vc: '>=14.1,<15'
-    vs2015_runtime: '>=14.16.27033'
-  url: https://conda.anaconda.org/conda-forge/win-64/xz-5.2.6-h8d14728_0.tar.bz2
-  hash:
-    md5: 515d77642eaa3639413c6b1bc3f94219
-    sha256: 54d9778f75a02723784dc63aff4126ff6e6749ba21d11a6d03c1f4775f269fe0
-  category: main
-  optional: false
 - name: yaml
   version: 0.2.5
   manager: conda
@@ -5008,12 +5010,12 @@ package:
     numpy: '>=1.26.0,<1.27.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/geoapps-utils.git@dfadf196e7d21ad42bbdb5786c0a52696a467a9c
+  url: git+https://github.com/MiraGeoscience/geoapps-utils.git@a2a851feabdeacf58dcd9acc083086ffbe9f27fa
   hash:
-    sha256: dfadf196e7d21ad42bbdb5786c0a52696a467a9c
+    sha256: a2a851feabdeacf58dcd9acc083086ffbe9f27fa
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/geoapps-utils.git@dfadf196e7d21ad42bbdb5786c0a52696a467a9c
+    url: git+https://github.com/MiraGeoscience/geoapps-utils.git@a2a851feabdeacf58dcd9acc083086ffbe9f27fa
   category: main
   optional: false
 - name: geoapps-utils
@@ -5025,12 +5027,12 @@ package:
     numpy: '>=1.26.0,<1.27.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/geoapps-utils.git@dfadf196e7d21ad42bbdb5786c0a52696a467a9c
+  url: git+https://github.com/MiraGeoscience/geoapps-utils.git@a2a851feabdeacf58dcd9acc083086ffbe9f27fa
   hash:
-    sha256: dfadf196e7d21ad42bbdb5786c0a52696a467a9c
+    sha256: a2a851feabdeacf58dcd9acc083086ffbe9f27fa
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/geoapps-utils.git@dfadf196e7d21ad42bbdb5786c0a52696a467a9c
+    url: git+https://github.com/MiraGeoscience/geoapps-utils.git@a2a851feabdeacf58dcd9acc083086ffbe9f27fa
   category: main
   optional: false
 - name: geoh5py
@@ -5042,12 +5044,12 @@ package:
     numpy: '>=1.26.0,<1.27.0'
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
-  url: git+https://github.com/MiraGeoscience/geoh5py.git@58c8d832c1a5afcb083cb36b9de9d3a985fd3d81
+  url: git+https://github.com/MiraGeoscience/geoh5py.git@fe9db0338ad1f77427f1e5e64bf49356d0c14c18
   hash:
-    sha256: 58c8d832c1a5afcb083cb36b9de9d3a985fd3d81
+    sha256: fe9db0338ad1f77427f1e5e64bf49356d0c14c18
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/geoh5py.git@58c8d832c1a5afcb083cb36b9de9d3a985fd3d81
+    url: git+https://github.com/MiraGeoscience/geoh5py.git@fe9db0338ad1f77427f1e5e64bf49356d0c14c18
   category: main
   optional: false
 - name: geoh5py
@@ -5059,12 +5061,12 @@ package:
     numpy: '>=1.26.0,<1.27.0'
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
-  url: git+https://github.com/MiraGeoscience/geoh5py.git@58c8d832c1a5afcb083cb36b9de9d3a985fd3d81
+  url: git+https://github.com/MiraGeoscience/geoh5py.git@fe9db0338ad1f77427f1e5e64bf49356d0c14c18
   hash:
-    sha256: 58c8d832c1a5afcb083cb36b9de9d3a985fd3d81
+    sha256: fe9db0338ad1f77427f1e5e64bf49356d0c14c18
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/geoh5py.git@58c8d832c1a5afcb083cb36b9de9d3a985fd3d81
+    url: git+https://github.com/MiraGeoscience/geoh5py.git@fe9db0338ad1f77427f1e5e64bf49356d0c14c18
   category: main
   optional: false
 - name: mira-simpeg
@@ -5126,7 +5128,7 @@ package:
   manager: pip
   platform: linux-64
   dependencies:
-    discretize: '>=0.10.0,<0.11.0'
+    discretize: ==0.10.*
     geoapps-utils: 0.5.0-alpha.1
     geoh5py: 0.11.0-alpha.1
     h5py: '>=3.2.1,<4.0.0'
@@ -5134,12 +5136,12 @@ package:
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@2bf58535d1033dec73fdbe3d807343e44723cd25
+  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@ac05f803c7c86a475ddb9e5ba6ea8cabd1bc5924
   hash:
-    sha256: 2bf58535d1033dec73fdbe3d807343e44723cd25
+    sha256: ac05f803c7c86a475ddb9e5ba6ea8cabd1bc5924
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@2bf58535d1033dec73fdbe3d807343e44723cd25
+    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@ac05f803c7c86a475ddb9e5ba6ea8cabd1bc5924
   category: main
   optional: false
 - name: octree-creation-app
@@ -5147,7 +5149,7 @@ package:
   manager: pip
   platform: win-64
   dependencies:
-    discretize: '>=0.10.0,<0.11.0'
+    discretize: ==0.10.*
     geoapps-utils: 0.5.0-alpha.1
     geoh5py: 0.11.0-alpha.1
     h5py: '>=3.2.1,<4.0.0'
@@ -5155,12 +5157,12 @@ package:
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@2bf58535d1033dec73fdbe3d807343e44723cd25
+  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@ac05f803c7c86a475ddb9e5ba6ea8cabd1bc5924
   hash:
-    sha256: 2bf58535d1033dec73fdbe3d807343e44723cd25
+    sha256: ac05f803c7c86a475ddb9e5ba6ea8cabd1bc5924
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@2bf58535d1033dec73fdbe3d807343e44723cd25
+    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@ac05f803c7c86a475ddb9e5ba6ea8cabd1bc5924
   category: main
   optional: false
 - name: param-sweeps
@@ -5210,12 +5212,12 @@ package:
     pydiso: ==0.1.*
     pymatsolver: ==0.2.*
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@8f78925217ff9b03b6fcf6b51f699689ad326c0e
+  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@852e4ef3e604d24171a67fd63eba6f8a91632660
   hash:
-    sha256: 8f78925217ff9b03b6fcf6b51f699689ad326c0e
+    sha256: 852e4ef3e604d24171a67fd63eba6f8a91632660
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@8f78925217ff9b03b6fcf6b51f699689ad326c0e
+    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@852e4ef3e604d24171a67fd63eba6f8a91632660
   category: main
   optional: false
 - name: simpeg-drivers
@@ -5235,11 +5237,11 @@ package:
     pydiso: ==0.1.*
     pymatsolver: ==0.2.*
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@8f78925217ff9b03b6fcf6b51f699689ad326c0e
+  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@852e4ef3e604d24171a67fd63eba6f8a91632660
   hash:
-    sha256: 8f78925217ff9b03b6fcf6b51f699689ad326c0e
+    sha256: 852e4ef3e604d24171a67fd63eba6f8a91632660
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@8f78925217ff9b03b6fcf6b51f699689ad326c0e
+    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@852e4ef3e604d24171a67fd63eba6f8a91632660
   category: main
   optional: false

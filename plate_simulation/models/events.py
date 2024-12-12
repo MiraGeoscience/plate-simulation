@@ -23,12 +23,13 @@ class Event(ABC):
     """Parameterized geological events that modify the model."""
 
     @abstractmethod
-    def realize(self, mesh: Octree, model: np.ndarray) -> np.ndarray:
+    def realize(self, mesh: Octree, model: np.ndarray, event_id: int) -> np.ndarray:
         """
         Update the model with the event realization
 
         :param mesh: Octree mesh on which the model is defined.
         :param model: Model to be updated by the event.
+        :param event_id: Unique identifier for the event.
         """
 
 
@@ -40,11 +41,12 @@ class Deposition(Event):
     :param value: The value given to the model below the surface.
     """
 
-    def __init__(self, surface: Surface, value: float):
+    def __init__(self, surface: Surface, value: float, name="Deposition"):
         self.surface = Boundary(surface)
         self.value = value
+        self.name = name
 
-    def realize(self, mesh: Octree, model: np.ndarray) -> np.ndarray:
+    def realize(self, mesh: Octree, model: np.ndarray, event_id: int) -> np.ndarray:
         """Fill the model below the surface with the layer's value."""
         model[self.surface.mask(mesh)] = self.value
         return model
@@ -59,12 +61,15 @@ class Overburden(Event):
     :param value: Model value given to the overburden layer.
     """
 
-    def __init__(self, topography: Surface, thickness: float, value: float):
+    def __init__(
+        self, topography: Surface, thickness: float, value: float, name="Overburden"
+    ):
         self.topography = Boundary(topography)
         self.thickness = thickness
         self.value = value
+        self.name = name
 
-    def realize(self, mesh: Octree, model: np.ndarray) -> np.ndarray:
+    def realize(self, mesh: Octree, model: np.ndarray, event_id: int) -> np.ndarray:
         """Fill the model below the topography with the overburden value."""
         model[
             ~self.topography.mask(mesh, offset=-1 * self.thickness, reference="center")
@@ -83,7 +88,7 @@ class Erosion(Event):
     def __init__(self, surface: Surface):
         self.surface = Boundary(surface)
 
-    def realize(self, mesh: Octree, model: np.ndarray) -> np.ndarray:
+    def realize(self, mesh: Octree, model: np.ndarray, event_id: int) -> np.ndarray:
         """Fill the model above the surface with nan values"""
         model[~self.surface.mask(mesh)] = np.nan
         return model
@@ -98,11 +103,12 @@ class Anomaly(Event):
     :param value: Model value assigned to the anomaly.
     """
 
-    def __init__(self, surface: Surface, value: float):
+    def __init__(self, surface: Surface, value: float, name="Anomaly"):
         self.body = Body(surface)
         self.value = value
+        self.name = name
 
-    def realize(self, mesh: Octree, model: np.ndarray) -> np.ndarray:
+    def realize(self, mesh: Octree, model: np.ndarray, event_id: int) -> np.ndarray:
         """Fill the model within the surface with the anomaly value."""
         model[self.body.mask(mesh)] = self.value
         return model

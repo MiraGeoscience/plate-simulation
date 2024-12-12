@@ -14,7 +14,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from geoh5py.data import FloatData
+from geoh5py.data import FloatData, ReferencedData
 from geoh5py.groups import UIJsonGroup
 from geoh5py.objects import Octree, Points, Surface
 from geoh5py.shared.utils import fetch_active_workspace
@@ -225,7 +225,8 @@ class PlateSimulationDriver:
         )
 
         dikes = DikeSwarm(
-            [Anomaly(s, self.params.model.plate.plate) for s in self.surfaces]
+            [Anomaly(s, self.params.model.plate.plate) for s in self.surfaces],
+            name="plates",
         )
 
         erosion = Erosion(
@@ -245,9 +246,18 @@ class PlateSimulationDriver:
             geology **= -1.0
 
         with fetch_active_workspace(self.params.geoh5, mode="r+"):
-            model: FloatData = self.mesh.add_data(  # type: ignore
-                {self.params.model.name: {"values": geology}}
+            # model: FloatData = self.mesh.add_data(  # type: ignore
+            #     {self.params.model.name: {"values": geology}}
+            # )
+            model: ReferencedData = self.mesh.add_data(
+                {
+                    self.params.model.name: {
+                        "values": geology,
+                        "value_map": scenario.units,
+                    }
+                }
             )
+            model.add_data_map(scenario.physical_properties)
 
         return model
 

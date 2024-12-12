@@ -45,8 +45,8 @@ class Series:
         :param model: Model to be updated by the events in the history.
         """
 
-        for event in self.history:
-            model = event.realize(mesh, model)
+        for event_id, event in enumerate(self.history):
+            model = event.realize(mesh, model, event_id + 1)
 
         return model
 
@@ -82,8 +82,22 @@ class DikeSwarm(Series):
     :param history: Sequence of intrusions represented by Anomaly objects.
     """
 
-    def __init__(self, history: Sequence[Anomaly]):
+    def __init__(self, history: Sequence[Anomaly], name="Dike Swarm"):
         super().__init__(history)
+        self.name = name
+
+    def realize(self, mesh: Octree, model: np.ndarray, event_id: int) -> np.ndarray:
+        """
+        Realize each event in the history.
+
+        :param mesh: Octree mesh on which the model is defined.
+        :param model: Model to be updated by the events in the history.
+        """
+
+        for event_id, event in enumerate(self.history):
+            model = event.realize(mesh, model, event_id + 1)
+
+        return model
 
 
 class Scenario(Series):
@@ -122,14 +136,22 @@ class Scenario(Series):
             raise ValueError("Mesh must have n_cells.")
         self._mesh = val
 
+    @property
+    def units(self) -> dict:
+        """Returns a mapping of chronological event ids and their names."""
+        return {i: event.name for i, event in enumerate(self.history)}
+
+    def physical_properties(self) -> dict:
+        """Returns a mapping of chronological events ids and their physical properties."""
+        return {i: event.value for i, event in enumerate(self.history)}
+
     def geologize(self) -> np.ndarray:
         """Realize the geological events in the scenario"""
         with fetch_active_workspace(self.workspace, mode="r+"):
             if self.mesh.n_cells is None:
                 raise ValueError("Mesh must have n_cells.")
-            geology = super().realize(
-                self.mesh, np.ones(self.mesh.n_cells) * self.background
-            )
+            geology = super().realize(self.mesh, np.zeros(self.mesh.n_cells))
+
         return geology
 
 

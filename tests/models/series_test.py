@@ -39,12 +39,18 @@ def test_lithology(tmp_path):
 
         lithology = Lithology(
             history=[
-                Deposition(surface=surfaces["layer3"], value=3.0),
-                Deposition(surface=surfaces["layer2"], value=2.0),
-                Deposition(surface=surfaces["layer1"], value=1.0),
+                Deposition(surface=surfaces["layer3"], value=3.0, name="layer3"),
+                Deposition(surface=surfaces["layer2"], value=2.0, name="layer2"),
+                Deposition(surface=surfaces["layer1"], value=1.0, name="layer1"),
             ]
         )
-        lithology_model = lithology.realize(mesh=octree, model=np.zeros(octree.n_cells))
+        event_map = {0: ("Backgrouns", 0.0)}
+        lithology_model, event_map = lithology.realize(
+            mesh=octree, model=np.zeros(octree.n_cells), event_map=event_map
+        )
+        for event_id, props in event_map.items():
+            lithology_model[lithology_model == event_id] = props[1]
+
         model = octree.add_data({"model": {"values": lithology_model}})
 
         assert all(model.values[octree.centroids[:, 2] > -2.0] == 0.0)
@@ -76,9 +82,9 @@ def test_scenario(tmp_path):
 
         lithology = Lithology(
             history=[
-                Deposition(surface=surfaces["layer3"], value=3.0),
-                Deposition(surface=surfaces["layer2"], value=2.0),
-                Deposition(surface=surfaces["layer1"], value=1.0),
+                Deposition(surface=surfaces["layer3"], value=3.0, name="Layer 1"),
+                Deposition(surface=surfaces["layer2"], value=2.0, name="Layer 2"),
+                Deposition(surface=surfaces["layer1"], value=1.0, name="Layer 3"),
             ]
         )
         overburden = Overburden(topography=topography, thickness=1.0, value=10.0)
@@ -112,8 +118,11 @@ def test_scenario(tmp_path):
             background=100.0,
             history=[lithology, overburden, erosion],
         )
-        model = scenario.geologize()
+        model, event_map = scenario.geologize()
         assert model is not None
+
+        for event_id, props in event_map.items():
+            model[model == event_id] = props[1]
 
         ind = octree.centroids[:, 2] > 0.0
         assert all(np.isnan(model[ind]))

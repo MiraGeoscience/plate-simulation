@@ -17,7 +17,8 @@ from geoh5py import Workspace
 from geoh5py.objects import Octree
 from geoh5py.shared.utils import fetch_active_workspace
 
-from .events import Anomaly, Erosion, Overburden
+from plate_simulation.models import EventMap
+from plate_simulation.models.events import Anomaly, Erosion, Overburden
 
 
 if TYPE_CHECKING:
@@ -37,18 +38,21 @@ class Series:
     def __init__(self, history: Sequence[Event | Series] | Geology):
         self.history = history
 
-    def realize(self, mesh: Octree, model: np.ndarray) -> np.ndarray:
+    def realize(
+        self, mesh: Octree, model: np.ndarray, event_map: EventMap
+    ) -> tuple[np.ndarray, EventMap]:
         """
         Realize each event in the history.
 
         :param mesh: Octree mesh on which the model is defined.
         :param model: Model to be updated by the events in the history.
+        :param event_map: mapping event ids to names and physical properties.
         """
 
-        for event_id, event in enumerate(self.history):
-            model = event.realize(mesh, model, event_id + 1)
+        for event in self.history:
+            model, event_map = event.realize(mesh, model, event_map)
 
-        return model
+        return model, event_map
 
 
 class Lithology(Series):
@@ -65,14 +69,17 @@ class Lithology(Series):
     def __init__(self, history: Sequence[Deposition]):
         super().__init__(history[::-1])
 
-    def realize(self, mesh: Octree, model) -> np.ndarray:
+    def realize(
+        self, mesh: Octree, model: np.ndarray, event_map: EventMap
+    ) -> tuple[np.ndarray, EventMap]:
         """
         Fills the model with the sequence of layers in the history.
 
         :param mesh: Octree mesh on which the model is defined.
         :param model: Model to be updated by the events in the history.
+        :param event_map: mapping event ids to names and physical properties.
         """
-        return super().realize(mesh, model)
+        return super().realize(mesh, model, event_map)
 
 
 class DikeSwarm(Series):
@@ -86,18 +93,23 @@ class DikeSwarm(Series):
         super().__init__(history)
         self.name = name
 
-    def realize(self, mesh: Octree, model: np.ndarray, event_id: int) -> np.ndarray:
+    def realize(
+        self, mesh: Octree, model: np.ndarray, event_map: EventMap
+    ) -> tuple[np.ndarray, EventMap]:
         """
         Realize each event in the history.
 
         :param mesh: Octree mesh on which the model is defined.
         :param model: Model to be updated by the events in the history.
+        :param event_map: mapping event ids to names and physical properties.
         """
 
-        for event_id, event in enumerate(self.history):
-            model = event.realize(mesh, model, event_id + 1)
+        event_id = max(event_map) + 1
+        event_map[event_id] = (self.name, self.history[0].value)
+        for event in self.history:
+            model, event_map = event.realize(mesh, model, event_map, coeval=True)
 
-        return model
+        return model, event_map
 
 
 class Scenario(Series):
@@ -136,23 +148,17 @@ class Scenario(Series):
             raise ValueError("Mesh must have n_cells.")
         self._mesh = val
 
-    @property
-    def units(self) -> dict:
-        """Returns a mapping of chronological event ids and their names."""
-        return {i: event.name for i, event in enumerate(self.history)}
-
-    def physical_properties(self) -> dict:
-        """Returns a mapping of chronological events ids and their physical properties."""
-        return {i: event.value for i, event in enumerate(self.history)}
-
-    def geologize(self) -> np.ndarray:
+    def geologize(self) -> tuple[np.ndarray, EventMap]:
         """Realize the geological events in the scenario"""
         with fetch_active_workspace(self.workspace, mode="r+"):
             if self.mesh.n_cells is None:
                 raise ValueError("Mesh must have n_cells.")
-            geology = super().realize(self.mesh, np.zeros(self.mesh.n_cells))
+            event_map = {1: ("Background", self.background)}
+            geology, event_map = super().realize(
+                self.mesh, np.ones(self.mesh.n_cells), event_map
+            )
 
-        return geology
+        return geology, event_map
 
 
 class GeologyViolationError(Exception):

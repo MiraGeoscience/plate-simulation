@@ -240,26 +240,38 @@ class PlateSimulationDriver:
             history=[dikes, overburden, erosion],
         )
 
-        geology = scenario.geologize()
-
-        if self.simulation_parameters.physical_property == "conductivity":
-            geology **= -1.0
+        geology, event_map = scenario.geologize()
 
         with fetch_active_workspace(self.params.geoh5, mode="r+"):
-            # model: FloatData = self.mesh.add_data(  # type: ignore
-            #     {self.params.model.name: {"values": geology}}
-            # )
+            value_map = {k: v[0] for k, v in event_map.items()}
+            physical_property_map = {k: v[1] for k, v in event_map.items()}
+
+            physical_property = self.simulation_parameters.physical_property
+            if physical_property == "conductivity":
+                physical_property_map = {
+                    k: 1 / v for k, v in physical_property_map.items()
+                }
+
             model: ReferencedData = self.mesh.add_data(
                 {
                     self.params.model.name: {
+                        "type": "referenced",
                         "values": geology,
-                        "value_map": scenario.units,
+                        "value_map": value_map,
                     }
                 }
             )
-            model.add_data_map(scenario.physical_properties)
+            model.add_data_map(physical_property, physical_property_map)
 
-        return model
+        starting_model_values = geology.copy()
+        for k, v in physical_property_map.items():
+            starting_model_values[geology == k] = v
+
+        starting_model = self.mesh.add_data(
+            {"starting_model": {"values": starting_model_values}}
+        )
+
+        return starting_model
 
     @staticmethod
     def start(ifile: str | Path | InputFile):

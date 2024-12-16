@@ -7,6 +7,8 @@
 #  (see LICENSE file at the root of this source code package).                         '
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
+# pylint: disable=too-many-locals
+
 import numpy as np
 import pytest
 from geoh5py import Workspace
@@ -44,7 +46,7 @@ def test_lithology(tmp_path):
                 Deposition(surface=surfaces["layer1"], value=1.0, name="layer1"),
             ]
         )
-        event_map = {0: ("Backgrouns", 0.0)}
+        event_map = {0: ("Backgrounds", 0.0)}
         lithology_model, event_map = lithology.realize(
             mesh=octree, model=np.zeros(octree.n_cells), event_map=event_map
         )

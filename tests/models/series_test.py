@@ -41,9 +41,9 @@ def test_lithology(tmp_path):
 
         lithology = Lithology(
             history=[
-                Deposition(surface=surfaces["layer3"], value=3.0, name="layer3"),
-                Deposition(surface=surfaces["layer2"], value=2.0, name="layer2"),
-                Deposition(surface=surfaces["layer1"], value=1.0, name="layer1"),
+                Deposition(surface=surfaces["layer3"], value=3.0),
+                Deposition(surface=surfaces["layer2"], value=2.0),
+                Deposition(surface=surfaces["layer1"], value=1.0),
             ]
         )
         event_map = {0: ("Backgrounds", 0.0)}
@@ -55,6 +55,7 @@ def test_lithology(tmp_path):
 
         model = octree.add_data({"model": {"values": lithology_model}})
 
+        assert len({val[0] for val in event_map.values()}) == 4  # All unique names
         assert all(model.values[octree.centroids[:, 2] > -2.0] == 0.0)
         ind_layer_1 = (octree.centroids[:, 2] < -2.0) & (octree.centroids[:, 2] > -5.0)
         assert all(model.values[ind_layer_1] == 1.0)
@@ -84,9 +85,9 @@ def test_scenario(tmp_path):
 
         lithology = Lithology(
             history=[
-                Deposition(surface=surfaces["layer3"], value=3.0, name="Layer 1"),
-                Deposition(surface=surfaces["layer2"], value=2.0, name="Layer 2"),
-                Deposition(surface=surfaces["layer1"], value=1.0, name="Layer 3"),
+                Deposition(surface=surfaces["layer3"], value=3.0),
+                Deposition(surface=surfaces["layer2"], value=2.0),
+                Deposition(surface=surfaces["layer1"], value=1.0),
             ]
         )
         overburden = Overburden(topography=topography, thickness=1.0, value=10.0)

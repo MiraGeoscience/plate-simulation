@@ -21,6 +21,18 @@ from plate_simulation.models import EventMap
 # pylint: disable=too-few-public-methods
 
 
+def increment_name_list(name: str, name_list: list[str]) -> str:
+    """
+    Increment the name by adding a number to it if it already exists in the list.
+    """
+    if name in name_list:
+        i = 1
+        while f"{name}({i})" in name_list:
+            i += 1
+        name = f"{name}({i})"
+    return name
+
+
 class Event(ABC):
     """Parameterized geological events that modify the model."""
 
@@ -28,7 +40,7 @@ class Event(ABC):
         self.value = value
         self.name = name
 
-    def _update_event_map(self, event_map: EventMap) -> EventMap:
+    def _update_event_map(self, event_map: EventMap) -> tuple[int, EventMap]:
         """
         Increase the event id and add name and physical property to the event map.
 
@@ -39,7 +51,9 @@ class Event(ABC):
         """
 
         event_id = max(event_map) + 1
-        event_map[event_id] = (self.name, self.value)
+        names = [elem[0] for elem in event_map.values()]
+        name = increment_name_list(self.name, names)
+        event_map[event_id] = (name, self.value)
 
         return event_id, event_map
 
@@ -67,8 +81,7 @@ class Deposition(Event):
 
     def __init__(self, surface: Surface, value: float, name="Deposition"):
         self.surface = Boundary(surface)
-        self.value = value
-        self.name = name
+        super().__init__(value, name)
 
     def realize(
         self, mesh: Octree, model: np.ndarray, event_map: EventMap
@@ -96,8 +109,7 @@ class Overburden(Event):
     ):
         self.topography = Boundary(topography)
         self.thickness = thickness
-        self.value = value
-        self.name = name
+        super().__init__(value, name)
 
     def realize(
         self, mesh: Octree, model: np.ndarray, event_map: EventMap
@@ -121,8 +133,7 @@ class Erosion(Event):
 
     def __init__(self, surface: Surface, value: float = np.nan, name="Erosion"):
         self.surface = Boundary(surface)
-        self.value = value
-        self.name = name
+        super().__init__(value, name)
 
     def realize(
         self, mesh: Octree, model: np.ndarray, event_map: EventMap
@@ -146,8 +157,7 @@ class Anomaly(Event):
 
     def __init__(self, surface: Surface, value: float, name="Anomaly"):
         self.body = Body(surface)
-        self.value = value
-        self.name = name
+        super().__init__(value, name)
 
     def realize(
         self, mesh: Octree, model: np.ndarray, event_map: EventMap, coeval: bool = False

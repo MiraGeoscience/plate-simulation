@@ -133,7 +133,8 @@ class PlateSimulationDriver:
     def simulation_parameters(self) -> InversionBaseParams:
         if self._simulation_parameters is None:
             self._simulation_parameters = self.params.simulation_parameters()
-
+            if self._simulation_parameters.physical_property == "conductivity":
+                self._simulation_parameters.model_type = "Resistivity (Ohm-m)"
         return self._simulation_parameters
 
     @property
@@ -248,11 +249,9 @@ class PlateSimulationDriver:
 
             physical_property = self.simulation_parameters.physical_property
             if physical_property == "conductivity":
-                physical_property_map = {
-                    k: 1 / v for k, v in physical_property_map.items()
-                }
+                physical_property = "resistivity"
 
-            model: ReferencedData = self.mesh.add_data(
+            model = self.mesh.add_data(
                 {
                     self.params.model.name: {
                         "type": "referenced",
@@ -261,7 +260,8 @@ class PlateSimulationDriver:
                     }
                 }
             )
-            model.add_data_map(physical_property, physical_property_map)
+            if isinstance(model, ReferencedData):
+                model.add_data_map(physical_property, physical_property_map)
 
         starting_model_values = geology.copy()
         for k, v in physical_property_map.items():
@@ -270,6 +270,9 @@ class PlateSimulationDriver:
         starting_model = self.mesh.add_data(
             {"starting_model": {"values": starting_model_values}}
         )
+
+        if not isinstance(starting_model, FloatData):
+            raise ValueError("Starting model could not be created.")
 
         return starting_model
 

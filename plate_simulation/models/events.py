@@ -23,7 +23,12 @@ from plate_simulation.models import EventMap
 
 
 class Event(ABC):
-    """Parameterized geological events that modify the model."""
+    """
+    Parameterized geological events that modify the model.
+
+    :param value: Physical property value assigned to the event.
+    :param name: Name of the event.
+    """
 
     def __init__(self, value: float, name: str):
         self.value = value
@@ -56,6 +61,8 @@ class Event(ABC):
         :param mesh: Octree mesh on which the model is defined.
         :param model: Model to be updated by the event.
         :param event_map: mapping event ids to names and physical properties.
+
+        :return: Updated model and list of events including itself.
         """
 
 
@@ -68,14 +75,17 @@ class Deposition(Event):
     :param name: Name of the event.
     """
 
-    def __init__(self, surface: Surface, value: float, name="Deposition"):
+    def __init__(self, surface: Surface, value: float, name: str = "Deposition"):
         self.surface = Boundary(surface)
         super().__init__(value, name)
 
     def realize(
         self, mesh: Octree, model: np.ndarray, event_map: EventMap
     ) -> tuple[np.ndarray, EventMap]:
-        """Fill the model below the surface with the layer's value."""
+        """
+        Implementation of parent Event abstract method.
+        Fill the model below the surface with the layer's value.
+        """
 
         event_id, event_map = self._update_event_map(event_map)
         model[self.surface.mask(mesh)] = event_id
@@ -94,7 +104,11 @@ class Overburden(Event):
     """
 
     def __init__(
-        self, topography: Surface, thickness: float, value: float, name="Overburden"
+        self,
+        topography: Surface,
+        thickness: float,
+        value: float,
+        name: str = "Overburden",
     ):
         self.topography = Boundary(topography)
         self.thickness = thickness
@@ -103,7 +117,10 @@ class Overburden(Event):
     def realize(
         self, mesh: Octree, model: np.ndarray, event_map: EventMap
     ) -> tuple[np.ndarray, EventMap]:
-        """Fill the model below the topography with the overburden value."""
+        """
+        Implementation of parent Event abstract method.
+        Fill the model below the topography with the overburden value.
+        """
         event_id, event_map = self._update_event_map(event_map)
         model[
             ~self.topography.mask(mesh, offset=-1 * self.thickness, reference="center")
@@ -118,16 +135,21 @@ class Erosion(Event):
 
     :param surface: The surface above which the model will be
         eroded (filled with nan values).
+    :param value: The value given to the eroded model, default to nan.
+    :param name: Name of the Erosion event.
     """
 
-    def __init__(self, surface: Surface, value: float = np.nan, name="Erosion"):
+    def __init__(self, surface: Surface, value: float = np.nan, name: str = "Erosion"):
         self.surface = Boundary(surface)
         super().__init__(value, name)
 
     def realize(
         self, mesh: Octree, model: np.ndarray, event_map: EventMap
     ) -> tuple[np.ndarray, EventMap]:
-        """Fill the model above the surface with nan values"""
+        """
+        Implementation of parent Event abstract method.
+        Fill the model above the surface with nan values.
+        """
 
         event_id, event_map = self._update_event_map(event_map)
         model[~self.surface.mask(mesh)] = event_id
@@ -142,16 +164,20 @@ class Anomaly(Event):
     :param surface: Closed surface within which the model will be filled
         with the anomaly value.
     :param value: Model value assigned to the anomaly.
+    :param name: Name of the event.
     """
 
-    def __init__(self, surface: Surface, value: float, name="Anomaly"):
+    def __init__(self, surface: Surface, value: float, name: str = "Anomaly"):
         self.body = Body(surface)
         super().__init__(value, name)
 
     def realize(
         self, mesh: Octree, model: np.ndarray, event_map: EventMap, coeval: bool = False
     ) -> tuple[np.ndarray, EventMap]:
-        """Fill the model within the surface with the anomaly value."""
+        """
+        Implementation of parent Event abstract method.
+        Fill the model within the surface with the anomaly value.
+        """
 
         if coeval:
             event_id = max(event_map)

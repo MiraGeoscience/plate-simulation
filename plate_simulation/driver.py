@@ -27,7 +27,7 @@ from simpeg_drivers.params import InversionBaseParams
 from plate_simulation.logger import get_logger
 from plate_simulation.models.events import Anomaly, Erosion, Overburden
 from plate_simulation.models.plates import Plate
-from plate_simulation.models.series import DikeSwarm, Scenario
+from plate_simulation.models.series import DikeSwarm, Geology
 from plate_simulation.params import PlateSimulationParams
 from plate_simulation.utils import replicate
 
@@ -234,14 +234,14 @@ class PlateSimulationDriver:
             surface=self.simulation_parameters.topography_object,
         )
 
-        scenario = Scenario(
+        scenario = Geology(
             workspace=self.params.geoh5,
             mesh=self.mesh,
             background=self.params.model.background,
             history=[dikes, overburden, erosion],
         )
 
-        geology, event_map = scenario.geologize()
+        geology, event_map = scenario.build()
 
         with fetch_active_workspace(self.params.geoh5, mode="r+"):
             value_map = {k: v[0] for k, v in event_map.items()}

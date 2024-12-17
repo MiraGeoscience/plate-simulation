@@ -15,7 +15,7 @@ from geoh5py import Workspace
 from geoh5py.objects import Surface
 
 from plate_simulation.models.events import Deposition, Erosion, Overburden
-from plate_simulation.models.series import GeologyViolationError, Lithology, Scenario
+from plate_simulation.models.series import Geology, GeologyViolationError, Lithology
 
 from . import get_topo_mesh
 
@@ -97,7 +97,7 @@ def test_scenario(tmp_path):
             GeologyViolationError,
             match="Overburden events must occur before the final erosion in the history.",
         ):
-            Scenario(
+            Geology(
                 workspace=ws,
                 mesh=octree,
                 background=0.0,
@@ -108,20 +108,20 @@ def test_scenario(tmp_path):
             GeologyViolationError,
             match="The last event in a geological history must be an erosion.",
         ):
-            Scenario(
+            Geology(
                 workspace=ws,
                 mesh=octree,
                 background=0.0,
                 history=[overburden, lithology],
             )
 
-        scenario = Scenario(
+        scenario = Geology(
             workspace=ws,
             mesh=octree,
             background=100.0,
             history=[lithology, overburden, erosion],
         )
-        model, event_map = scenario.geologize()
+        model, event_map = scenario.build()
         assert model is not None
 
         for event_id, props in event_map.items():

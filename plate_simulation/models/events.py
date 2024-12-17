@@ -11,6 +11,7 @@ from abc import ABC, abstractmethod
 
 import numpy as np
 from geoh5py.objects import Octree, Surface
+from geoh5py.shared.utils import find_unique_name
 from simpeg_drivers.utils.utils import active_from_xyz
 from trimesh import Trimesh
 from trimesh.proximity import ProximityQuery
@@ -19,18 +20,6 @@ from plate_simulation.models import EventMap
 
 
 # pylint: disable=too-few-public-methods
-
-
-def increment_name_list(name: str, name_list: list[str]) -> str:
-    """
-    Increment the name by adding a number to it if it already exists in the list.
-    """
-    if name in name_list:
-        i = 1
-        while f"{name}({i})" in name_list:
-            i += 1
-        name = f"{name}({i})"
-    return name
 
 
 class Event(ABC):
@@ -52,7 +41,7 @@ class Event(ABC):
 
         event_id = max(event_map) + 1
         names = [elem[0] for elem in event_map.values()]
-        name = increment_name_list(self.name, names)
+        name = find_unique_name(self.name, names)
         event_map[event_id] = (name, self.value)
 
         return event_id, event_map

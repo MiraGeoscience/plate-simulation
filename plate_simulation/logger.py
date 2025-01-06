@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2025 Mira Geoscience Ltd.                                             '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -26,5 +26,6 @@ def get_logger(name: str, level: int = logging.INFO) -> logging.Logger:
     )
     stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
+    logger.propagate = False
 
     return logger

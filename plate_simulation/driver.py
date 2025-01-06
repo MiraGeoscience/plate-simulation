@@ -253,7 +253,7 @@ class PlateSimulationDriver:
 
             model = self.mesh.add_data(
                 {
-                    self.params.model.name: {
+                    "geology": {
                         "type": "referenced",
                         "values": geology,
                         "value_map": value_map,

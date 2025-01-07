@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2024-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -111,11 +111,13 @@ def test_plate_simulation(tmp_path):
         mesh = next(obj for obj in out_group.children if isinstance(obj, Octree))
         model = next(k for k in mesh.children if k.name == "starting_model")
 
+        assert data.property_groups is not None
         assert len(data.property_groups) == 3
         assert all(
             k.name in [f"Iteration_0_{i}" for i in "xyz"] for k in data.property_groups
         )
-        assert all(len(k.properties) == 20 for k in data.property_groups)
+        assert all(k.properties is not None for k in data.property_groups)
+        assert all(len(k.properties) == 20 for k in data.property_groups)  # type: ignore
         assert mesh.n_cells == 14555
         assert len(np.unique(model.values)) == 4
         assert all(

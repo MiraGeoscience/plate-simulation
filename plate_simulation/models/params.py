@@ -102,6 +102,7 @@ class PlateParams(BaseModel):
 
     def _get_xy(self, survey: Points) -> list[float]:
         """Return true or relative locations in x and y."""
+
         if self.relative_locations:
             xy = [
                 survey.vertices[:, 0].mean() + self.easting,

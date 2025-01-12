@@ -33,7 +33,7 @@ def test_lithology(tmp_path):
             )
             cells = np.array([[0, 1, 2], [0, 2, 3]])
 
-            surfaces[f"layer{n_layer+1}"] = Surface.create(
+            surfaces[f"layer{n_layer + 1}"] = Surface.create(
                 ws, name="topo", vertices=vertices, cells=cells
             )
 
@@ -60,7 +60,7 @@ def test_scenario(tmp_path):
         topography, octree = get_topo_mesh(ws)
         surfaces = {}
         for n_layer, elevation in enumerate([-2.0, -5.0, -10.0]):
-            surfaces[f"layer{n_layer+1}"] = Surface.create(
+            surfaces[f"layer{n_layer + 1}"] = Surface.create(
                 ws,
                 name="topo",
                 vertices=np.array(

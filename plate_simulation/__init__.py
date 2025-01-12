@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2022-2024 Mira Geoscience Ltd.                                        '
+#  Copyright (c) 2022-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -13,7 +13,6 @@ from pathlib import Path
 
 
 __version__ = "0.2.0-alpha.1"
-
 
 from geoapps_utils.utils.importing import assets_path as assets_path_impl
 

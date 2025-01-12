@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2024-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -14,7 +14,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from geoh5py.data import FloatData
+from geoh5py.data import FloatData, ReferencedData
 from geoh5py.groups import UIJsonGroup
 from geoh5py.objects import Octree, Points, Surface
 from geoh5py.shared.utils import fetch_active_workspace
@@ -27,7 +27,7 @@ from simpeg_drivers.params import InversionBaseParams
 from plate_simulation.logger import get_logger
 from plate_simulation.models.events import Anomaly, Erosion, Overburden
 from plate_simulation.models.plates import Plate
-from plate_simulation.models.series import DikeSwarm, Scenario
+from plate_simulation.models.series import DikeSwarm, Geology
 from plate_simulation.params import PlateSimulationParams
 from plate_simulation.utils import replicate
 
@@ -133,7 +133,8 @@ class PlateSimulationDriver:
     def simulation_parameters(self) -> InversionBaseParams:
         if self._simulation_parameters is None:
             self._simulation_parameters = self.params.simulation_parameters()
-
+            if self._simulation_parameters.physical_property == "conductivity":
+                self._simulation_parameters.model_type = "Resistivity (Ohm-m)"
         return self._simulation_parameters
 
     @property
@@ -225,31 +226,55 @@ class PlateSimulationDriver:
         )
 
         dikes = DikeSwarm(
-            [Anomaly(s, self.params.model.plate.plate) for s in self.surfaces]
+            [Anomaly(s, self.params.model.plate.plate) for s in self.surfaces],
+            name="plates",
         )
 
         erosion = Erosion(
             surface=self.simulation_parameters.topography_object,
         )
 
-        scenario = Scenario(
+        scenario = Geology(
             workspace=self.params.geoh5,
             mesh=self.mesh,
             background=self.params.model.background,
             history=[dikes, overburden, erosion],
         )
 
-        geology = scenario.geologize()
-
-        if self.simulation_parameters.physical_property == "conductivity":
-            geology **= -1.0
+        geology, event_map = scenario.build()
 
         with fetch_active_workspace(self.params.geoh5, mode="r+"):
-            model: FloatData = self.mesh.add_data(  # type: ignore
-                {self.params.model.name: {"values": geology}}
-            )
+            value_map = {k: v[0] for k, v in event_map.items()}
+            physical_property_map = {k: v[1] for k, v in event_map.items()}
 
-        return model
+            physical_property = self.simulation_parameters.physical_property
+            if physical_property == "conductivity":
+                physical_property = "resistivity"
+
+            model = self.mesh.add_data(
+                {
+                    "geology": {
+                        "type": "referenced",
+                        "values": geology,
+                        "value_map": value_map,
+                    }
+                }
+            )
+            if isinstance(model, ReferencedData):
+                model.add_data_map(physical_property, physical_property_map)
+
+        starting_model_values = geology.copy()
+        for k, v in physical_property_map.items():
+            starting_model_values[geology == k] = v
+
+        starting_model = self.mesh.add_data(
+            {"starting_model": {"values": starting_model_values}}
+        )
+
+        if not isinstance(starting_model, FloatData):
+            raise ValueError("Starting model could not be created.")
+
+        return starting_model
 
     @staticmethod
     def start(ifile: str | Path | InputFile):

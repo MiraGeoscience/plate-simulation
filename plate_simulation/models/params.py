@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2024-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -10,7 +10,7 @@
 from typing import TypeVar
 
 import numpy as np
-from geoh5py.objects import ObjectBase, Surface
+from geoh5py.objects import Points, Surface
 from pydantic import (
     BaseModel,
     ConfigDict,
@@ -87,7 +87,7 @@ class PlateParams(BaseModel):
 
     def center(
         self,
-        survey: ObjectBase,
+        survey: Points,
         surface: Surface,
         depth_offset: float = 0.0,
     ) -> list[float]:
@@ -100,8 +100,9 @@ class PlateParams(BaseModel):
         """
         return [*self._get_xy(survey), self._get_z(surface, depth_offset)]
 
-    def _get_xy(self, survey: ObjectBase) -> list[float]:
+    def _get_xy(self, survey: Points) -> list[float]:
         """Return true or relative locations in x and y."""
+
         if self.relative_locations:
             xy = [
                 survey.vertices[:, 0].mean() + self.easting,

@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2024-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -25,9 +25,14 @@ def test_deposition(tmp_path):
         locs[:, 2] -= 5.0
         surface = Surface.create(ws, vertices=locs, cells=topography.cells)
 
-        deposition = Deposition(surface=surface, value=2.0)
+        deposition = Deposition(surface=surface, value=2.0, name="deposition")
         background = np.ones(octree.n_cells)
-        deposition_model = deposition.realize(mesh=octree, model=background)
+        event_map = {1: ("Background", 1.0)}
+        deposition_model, event_map = deposition.realize(
+            mesh=octree, model=background, event_map=event_map
+        )
+        for event_id, props in event_map.items():
+            deposition_model[deposition_model == event_id] = props[1]
         model = octree.add_data({"model": {"values": deposition_model}})
 
         ind = octree.centroids[:, 2] < -5.0
@@ -40,7 +45,12 @@ def test_erosion(tmp_path):
         topography, octree = get_topo_mesh(ws)
         erosion = Erosion(surface=topography)
         background = np.ones(octree.n_cells)
-        erosion_model = erosion.realize(mesh=octree, model=background)
+        event_map = {1: ("Background", 1.0)}
+        erosion_model, event_map = erosion.realize(
+            mesh=octree, model=background, event_map=event_map
+        )
+        for event_id, props in event_map.items():
+            erosion_model[erosion_model == event_id] = props[1]
         model = octree.add_data({"model": {"values": erosion_model}})
 
         ind = octree.centroids[:, 2] < 0.0
@@ -53,7 +63,12 @@ def test_overburden(tmp_path):
         topography, octree = get_topo_mesh(ws)
         overburden = Overburden(topography=topography, thickness=5.0, value=2.0)
         background = np.ones(octree.n_cells)
-        overburden_model = overburden.realize(mesh=octree, model=background)
+        event_map = {1: ("Background", 1.0)}
+        overburden_model, event_map = overburden.realize(
+            mesh=octree, model=background, event_map=event_map
+        )
+        for event_id, props in event_map.items():
+            overburden_model[overburden_model == event_id] = props[1]
         model = octree.add_data({"model": {"values": overburden_model}})
 
         ind = octree.centroids[:, 2] < -5.0
@@ -75,7 +90,12 @@ def test_anomaly(tmp_path):
         plate = Plate(params, center_x=5.0, center_y=5.0, center_z=-1.5)
         surface = plate.create_surface(workspace)
         anomaly = Anomaly(surface=surface, value=10.0)
-        model = anomaly.realize(mesh=octree, model=np.ones(octree.n_cells))
+        event_map = {1: ("Background", 1.0)}
+        model, event_map = anomaly.realize(
+            mesh=octree, model=np.ones(octree.n_cells), event_map=event_map
+        )
+        for event_id, props in event_map.items():
+            model[model == event_id] = props[1]
         data = octree.add_data({"model": {"values": model}})
         ind = (
             (octree.centroids[:, 0] > 0.0)

@@ -1,17 +1,20 @@
-{% set name = "plate-simulation" %}
-{% set version = "0.1.0b5" %}
+schema_version: 1
+
+context:
+  name: plate-simulation
+  version: 0.1.0b5
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  path: ../{{ name }} # Used to build the package from the source code
+  path: ../${{ name }}
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -51,7 +54,7 @@ requirements:
     - zarr >=2.14.2,<2.15.0
     - tbb 2021.12.*
     - python-tzdata 2023.4.*
-  run_constrained:
+  run_constraints:
     - __glibc >=2.17
 
 about:
@@ -62,3 +65,4 @@ extra:
   recipe-maintainers:
     - SophieCurinier
     - sebhmg
+

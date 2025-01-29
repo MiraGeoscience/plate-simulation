@@ -66,7 +66,7 @@ repos:
         exclude: \.mdj$
     -   id: check-toml
     -   id: check-yaml
-        exclude: ^meta.yaml$
+        exclude: ^recipe.yaml$
     -   id: check-added-large-files
     -   id: check-case-conflict
     -   id: check-merge-conflict

@@ -58,8 +58,12 @@ requirements:
     - __glibc >=2.17
 
 about:
+  summary: Create a specialized mesh, model and simulation for a particular parameterization of the halfspace + overburden and plate geological setting.
   license: MIT
   license_file: LICENSE
+  homepage: https://www.mirageoscience.com/mining-industry-software/geoscience-analyst/python-integration/
+  repository: https://github.com/MiraGeoscience/plate-simulation
+  documentation: https://mirageoscience-plate-simulation.readthedocs-hosted.com/en/release-0.1.0/
 
 extra:
   recipe-maintainers:

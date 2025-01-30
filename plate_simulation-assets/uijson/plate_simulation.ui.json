@@ -16,7 +16,7 @@
   "name": {
     "main": true,
     "label": "Label",
-    "value": "simulation",
+    "value": "plate",
     "enabled": true,
     "tooltip": "Provide the name for the result group."
   },
@@ -157,12 +157,12 @@
   "reference_type": {
     "label": "Reference type",
     "main": true,
-    "group":  "Plate",
+    "group": "Plate",
     "dependency": "relative_locations",
     "dependencyType": "enabled",
     "choiceList": ["min", "mean", "max"],
     "tooltip": "If relative locations, the depth will be below the min/mean/max of the 'Depth reference' chosen.",
-    "value":  "min"
+    "value": "min"
   },
   "generate_sweep": {
     "label": "Generate sweep file",
@@ -214,7 +214,7 @@
   "diagonal_balance": {
       "group": "Mesh",
       "label": "Diagonal Balance",
-      "main": true,
+      "main": false,
       "value": true,
       "tooltip": "Assure single octree level change on corner neighbours. UBC compatible mesh."
   },
@@ -222,7 +222,7 @@
       "enabled": true,
       "group": "Mesh",
       "label": "Minimum refinement level.",
-      "main": true,
+      "main": false,
       "min": 1,
       "tooltip": "Minimum refinement in padding region: 2**(n-1) x base_cell.",
       "value": 6

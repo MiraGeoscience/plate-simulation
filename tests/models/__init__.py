@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2024-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -10,7 +10,7 @@
 import numpy as np
 from geoh5py.objects import Surface
 from octree_creation_app.driver import OctreeDriver
-from octree_creation_app.params import OctreeParams, default_ui_json
+from octree_creation_app.params import OctreeParams
 
 
 def get_topo_mesh(workspace):
@@ -37,12 +37,16 @@ def get_topo_mesh(workspace):
         "depth_core": 5.0,
         "minimum_level": 4,
         "diagonal_balance": False,
-        "Refinement A object": topography.uid,
-        "Refinement A levels": "4, 2, 1",
-        "Refinement A horizon": True,
+        "refinements": [
+            {
+                "refinement_object": topography,
+                "levels": [4, 2, 1],
+                "horizon": True,
+            }
+        ],
     }
     params = OctreeParams(**kwargs)
-    params.write_input_file(name="octree.ui.json", path=workspace.h5file.parent)
+    params.write_ui_json(workspace.h5file.parent / "octree.ui.json")
     driver = OctreeDriver(params)
     octree = driver.run()
     return topography, octree

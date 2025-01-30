@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2024-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -7,7 +7,6 @@
 #  (see LICENSE file at the root of this source code package).                         '
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-import string
 from pathlib import Path
 
 from geoh5py.objects import ObjectBase, Surface
@@ -30,21 +29,25 @@ class MeshParams(BaseModel):
     def octree_params(
         self, survey: ObjectBase, topography: Surface, plates: list[Surface]
     ):
-        refinements = {
-            "Refinement A object": survey,
-            "Refinement A levels": "4, 4, 4",
-            "Refinement A horizon": False,
-            "Refinement B object": topography,
-            "Refinement B levels": "0, 2",
-            "Refinement B horizon": True,
-            "Refinement B distance": 1000.0,
-        }
-        for plate, letter in zip(plates, string.ascii_uppercase[2:], strict=False):
-            refinements.update(
+        refinements = [
+            {
+                "refinement_object": survey,
+                "levels": [4, 4, 4],
+                "horizon": False,
+            },
+            {
+                "refinement_object": topography,
+                "levels": [0, 2],
+                "horizon": True,
+                "distance": 1000.0,
+            },
+        ]
+        for plate in plates:
+            refinements.append(
                 {
-                    f"Refinement {letter} object": plate,
-                    f"Refinement {letter} levels": "2, 1",
-                    f"Refinement {letter} horizon": False,
+                    "refinement_object": plate,
+                    "levels": [2, 1],
+                    "horizon": False,
                 }
             )
 
@@ -54,15 +57,16 @@ class MeshParams(BaseModel):
             u_cell_size=self.u_cell_size,
             v_cell_size=self.v_cell_size,
             w_cell_size=self.w_cell_size,
-            padding_distance=self.padding_distance,
+            horizontal_padding=self.padding_distance,
+            vertical_padding=self.padding_distance,
             depth_core=self.depth_core,
             max_distance=self.max_distance,
             minimum_level=self.minimum_level,
             diagonal_balance=self.diagonal_balance,
-            **refinements,
+            refinements=refinements,
         )
 
         assert isinstance(survey.workspace.h5file, Path)
         path = survey.workspace.h5file.parent
-        octree_params.write_input_file(name="octree.ui.json", path=path)
+        octree_params.write_ui_json(path / "octree.ui.json")
         return octree_params

@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2024-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -60,7 +60,6 @@ class PlateParams(BaseModel):
     dip_length: float
     dip: float = 90.0
     dip_direction: float = 90.0
-    reference: str = "center"
     number: int = 1
     spacing: float = 0.0
     relative_locations: bool = False
@@ -69,11 +68,6 @@ class PlateParams(BaseModel):
     elevation: float
     reference_surface: str = "topography"
     reference_type: str = "mean"
-
-    @field_validator("plate", mode="before")
-    @classmethod
-    def reciprocal(cls, value: float) -> float:
-        return 1.0 / value
 
     @field_validator("reference_surface", "reference_type", mode="before")
     @classmethod
@@ -148,11 +142,6 @@ class OverburdenParams(BaseModel):
     thickness: float
     overburden: float
 
-    @field_validator("overburden", mode="before")
-    @classmethod
-    def reciprocal(cls, value: float) -> float:
-        return 1.0 / value
-
 
 class ModelParams(BaseModel):
     """
@@ -170,8 +159,3 @@ class ModelParams(BaseModel):
     background: float
     overburden: OverburdenParams
     plate: PlateParams
-
-    @field_validator("background", mode="before")
-    @classmethod
-    def reciprocal(cls, value: float) -> float:
-        return 1.0 / value

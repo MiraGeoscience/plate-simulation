@@ -129,7 +129,6 @@ venv.bak/
 /.idea/*
 !/.idea/scopes/
 !/.idea/copyright/
-!/.idea/*.iml
 
 # mypy
 .mypy_cache/
@@ -147,3 +146,4 @@ dmypy.json
 
 # tempory generated files
 pyproject-sha.toml
+.idea/plate-simulation.iml

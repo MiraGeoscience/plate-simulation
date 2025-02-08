@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2024-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -31,19 +31,20 @@ class MeshParams(BaseModel):
         self, survey: ObjectBase, topography: Surface, plates: list[Surface]
     ):
         refinements = {
-            "Refinement A object": topography,
-            "Refinement A levels": "0, 2",
-            "Refinement A type": "surface",
-            "Refinement B object": survey,
-            "Refinement B levels": "4, 2",
-            "Refinement B type": "radial",
+            "Refinement A object": survey,
+            "Refinement A levels": "4, 4, 4",
+            "Refinement A horizon": False,
+            "Refinement B object": topography,
+            "Refinement B levels": "0, 2",
+            "Refinement B horizon": True,
+            "Refinement B distance": 1000.0,
         }
         for plate, letter in zip(plates, string.ascii_uppercase[2:], strict=False):
             refinements.update(
                 {
                     f"Refinement {letter} object": plate,
                     f"Refinement {letter} levels": "2, 1",
-                    f"Refinement {letter} type": "surface",
+                    f"Refinement {letter} horizon": False,
                 }
             )
 
@@ -63,5 +64,5 @@ class MeshParams(BaseModel):
 
         assert isinstance(survey.workspace.h5file, Path)
         path = survey.workspace.h5file.parent
-        octree_params.input_file.write_ui_json(name="octree.ui.json", path=path)
+        octree_params.write_input_file(name="octree.ui.json", path=path)
         return octree_params

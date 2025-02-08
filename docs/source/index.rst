@@ -20,8 +20,7 @@ details are parameterized in a ui.json file that can be rendered in
    getting_started
    usage
    methodology
-   License
-   Third_Party_Software
+   THIRD_PARTY_SOFTWARE
 
 
 License
@@ -60,4 +59,4 @@ Third Party Software notices and/or additional terms and conditions are located 
 
 Copyright
 ^^^^^^^^^
-Copyright (c) 2024 Mira Geoscience Ltd.
+|copyright_notice|

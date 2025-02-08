@@ -1,30 +1,39 @@
 {
   "title": "Plate simulation",
+  "run_command": "plate_simulation.driver",
+  "conda_environment": "plate_simulation",
+  "monitoring_directory": "",
+  "geoh5": "",
+  "workspace_geoh5": "",
   "simulation": {
     "main": true,
     "label": "TEM SimPEG Group",
     "groupType": "{55ed3daf-c192-4d4b-a439-60fa987fe2b8}",
     "value": "",
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Forward modelling SimPEG group with at least the topogarphy and survey set. "
   },
   "name": {
     "main": true,
     "label": "Label",
     "value": "simulation",
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Provide the name for the result group."
   },
   "background": {
     "main": true,
     "group": "Basement",
-    "label": "Resistivity (ohm-m)",
+    "label": "Physical property (SI)",
     "value": 2000.0,
+    "tooltip": "Value of the basement resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
     "enabled": true
   },
   "overburden": {
     "main": true,
     "group": "Overburden",
-    "label": "Resistivity (ohm-m)",
+    "label": "Physical property (SI)",
     "value": 8000.0,
+    "tooltip": "Value of the overburden resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
     "enabled": true
   },
   "thickness": {
@@ -32,27 +41,31 @@
     "group": "Overburden",
     "label": "Thickness",
     "value": 200.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Thickness of the overburden."
   },
   "number": {
     "main": true,
     "group": "Plate",
     "label": "Number of plates",
     "value": 1,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "If more than one the plates will be parallel, equally spaced over the center of the model."
   },
   "spacing": {
     "main": true,
     "group": "Plate",
     "label": "Spacing (m)",
     "value": 0.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Spacing between plates."
   },
   "plate": {
     "main": true,
     "group": "Plate",
-    "label": "Resistivity (ohm-m)",
+    "label": "Physical property (SI)",
     "value": 20.0,
+    "tooltip": "Value of the plate resisitivity (ohm-m), density (g/cc) or susceptibility (SI)",
     "enabled": true
   },
   "width": {
@@ -60,21 +73,24 @@
     "group": "Plate",
     "main": true,
     "value": 90.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Thickness of the plate."
   },
   "strike_length": {
     "label": "Strike Length",
     "group": "Plate",
     "main": true,
     "value": 800.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Length of the plate along the strike direction."
   },
   "dip_length": {
     "label": "Dip Length",
     "group": "Plate",
     "main": true,
     "value": 800.0,
-    "enabled": true
+    "enabled": true,
+    "tooltip": "Length of the plate along the dip direction."
   },
   "dip": {
     "label": "Dip",
@@ -83,7 +99,8 @@
     "value": 60.0,
     "enabled": true,
     "min": 0.0,
-    "max": 90.0
+    "max": 90.0,
+    "tooltip": "Dip of the plate in degrees from horizontal."
   },
   "dip_direction": {
     "label": "Dip Direction",
@@ -92,7 +109,8 @@
     "value": 90.0,
     "enabled": true,
     "min": 0.0,
-    "max": 360.0
+    "max": 360.0,
+    "tooltip": "Direction of the dip vector in degrees from North."
   },
   "relative_locations": {
     "label": "Relative locations",
@@ -100,7 +118,7 @@
     "group": "Plate",
     "value": true,
     "enabled": true,
-    "tooltip": "If checked locations are relative to the survey center and either topography or overburden in z according to 'Depth reference' selecion."
+    "tooltip": "If checked locations are relative to the survey center and either topography or overburden in z according to 'Depth reference' selection."
   },
   "easting": {
     "label": "Easting (m)",
@@ -139,12 +157,12 @@
   "reference_type": {
     "label": "Reference type",
     "main": true,
-    "group":  "Plate",
+    "group": "Plate",
     "dependency": "relative_locations",
     "dependencyType": "enabled",
     "choiceList": ["min", "mean", "max"],
     "tooltip": "If relative locations, the depth will be below the min/mean/max of the 'Depth reference' chosen.",
-    "value":  "min"
+    "value": "min"
   },
   "generate_sweep": {
     "label": "Generate sweep file",
@@ -193,14 +211,34 @@
     "value": 1000.0,
     "enabled": true
   },
+  "diagonal_balance": {
+      "group": "Mesh",
+      "label": "Diagonal Balance",
+      "main": true,
+      "value": true,
+      "tooltip": "Assure single octree level change on corner neighbours. UBC compatible mesh."
+  },
+  "minimum_level": {
+      "enabled": true,
+      "group": "Mesh",
+      "label": "Minimum refinement level.",
+      "main": true,
+      "min": 1,
+      "tooltip": "Minimum refinement in padding region: 2**(n-1) x base_cell.",
+      "value": 6
+  },
   "export_model": {
     "main": false,
     "label": "Export mesh/model",
     "value": true,
     "enabled": true
   },
-  "run_command": "plate_simulation.driver",
-  "conda_environment": "plate_simulation",
-  "monitoring_directory": "",
-  "geoh5": ""
+  "out_group": {
+    "label": "Simulation group",
+    "value": "",
+    "groupType": "{BB50AC61-A657-4926-9C82-067658E246A0}",
+    "visible": true,
+    "optional": true,
+    "enabled": false
+  }
 }

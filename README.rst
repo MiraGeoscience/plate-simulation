@@ -1,9 +1,9 @@
 |coverage| |maintainability| |precommit_ci| |docs| |style| |version| |status| |pyversions|
 
 
-.. |docs| image:: https://readthedocs.org/projects/plate-simulation/badge/
+.. |docs| image:: https://readthedocs.com/projects/mirageoscience-plate-simulation/badge/?version=latest
     :alt: Documentation Status
-    :target: https://plate-simulation.readthedocs.io/en/latest/?badge=latest
+    :target: https://mirageoscience-plate-simulation.readthedocs-hosted.com/en/latest/?badge=latest
 
 .. |coverage| image:: https://codecov.io/gh/MiraGeoscience/plate-simulation/branch/develop/graph/badge.svg
     :alt: Code coverage
@@ -45,7 +45,7 @@ a particular parameterization of the halfspace + overburden and plate geological
 
 Documentation
 ^^^^^^^^^^^^^
-`Online documentation <https://plate-simulation.readthedocs.io/en/latest/>`_
+`Online documentation <https://mirageoscience-plate-simulation.readthedocs-hosted.com/en/latest/>`_
 
 
 Installation
@@ -136,7 +136,7 @@ License
 ^^^^^^^
 MIT License
 
-Copyright (c) 2024 Mira Geoscience
+Copyright (c) 2024-2025 Mira Geoscience
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -158,7 +158,7 @@ SOFTWARE.
 
 Third Party Software
 ^^^^^^^^^^^^^^^^^^^^
-The plate-simulation Software may provide links to third party libraries or code (collectively “Third Party Software”)
+The plate-simulation Software may provide links to third party libraries or code (collectively "Third Party Software")
 to implement various functions. Third Party Software does not comprise part of the Software.
 The use of Third Party Software is governed by the terms of such software license(s).
 Third Party Software notices and/or additional terms and conditions are located in the
@@ -172,4 +172,4 @@ Trademarks
 
 Copyright
 ^^^^^^^^^
-Copyright (c) 2024 Mira Geoscience Ltd.
+Copyright (c) 2024-2025 Mira Geoscience Ltd.

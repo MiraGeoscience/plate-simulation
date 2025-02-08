@@ -1,5 +1,5 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#  Copyright (c) 2024 Mira Geoscience Ltd.                                             '
+#  Copyright (c) 2024-2025 Mira Geoscience Ltd.                                        '
 #                                                                                      '
 #  This file is part of plate-simulation package.                                      '
 #                                                                                      '
@@ -14,7 +14,6 @@ from typing import TYPE_CHECKING
 
 import numpy as np
 from geoh5py import Workspace
-from geoh5py.data import FloatData
 from geoh5py.objects import Octree
 from geoh5py.shared.utils import fetch_active_workspace
 
@@ -96,23 +95,21 @@ class Scenario(Series):
     :param background: Initial value that will fill any areas of the model
         not covered by event realizations.
     :param history: Geological events that form the model.
-    :param name: Name of the model that will be added to the mesh object.
     """
 
     def __init__(
         self,
         workspace: Workspace,
+        *,
         mesh: Octree,
         background: float,
         history: Sequence[Event | Series],
-        name: str = "model",
     ):
         super().__init__(history)
         self.workspace = workspace
         self.mesh = mesh
         self.background = background
         self.history = Geology(history)
-        self.name = name
 
     @property
     def mesh(self) -> Octree:
@@ -125,7 +122,7 @@ class Scenario(Series):
             raise ValueError("Mesh must have n_cells.")
         self._mesh = val
 
-    def geologize(self) -> FloatData:
+    def geologize(self) -> np.ndarray:
         """Realize the geological events in the scenario"""
         with fetch_active_workspace(self.workspace, mode="r+"):
             if self.mesh.n_cells is None:
@@ -133,11 +130,7 @@ class Scenario(Series):
             geology = super().realize(
                 self.mesh, np.ones(self.mesh.n_cells) * self.background
             )
-            model: FloatData = self.mesh.add_data(  # type: ignore
-                {self.name: {"values": geology}}
-            )
-
-        return model
+        return geology
 
 
 class GeologyViolationError(Exception):

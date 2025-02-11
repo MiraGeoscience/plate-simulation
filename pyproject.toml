@@ -8,7 +8,7 @@ description = """
     the halfspace + overburden and plate geological setting"""
 
 authors = ["Mira Geoscience <support@mirageoscience.com>"]
-readme = "README.rst"
+readme = "package.rst"
 repository = "https://github.com/MiraGeoscience/plate-simulation"
 maintainers = [
     "Benjamin Kary <benjamink@mirageoscience.com>",

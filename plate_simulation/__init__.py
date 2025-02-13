@@ -12,7 +12,7 @@ from __future__ import annotations
 from pathlib import Path
 
 
-__version__ = "0.1.1-alpha.1"
+__version__ = "0.1.1-alpha.2"
 
 
 from geoapps_utils.utils.importing import assets_path as assets_path_impl

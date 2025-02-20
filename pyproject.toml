@@ -16,11 +16,10 @@ maintainers = [
 ]
 documentation  = "https://mirageoscience-plate-simulation.readthedocs-hosted.com/"
 homepage = "https://www.mirageoscience.com/mining-industry-software/python-integration/"
-keywords = []
+keywords = ["geology", "geophysics", "modelling", "simulation"]
 
-# TODO: adjust classifiers
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
     "Programming Language :: Python",
     "Topic :: Scientific/Engineering",

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "plate-simulation"
-version = "0.1.1-alpha.2"
+version = "0.1.1"
 license = "MIT"
 description = """
     Specialized mesh, model, and simulation for a parameterization of \

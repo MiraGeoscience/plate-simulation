@@ -21,6 +21,11 @@ project_copyright = "%Y, Mira Geoscience Ltd"
 
 # The full version, including alpha/beta/rc tags.
 release = version("plate-simulation")
+# drop the post segment if any for release
+pep_version = Version(release)
+if pep_version.is_postrelease:
+    release = pep_version.base_version
+
 # The shorter X.Y.Z version.
 version = Version(release).base_version
 

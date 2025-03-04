@@ -67,8 +67,6 @@ pydiso = ">=0.1.0, <0.2.dev"
 python-mumps = ">=0.0.3, <0.0.4.dev"
 
 
-
-
 ## Pip dependencies from Git repositories
 #----------------------------------------
 #geoh5py = {version = ">=0.11.0a1, <0.12.0a.dev", source = "pypi", allow-prereleases = true}
@@ -110,7 +108,7 @@ dask = {version = "2024.6.*", extras = ["distributed"]}
 distributed = "2024.6.*"  # because conda-lock doesn't take dask extras into account
 empymod = ">=2.2.1, <2.3.0"  # from simpeg and geoana
 fsspec = "2022.*"  # from simpeg[dask]
-geoana = ">=0.5.0, <0.6.0"  # from simpeg
+geoana = ">=0.7.0, <0.8.dev"  # from simpeg
 h5py = ">=3.2.1, <4.0.0"  # from geoh5py
 matplotlib-base = ">=3.8.4, <3.9.0"  # from simpeg
 mkl = "2023.2, <2024.1"

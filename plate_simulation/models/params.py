@@ -10,7 +10,7 @@
 from typing import TypeVar
 
 import numpy as np
-from geoh5py.objects import Points, Surface
+from geoh5py.objects import Points
 from pydantic import (
     BaseModel,
     ConfigDict,
@@ -88,14 +88,14 @@ class PlateParams(BaseModel):
     def center(
         self,
         survey: Points,
-        surface: Surface,
+        surface: Points,
         depth_offset: float = 0.0,
     ) -> list[float]:
         """
         Find the plate center relative to a survey and topography.
 
         :param survey: geoh5py survey object for plate simulation.
-        :param surface: surface object to reference plate depth from.
+        :param surface: Points-like object to reference plate depth from.
         :param depth_offset: Additional offset to be added to the depth of the plate.
         """
         return [*self._get_xy(survey), self._get_z(surface, depth_offset)]
@@ -113,11 +113,11 @@ class PlateParams(BaseModel):
 
         return xy
 
-    def _get_z(self, surface: Surface, offset: float = 0.0) -> float:
+    def _get_z(self, surface: Points, offset: float = 0.0) -> float:
         """
         Return true or relative locations in z.
 
-        :param surface: Surface object to reference plate depth from.
+        :param surface: Points-like object to reference plate depth from.
         :offset: Additional offset to be added to the depth.
 
         """

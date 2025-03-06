@@ -85,7 +85,7 @@ octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-
 mira-simpeg = {git = "https://github.com/MiraGeoscience/simpeg.git", rev = "develop", extras = ["dask"]}
 
 #simpeg-drivers = {version = ">=0.3.0a1, <0.4.0a.dev", source = "pypi", allow-prereleases = true}
-simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "develop" }
+simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "GEOPY-2025" }
 
 
 ## about pip dependencies

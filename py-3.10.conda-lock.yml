@@ -15,8 +15,8 @@
 version: 1
 metadata:
   content_hash:
-    win-64: 963d8482bd555737b863bc2f2e284ec184295dcfe0f95245201d321d1fd70f5a
-    linux-64: a1b5b3bb54fe56850e7e56009301fc2922f203f0adb10d1148b36cd4fe5caaab
+    win-64: 4232839a800152fc32fb3b510587aa2826d2e58979c9d0b367469d97126ebc82
+    linux-64: c01e5e889e8f853d57ca3a4eda1715420415cf7c7803a5f97be838a76233152d
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -1380,29 +1380,29 @@ package:
   category: dev
   optional: true
 - name: jinja2
-  version: 3.1.5
+  version: 3.1.6
   manager: conda
   platform: linux-64
   dependencies:
     markupsafe: '>=2.0'
     python: '>=3.9'
-  url: https://conda.anaconda.org/conda-forge/noarch/jinja2-3.1.5-pyhd8ed1ab_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/jinja2-3.1.6-pyhd8ed1ab_0.conda
   hash:
-    md5: 2752a6ed44105bfb18c9bef1177d9dcd
-    sha256: 98977694b9ecaa3218662f843425f39501f81973c450f995eec68f1803ed71c3
+    md5: 446bd6c8cb26050d528881df495ce646
+    sha256: f1ac18b11637ddadc05642e8185a851c7fab5998c6f5470d716812fae943b2af
   category: main
   optional: false
 - name: jinja2
-  version: 3.1.5
+  version: 3.1.6
   manager: conda
   platform: win-64
   dependencies:
     markupsafe: '>=2.0'
     python: '>=3.9'
-  url: https://conda.anaconda.org/conda-forge/noarch/jinja2-3.1.5-pyhd8ed1ab_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/jinja2-3.1.6-pyhd8ed1ab_0.conda
   hash:
-    md5: 2752a6ed44105bfb18c9bef1177d9dcd
-    sha256: 98977694b9ecaa3218662f843425f39501f81973c450f995eec68f1803ed71c3
+    md5: 446bd6c8cb26050d528881df495ce646
+    sha256: f1ac18b11637ddadc05642e8185a851c7fab5998c6f5470d716812fae943b2af
   category: main
   optional: false
 - name: joblib
@@ -5123,12 +5123,12 @@ package:
     numpy: '>=1.26.0,<1.27.0'
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
-  url: git+https://github.com/MiraGeoscience/geoh5py.git@c5f762ae16395629d8a8e4e04dc7488a6c9c53f1
+  url: git+https://github.com/MiraGeoscience/geoh5py.git@f57facab10ee124d5045c7552a37026c2e314918
   hash:
-    sha256: c5f762ae16395629d8a8e4e04dc7488a6c9c53f1
+    sha256: f57facab10ee124d5045c7552a37026c2e314918
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/geoh5py.git@c5f762ae16395629d8a8e4e04dc7488a6c9c53f1
+    url: git+https://github.com/MiraGeoscience/geoh5py.git@f57facab10ee124d5045c7552a37026c2e314918
   category: main
   optional: false
 - name: geoh5py
@@ -5140,12 +5140,12 @@ package:
     numpy: '>=1.26.0,<1.27.0'
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
-  url: git+https://github.com/MiraGeoscience/geoh5py.git@c5f762ae16395629d8a8e4e04dc7488a6c9c53f1
+  url: git+https://github.com/MiraGeoscience/geoh5py.git@f57facab10ee124d5045c7552a37026c2e314918
   hash:
-    sha256: c5f762ae16395629d8a8e4e04dc7488a6c9c53f1
+    sha256: f57facab10ee124d5045c7552a37026c2e314918
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/geoh5py.git@c5f762ae16395629d8a8e4e04dc7488a6c9c53f1
+    url: git+https://github.com/MiraGeoscience/geoh5py.git@f57facab10ee124d5045c7552a37026c2e314918
   category: main
   optional: false
 - name: mira-simpeg
@@ -5206,12 +5206,12 @@ package:
     geoh5py: 0.11.0-alpha.1
     numpy: '>=1.26.0,<1.27.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@3c479f5d098332ff1c6e0eca0d56be6cc01e0911
+  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@680a233e2d3380c084a05a6e3cb51b28e6b450ab
   hash:
-    sha256: 3c479f5d098332ff1c6e0eca0d56be6cc01e0911
+    sha256: 680a233e2d3380c084a05a6e3cb51b28e6b450ab
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@3c479f5d098332ff1c6e0eca0d56be6cc01e0911
+    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@680a233e2d3380c084a05a6e3cb51b28e6b450ab
   category: main
   optional: false
 - name: octree-creation-app
@@ -5224,12 +5224,12 @@ package:
     geoh5py: 0.11.0-alpha.1
     numpy: '>=1.26.0,<1.27.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@3c479f5d098332ff1c6e0eca0d56be6cc01e0911
+  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@680a233e2d3380c084a05a6e3cb51b28e6b450ab
   hash:
-    sha256: 3c479f5d098332ff1c6e0eca0d56be6cc01e0911
+    sha256: 680a233e2d3380c084a05a6e3cb51b28e6b450ab
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@3c479f5d098332ff1c6e0eca0d56be6cc01e0911
+    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@680a233e2d3380c084a05a6e3cb51b28e6b450ab
   category: main
   optional: false
 - name: param-sweeps
@@ -5305,12 +5305,12 @@ package:
     pydiso: '>=0.1.0,<0.2.dev'
     python-mumps: '>=0.0.3,<0.0.4.dev'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@c8390557a5a9e08f4f6839578d67ed98e8d8abf9
+  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@a43fd83752f5064adfd4c2485e7613348d14714e
   hash:
-    sha256: c8390557a5a9e08f4f6839578d67ed98e8d8abf9
+    sha256: a43fd83752f5064adfd4c2485e7613348d14714e
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@c8390557a5a9e08f4f6839578d67ed98e8d8abf9
+    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@a43fd83752f5064adfd4c2485e7613348d14714e
   category: main
   optional: false
 - name: simpeg-drivers
@@ -5330,11 +5330,11 @@ package:
     pydiso: '>=0.1.0,<0.2.dev'
     python-mumps: '>=0.0.3,<0.0.4.dev'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@c8390557a5a9e08f4f6839578d67ed98e8d8abf9
+  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@a43fd83752f5064adfd4c2485e7613348d14714e
   hash:
-    sha256: c8390557a5a9e08f4f6839578d67ed98e8d8abf9
+    sha256: a43fd83752f5064adfd4c2485e7613348d14714e
   source:
     type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@c8390557a5a9e08f4f6839578d67ed98e8d8abf9
+    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@a43fd83752f5064adfd4c2485e7613348d14714e
   category: main
   optional: false

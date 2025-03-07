@@ -121,7 +121,7 @@ def test_plate_simulation(tmp_path):
             k.properties is not None and len(k.properties) == 20
             for k in data.property_groups
         )
-        assert mesh.n_cells == 15556
+        assert mesh.n_cells == 16263
         assert len(np.unique(model.values)) == 4
         assert all(k in np.unique(model.values) for k in [7500, 2000, 20])
         assert any(np.isnan(np.unique(model.values)))

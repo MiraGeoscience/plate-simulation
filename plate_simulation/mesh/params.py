@@ -9,7 +9,7 @@
 
 from pathlib import Path
 
-from geoh5py.objects import ObjectBase, Surface
+from geoh5py.objects import ObjectBase, Points, Surface
 from octree_creation_app.params import OctreeParams
 from pydantic import BaseModel
 
@@ -27,7 +27,7 @@ class MeshParams(BaseModel):
     diagonal_balance: bool = False
 
     def octree_params(
-        self, survey: ObjectBase, topography: Surface, plates: list[Surface]
+        self, survey: ObjectBase, topography: Surface | Points, plates: list[Surface]
     ):
         refinements = [
             {

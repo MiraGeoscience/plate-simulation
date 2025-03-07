@@ -6,8 +6,7 @@
 #  plate-simulation is distributed under the terms and conditions of the MIT License   '
 #  (see LICENSE file at the root of this source code package).                         '
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-from copy import deepcopy
+import os
 from pathlib import Path
 from uuid import UUID
 
@@ -16,12 +15,8 @@ from geoh5py import Workspace
 from geoh5py.groups import SimPEGGroup
 from geoh5py.objects import AirborneTEMReceivers, ObjectBase, Octree, Surface
 from geoh5py.ui_json import InputFile
-from simpeg_drivers.electromagnetics.time_domain.constants import (
-    default_ui_json as tdem_default_ui_json,
-)
-from simpeg_drivers.potential_fields.gravity.constants import (
-    default_ui_json as gravity_default_ui_json,
-)
+from simpeg_drivers.electromagnetics.time_domain.params import TDEMForwardOptions
+from simpeg_drivers.potential_fields.gravity.params import GravityForwardOptions
 
 from plate_simulation import assets_path
 from plate_simulation.driver import PlateSimulationDriver, PlateSimulationParams
@@ -36,16 +31,18 @@ from . import get_survey, get_topography
 
 def get_simulation_group(workspace: Workspace, survey: ObjectBase, topography: Surface):
     tem_inversion = SimPEGGroup.create(workspace)
-    options = deepcopy(InputFile.stringify(tdem_default_ui_json))
-    options["inversion_type"] = "tdem"
-    options["forward_only"] = True
-    options["geoh5"] = str(workspace.h5file)
-    options["topography_object"]["value"] = str(topography.uid)
-    options["data_object"]["value"] = str(survey.uid)
-    options["x_channel_bool"] = True
-    options["y_channel_bool"] = True
-    options["z_channel_bool"] = True
-    tem_inversion.options = options
+    options = TDEMForwardOptions.model_construct()
+    ifile = InputFile.read_ui_json(options.default_ui_json)
+    options_dict = ifile.ui_json
+    options_dict["inversion_type"] = "tdem"
+    options_dict["forward_only"] = True
+    options_dict["geoh5"] = str(workspace.h5file)
+    options_dict["topography_object"]["value"] = str(topography.uid)
+    options_dict["data_object"]["value"] = str(survey.uid)
+    options_dict["x_channel_bool"] = True
+    options_dict["y_channel_bool"] = True
+    options_dict["z_channel_bool"] = True
+    tem_inversion.options = options_dict
 
     return tem_inversion
 
@@ -59,7 +56,7 @@ def get_input_file(filepath: Path) -> InputFile:
             topography = demo_workspace.get_entity("Topography")[0].copy(parent=ws)
             mask = np.zeros(survey.n_vertices, dtype=bool)
             mask[::10] = True
-            new_survey = survey.copy(mask=mask, cell_mask=mask[:-1])
+            new_survey = survey.copy(vertices=survey.vertices[mask, :], cells=None)
 
         simulation = get_simulation_group(ws, new_survey, topography)
         ifile = InputFile.read_ui_json(
@@ -96,7 +93,12 @@ def get_input_file(filepath: Path) -> InputFile:
 
 
 def test_plate_simulation(tmp_path):
+    mon_dir = tmp_path / "monitoring"
+    mon_dir.mkdir(parents=True, exist_ok=True)
+
     ifile = get_input_file(tmp_path)
+    ifile.set_data_value("monitoring_directory", str(mon_dir))
+
     ifile.write_ui_json("test_plate_simulation.ui.json", path=tmp_path)
     result = PlateSimulationDriver.start(
         Path(tmp_path / "test_plate_simulation.ui.json")
@@ -119,10 +121,19 @@ def test_plate_simulation(tmp_path):
             k.properties is not None and len(k.properties) == 20
             for k in data.property_groups
         )
-        assert mesh.n_cells == 14555
+        assert mesh.n_cells == 16263
         assert len(np.unique(model.values)) == 4
         assert all(k in np.unique(model.values) for k in [7500, 2000, 20])
         assert any(np.isnan(np.unique(model.values)))
+
+    # Test the monitoring directory
+    files = [f for f in os.listdir(mon_dir) if f.endswith("geoh5")]
+    assert len(files) == 1
+    with Workspace(mon_dir / files[0]) as ws:
+        fwr_group = ws.get_entity("Tdem Forward")[0]
+
+        # Should only contain octree, files and a survey
+        assert len(fwr_group.children) == 5
 
 
 # pylint: disable=too-many-statements
@@ -139,13 +150,16 @@ def test_plate_simulation_params_from_input_file(tmp_path):
 
         # Add simulation parameter
         gravity_inversion = SimPEGGroup.create(ws)
-        options = deepcopy(gravity_default_ui_json)
-        options["inversion_type"] = "gravity"
-        options["forward_only"] = True
-        options["geoh5"] = str(ws.h5file)
-        options["topography_object"]["value"] = str(topography.uid)
-        options["data_object"]["value"] = str(survey.uid)
-        gravity_inversion.options = options
+
+        options = GravityForwardOptions.model_construct()
+        fwr_ifile = InputFile.read_ui_json(options.default_ui_json)
+        options_dict = fwr_ifile.ui_json
+        options_dict["inversion_type"] = "gravity"
+        options_dict["forward_only"] = True
+        options_dict["geoh5"] = str(ws.h5file)
+        options_dict["topography_object"]["value"] = str(topography.uid)
+        options_dict["data_object"]["value"] = str(survey.uid)
+        gravity_inversion.options = options_dict
         ifile.data["simulation"] = gravity_inversion
 
         # Add mesh parameters
@@ -185,7 +199,9 @@ def test_plate_simulation_params_from_input_file(tmp_path):
         assert simulation_parameters.inversion_type == "gravity"
         assert simulation_parameters.forward_only
         assert simulation_parameters.geoh5.h5file == ws.h5file
-        assert simulation_parameters.topography_object.uid == topography.uid
+        assert (
+            simulation_parameters.active_cells.topography_object.uid == topography.uid
+        )
         assert simulation_parameters.data_object.uid == survey.uid
 
         assert isinstance(params.mesh, MeshParams)

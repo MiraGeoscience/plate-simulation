@@ -95,7 +95,7 @@ libblas = "*=*mkl"  # because simpeg already brings in the MKL
 
 ## indirect dependencies, forcing them here for installation through Conda not pip
 #---------------------------------------------------------------------------------
-dask = {version = "2024.6.*", extras = ["distributed"]}
+dask = {version = "2024.6.*", extras = ["distributed"]}  # from simpeg[dask], simpeg-drivers
 discretize = ">=0.11.0, <0.12.dev"  # also in simpeg, simpeg-drivers, octree-creation-app
 distributed = "2024.6.*"  # because conda-lock doesn't take dask extras into account
 fsspec = ">=2022.*"  # from simpeg[dask]

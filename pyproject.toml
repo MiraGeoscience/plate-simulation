@@ -102,6 +102,7 @@ fsspec = ">=2022.*"  # from simpeg[dask]
 geoana = ">=0.7.0, <0.8.dev"  # from simpeg
 h5py = ">=3.2.1, <4.0.dev"  # from geoh5py
 matplotlib-base = ">=3.8.4, <3.9.dev"  # from simpeg
+mkl = ">=2024.2.2"
 Pillow = ">=10.3.0, <10.4.dev"  # from geoh5py
 pydiso = ">=0.1.0, <0.2.dev"  # from simpeg-drivers: possible solver for simpeg
 pymatsolver = ">=0.3.0, <0.4.dev"  # from simpeg

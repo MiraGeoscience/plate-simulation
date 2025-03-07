@@ -10,7 +10,7 @@
 from abc import ABC, abstractmethod
 
 import numpy as np
-from geoh5py.objects import Octree, Surface
+from geoh5py.objects import Octree, Points, Surface
 from geoh5py.shared.utils import find_unique_name
 from simpeg_drivers.utils.utils import active_from_xyz
 from trimesh import Trimesh
@@ -105,7 +105,7 @@ class Overburden(Event):
 
     def __init__(
         self,
-        topography: Surface,
+        topography: Surface | Points,
         thickness: float,
         value: float,
         name: str = "Overburden",
@@ -139,7 +139,9 @@ class Erosion(Event):
     :param name: Name of the Erosion event.
     """
 
-    def __init__(self, surface: Surface, value: float = np.nan, name: str = "Erosion"):
+    def __init__(
+        self, surface: Surface | Points, value: float = np.nan, name: str = "Erosion"
+    ):
         self.surface = Boundary(surface)
         super().__init__(value, name)
 
@@ -197,7 +199,7 @@ class Boundary:
         in the model.
     """
 
-    def __init__(self, surface: Surface):
+    def __init__(self, surface: Surface | Points):
         self.surface = surface
 
     def vertical_shift(self, offset: float) -> np.ndarray:

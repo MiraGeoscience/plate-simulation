@@ -15,22 +15,22 @@ from geoapps_utils.driver.data import BaseData
 from geoh5py.groups import SimPEGGroup, UIJsonGroup
 from geoh5py.ui_json import InputFile
 from simpeg_drivers.electricals.direct_current.three_dimensions.params import (
-    DirectCurrent3DParams,
+    DC3DForwardOptions,
 )
 from simpeg_drivers.electromagnetics.frequency_domain.params import (
-    FrequencyDomainElectromagneticsParams,
+    FDEMForwardOptions,
 )
 from simpeg_drivers.electromagnetics.time_domain.params import (
-    TimeDomainElectromagneticsParams,
+    TDEMForwardOptions,
 )
 from simpeg_drivers.natural_sources.magnetotellurics.params import (
-    MagnetotelluricsParams,
+    MTForwardOptions,
 )
-from simpeg_drivers.natural_sources.tipper.params import TipperParams
-from simpeg_drivers.params import InversionBaseParams
-from simpeg_drivers.potential_fields.gravity.params import GravityParams
+from simpeg_drivers.natural_sources.tipper.params import TipperForwardOptions
+from simpeg_drivers.params import BaseForwardOptions
+from simpeg_drivers.potential_fields.gravity.params import GravityForwardOptions
 from simpeg_drivers.potential_fields.magnetic_vector.params import (
-    MagneticVectorParams,
+    MVIForwardOptions,
 )
 
 from . import assets_path
@@ -39,13 +39,13 @@ from .models.params import ModelParams
 
 
 PARAM_MAP = {
-    "gravity": GravityParams,
-    "tdem": TimeDomainElectromagneticsParams,
-    "fem": FrequencyDomainElectromagneticsParams,
-    "magnetotellurics": MagnetotelluricsParams,
-    "direct current 3d": DirectCurrent3DParams,
-    "magnetic vector": MagneticVectorParams,
-    "tipper": TipperParams,
+    "gravity": GravityForwardOptions,
+    "tdem": TDEMForwardOptions,
+    "fem": FDEMForwardOptions,
+    "magnetotellurics": MTForwardOptions,
+    "direct current 3d": DC3DForwardOptions,
+    "magnetic vector": MVIForwardOptions,
+    "tipper": TipperForwardOptions,
 }
 
 
@@ -71,7 +71,7 @@ class PlateSimulationParams(BaseData):
     model: ModelParams
     simulation: SimPEGGroup
 
-    def simulation_parameters(self) -> InversionBaseParams:
+    def simulation_parameters(self) -> BaseForwardOptions:
         """
         Create SimPEG parameters from the simulation options.
 
@@ -91,9 +91,7 @@ class PlateSimulationParams(BaseData):
             raise ValueError("Input file data must be set.")
 
         if input_file.data["inversion_type"] in PARAM_MAP:
-            return PARAM_MAP[input_file.data["inversion_type"]](
-                input_file, validate=False
-            )
+            return PARAM_MAP[input_file.data["inversion_type"]].build(input_file.data)
 
         raise NotImplementedError(
             f"Unknown inversion type: {input_file.data['inversion_type']}"

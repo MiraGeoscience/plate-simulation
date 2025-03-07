@@ -56,7 +56,7 @@ def get_input_file(filepath: Path) -> InputFile:
             topography = demo_workspace.get_entity("Topography")[0].copy(parent=ws)
             mask = np.zeros(survey.n_vertices, dtype=bool)
             mask[::10] = True
-            new_survey = survey.copy(mask=mask, cell_mask=mask[:-1])
+            new_survey = survey.copy(vertices=survey.vertices[mask, :], cells=None)
 
         simulation = get_simulation_group(ws, new_survey, topography)
         ifile = InputFile.read_ui_json(

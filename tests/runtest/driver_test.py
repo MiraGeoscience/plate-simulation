@@ -127,11 +127,13 @@ def test_plate_simulation(tmp_path):
         assert any(np.isnan(np.unique(model.values)))
 
     # Test the monitoring directory
-    files = os.listdir(mon_dir)
+    files = [f for f in os.listdir(mon_dir) if f.endswith("geoh5")]
     assert len(files) == 1
     with Workspace(mon_dir / files[0]) as ws:
         fwr_group = ws.get_entity("Tdem Forward")[0]
-        assert len(fwr_group.children) == 3
+
+        # Should only contain octree, files and a survey
+        assert len(fwr_group.children) == 5
 
 
 # pylint: disable=too-many-statements

@@ -50,7 +50,7 @@ exclude = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.10, <3.12"  # no Python 3.12 yet for simpeg-drivers
+python = "^3.10"
 
 numpy = "~1.26.0"  # also in geoh5py, simpeg and geoana
 pydantic = "~2.5.2"

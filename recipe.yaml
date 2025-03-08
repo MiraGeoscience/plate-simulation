@@ -41,6 +41,19 @@ requirements:
   run_constraints:
     - __glibc >=2.17
 
+tests:
+  - python:
+      imports:
+        - plate_simulation
+  - script:
+      - pytest ./tests
+    requirements:
+      run:
+        - pytest
+    files:
+      source:
+        - tests/
+
 about:
   summary: |
     Specialized mesh, model and simulation for a parameterization of

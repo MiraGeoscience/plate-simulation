@@ -62,19 +62,19 @@ trimesh = "~4.1.3"
 ## Pip dependencies from Git repositories
 #----------------------------------------
 #geoh5py = {version = ">=0.11.0a1, <0.12.dev", source = "pypi", allow-prereleases = true}
-geoh5py = {git = "https://github.com/MiraGeoscience/geoh5py.git", rev = "develop"}
+geoh5py = {git = "https://github.com/MiraGeoscience/geoh5py.git", rev = "GEOPY-2049"}
 
 #param-sweeps = {version = ">=0.3.0a1, <0.4.dev", source = "pypi", allow-prereleases = true}
-param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "develop"}
+param-sweeps = {git = "https://github.com/MiraGeoscience/param-sweeps.git", rev = "GEOPY-2049"}
 
 #geoapps-utils = {version = ">=0.5.0a1, <0.6.dev", source = "pypi", allow-prereleases = true}
-geoapps-utils = {git = "https://github.com/MiraGeoscience/geoapps-utils.git", rev = "develop"}
+geoapps-utils = {git = "https://github.com/MiraGeoscience/geoapps-utils.git", rev = "GEOPY-2049"}
 
 #octree-creation-app = {version = ">=0.3.0a1, <0.4.dev", source = "pypi", allow-prereleases = true}
-octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-app.git", rev = "develop"}
+octree-creation-app = {git = "https://github.com/MiraGeoscience/octree-creation-app.git", rev = "GEOPY-2049"}
 
 #simpeg-drivers = {version = ">=0.3.0a1, <0.4.dev", source = "pypi", allow-prereleases = true}
-simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "develop" }
+simpeg-drivers = {git = "https://github.com/MiraGeoscience/simpeg-drivers.git", rev = "GEOPY-2049" }
 
 
 ## about pip dependencies

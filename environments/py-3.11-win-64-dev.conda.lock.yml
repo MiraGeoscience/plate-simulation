@@ -10,7 +10,7 @@ dependencies:
   - alabaster=0.7.16=pyhd8ed1ab_0
   - annotated-types=0.7.0=pyhd8ed1ab_1
   - asciitree=0.3.3=py_2
-  - astroid=3.3.8=py311h1ea47a8_0
+  - astroid=3.3.9=py311h1ea47a8_0
   - babel=2.17.0=pyhd8ed1ab_0
   - brotli=1.1.0=h2466b09_2
   - brotli-bin=1.1.0=h2466b09_2
@@ -113,7 +113,7 @@ dependencies:
   - pydantic-core=2.14.6=py311hc37eb10_1
   - pydiso=0.1.2=py311h66870c1_0
   - pygments=2.19.1=pyhd8ed1ab_0
-  - pylint=3.3.4=pyh29332c3_0
+  - pylint=3.3.5=pyh29332c3_0
   - pymatsolver=0.3.1=pyh48887ae_201
   - pyparsing=3.2.1=pyhd8ed1ab_0
   - pysocks=1.7.1=pyh09c184e_7
@@ -176,9 +176,9 @@ dependencies:
       - geoapps-utils @ git+https://github.com/MiraGeoscience/geoapps-utils.git@de8092abbc030d2230720fd256d97dd87da42688
       - geoh5py @ git+https://github.com/MiraGeoscience/geoh5py.git@d5298460115bff5ae1f6cfeed6d53361cd26c82a
       - mira-simpeg @ git+https://github.com/MiraGeoscience/simpeg.git@0ca2bf61ddbb53616bea91d4c85a8a4198b1e77e
-      - octree-creation-app @ git+https://github.com/MiraGeoscience/octree-creation-app.git@7eace8d94fbbe8b88b01911e7011295b5a9b2fa0
+      - octree-creation-app @ git+https://github.com/MiraGeoscience/octree-creation-app.git@a99bbd282be7bce02254475e907b555767277820
       - param-sweeps @ git+https://github.com/MiraGeoscience/param-sweeps.git@b745466b3d42f5c04c7e0494551cbfe4ea36fb33
-      - simpeg-drivers @ git+https://github.com/MiraGeoscience/simpeg-drivers.git@92a76da2899143d5262a649d7a3347d0b1212625
+      - simpeg-drivers @ git+https://github.com/MiraGeoscience/simpeg-drivers.git@62aa435f997fcc80f18b19a4aeb5718039e373d7
 
 variables:
   KMP_WARNINGS: 0

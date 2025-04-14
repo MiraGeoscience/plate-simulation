@@ -92,9 +92,9 @@ libblas = "*=*mkl"  # because simpeg already brings in the MKL
 
 ## indirect dependencies, forcing them here for installation through Conda not pip
 #---------------------------------------------------------------------------------
-dask = {version = "2024.6.*", extras = ["distributed"]}  # from simpeg[dask], simpeg-drivers
+dask-core = "2025.3.*"  # from simpeg[dask], simpeg-drivers
 discretize = ">=0.11.0, <0.12.dev"  # also in simpeg, simpeg-drivers, octree-creation-app
-distributed = "2024.6.*"  # because conda-lock doesn't take dask extras into account
+distributed = "2025.3.*"  # conda needs explicit dask-core etc for equivalent dask[distributed]
 fsspec = ">=2022.*"  # from simpeg[dask]
 geoana = ">=0.7.0, <0.8.dev"  # from simpeg
 h5py = ">=3.2.1, <4.0.dev"  # from geoh5py

@@ -45,10 +45,18 @@ tests:
   - python:
       imports:
         - plate_simulation
+        - simpeg-drivers
+
+      # `pip check` fails on missing dask-core from simpeg-drivers,
+      # because it is only a meta-package and pip can only see 'dask'.
+      # See note in the recipe for simpeg-drivers
+      pip_check: false
   - script:
-      - pytest ./tests
+      - pytest --ignore=tests/version_test.py
+      - pip list
     requirements:
       run:
+        - pip
         - pytest
     files:
       source:

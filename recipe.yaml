@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: "plate-simulation"
-  version: "0.2.0a1"
+  version: "0.2.0a2"
   python_min: "3.10"
 
 package:
@@ -26,20 +26,41 @@ requirements:
   run:
     - python >=${{ python_min }}
     # Mira packages
-    - geoapps-utils >=0.5.0a, <0.6.dev
-    - geoh5py >=0.11.0a, <0.12.dev
-    - octree-creation-app >=0.3.0a, <0.4.dev
-    - param-sweeps >=0.3.0a, <0.4.dev
-    - simpeg-drivers >=0.3.0a, <0.4.dev
+    - geoapps-utils >=0.5.0a3, <0.6.dev
+    - geoh5py >=0.11.0a3, <0.12.dev
+    - octree-creation-app >=0.3.0a1, <0.4.dev
+    - param-sweeps >=0.2.1a1, <0.3.dev
+    - simpeg-drivers >=0.3.0a1, <0.4.dev
     # direct dependencies
     - numpy >=1.26.0, <1.27.dev
-    - pydantic >=2.5.2, <2.6.dev
+    - pydantic >=2.5.2, <3.0.dev
     - rtree >=1.2.0, <1.3.dev
     - scipy >=1.14.0, <1.15.dev
     - threadpoolctl >=3.3.0, <3.4.dev
     - trimesh >=4.1.3, <4.2.dev
   run_constraints:
     - __glibc >=2.17
+
+tests:
+  - python:
+      imports:
+        - plate_simulation
+        - simpeg_drivers
+
+      # `pip check` fails on missing dask-core from simpeg-drivers,
+      # because it is only a meta-package and pip can only see 'dask'.
+      # See note in the recipe for simpeg-drivers
+      pip_check: false
+  - script:
+      - pytest --ignore=tests/version_test.py
+      - pip list
+    requirements:
+      run:
+        - pip
+        - pytest
+    files:
+      source:
+        - tests/
 
 about:
   summary: |

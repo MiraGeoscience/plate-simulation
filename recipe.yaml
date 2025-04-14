@@ -26,11 +26,11 @@ requirements:
   run:
     - python >=${{ python_min }}
     # Mira packages
-    - geoapps-utils >=0.5.0a3, <0.6.dev
-    - geoh5py >=0.11.0a3, <0.12.dev
-    - octree-creation-app >=0.3.0a1, <0.4.dev
-    - param-sweeps >=0.2.1a1, <0.3.dev
-    - simpeg-drivers >=0.3.0a1, <0.4.dev
+    - geoapps-utils >=0.6.0, <0.7.dev
+    - geoh5py >=0.12.0a, <0.13.dev
+    - octree-creation-app >=0.4.0a, <0.5.dev
+    - param-sweeps >=0.3.0a, <0.4.dev
+    - simpeg-drivers >=0.4.0a, <0.5.dev
     # direct dependencies
     - numpy >=1.26.0, <1.27.dev
     - pydantic >=2.5.2, <3.0.dev

@@ -15,8 +15,8 @@
 version: 1
 metadata:
   content_hash:
-    win-64: 7a5d95922f3cec8818bb12f6e5d0ccf9dca701732799276d6571e277079e7add
-    linux-64: b6c54918f42fd6d80bf70f2057913998c9e4e9bd4e5e0502896912cc30a55c73
+    win-64: 7b82efdc2abd9f2a5f248f0e83de2f9a9c6d8ff6c672eeb73fcbbae4080b55bd
+    linux-64: 7b5adfb4f4da2f936efaf1953a8b3253051179e7c4d6ead4d7fc4b4aba0fec67
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -4961,41 +4961,35 @@ package:
   category: main
   optional: false
 - name: geoapps-utils
-  version: 0.5.0-alpha.4
+  version: 0.5.0a3
   manager: pip
   platform: linux-64
   dependencies:
-    geoh5py: 0.11.0-alpha.3
+    geoh5py: '>=0.11.0a1,<0.12.dev'
     numpy: '>=1.26.0,<1.27.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/geoapps-utils.git@7a04b6e280309e649b2811d47168de3fd6ddf61b
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/geoapps-utils/0.5.0-alpha.3/geoapps_utils-0.5.0a3-py3-none-any.whl
   hash:
-    sha256: 7a04b6e280309e649b2811d47168de3fd6ddf61b
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/geoapps-utils.git@7a04b6e280309e649b2811d47168de3fd6ddf61b
+    sha256: a752b0c8d4b11cf7f5906c1794631f1ee65e77bd17eb3c5bb85390ff06a61c3c
   category: main
   optional: false
 - name: geoapps-utils
-  version: 0.5.0-alpha.4
+  version: 0.5.0a3
   manager: pip
   platform: win-64
   dependencies:
-    geoh5py: 0.11.0-alpha.3
+    geoh5py: '>=0.11.0a1,<0.12.dev'
     numpy: '>=1.26.0,<1.27.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/geoapps-utils.git@7a04b6e280309e649b2811d47168de3fd6ddf61b
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/geoapps-utils/0.5.0-alpha.3/geoapps_utils-0.5.0a3-py3-none-any.whl
   hash:
-    sha256: 7a04b6e280309e649b2811d47168de3fd6ddf61b
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/geoapps-utils.git@7a04b6e280309e649b2811d47168de3fd6ddf61b
+    sha256: a752b0c8d4b11cf7f5906c1794631f1ee65e77bd17eb3c5bb85390ff06a61c3c
   category: main
   optional: false
 - name: geoh5py
-  version: 0.11.0-alpha.3
+  version: 0.11.0a3
   manager: pip
   platform: linux-64
   dependencies:
@@ -5003,16 +4997,13 @@ package:
     numpy: '>=1.26.0,<1.27.0'
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
-  url: git+https://github.com/MiraGeoscience/geoh5py.git@adfe3987a9637b148c440234e67df9c16315a8d6
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/geoh5py/0.11.0-alpha.3/geoh5py-0.11.0a3-py3-none-any.whl
   hash:
-    sha256: adfe3987a9637b148c440234e67df9c16315a8d6
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/geoh5py.git@adfe3987a9637b148c440234e67df9c16315a8d6
+    sha256: ad6137f0f0829b3e75f8ca44483f6f38730ae985efe67968743c2ee39c86d273
   category: main
   optional: false
 - name: geoh5py
-  version: 0.11.0-alpha.3
+  version: 0.11.0a3
   manager: pip
   platform: win-64
   dependencies:
@@ -5020,12 +5011,9 @@ package:
     numpy: '>=1.26.0,<1.27.0'
     pillow: '>=10.3.0,<10.4.0'
     pydantic: '>=2.5.2,<3.0.0'
-  url: git+https://github.com/MiraGeoscience/geoh5py.git@adfe3987a9637b148c440234e67df9c16315a8d6
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/geoh5py/0.11.0-alpha.3/geoh5py-0.11.0a3-py3-none-any.whl
   hash:
-    sha256: adfe3987a9637b148c440234e67df9c16315a8d6
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/geoh5py.git@adfe3987a9637b148c440234e67df9c16315a8d6
+    sha256: ad6137f0f0829b3e75f8ca44483f6f38730ae985efe67968743c2ee39c86d273
   category: main
   optional: false
 - name: mira-simpeg
@@ -5044,12 +5032,9 @@ package:
     pymatsolver: '>=0.3'
     scipy: '>=1.8'
     zarr: '*'
-  url: git+https://github.com/MiraGeoscience/simpeg.git@ad5b2c663795d29216d127679ee121fb13a4d78b
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/mira-simpeg/0.23.0.1a1+mira/mira_simpeg-0.23.0.1a1-py3-none-any.whl
   hash:
-    sha256: ad5b2c663795d29216d127679ee121fb13a4d78b
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/simpeg.git@ad5b2c663795d29216d127679ee121fb13a4d78b
+    sha256: d47becd73401e295eea7caf00a54f96fcaeeea22988d6f2267ddc58741d9d11b
   category: main
   optional: false
 - name: mira-simpeg
@@ -5068,135 +5053,114 @@ package:
     pymatsolver: '>=0.3'
     scipy: '>=1.8'
     zarr: '*'
-  url: git+https://github.com/MiraGeoscience/simpeg.git@ad5b2c663795d29216d127679ee121fb13a4d78b
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/mira-simpeg/0.23.0.1a1+mira/mira_simpeg-0.23.0.1a1-py3-none-any.whl
   hash:
-    sha256: ad5b2c663795d29216d127679ee121fb13a4d78b
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/simpeg.git@ad5b2c663795d29216d127679ee121fb13a4d78b
+    sha256: d47becd73401e295eea7caf00a54f96fcaeeea22988d6f2267ddc58741d9d11b
   category: main
   optional: false
 - name: octree-creation-app
-  version: 0.3.0-alpha.2
+  version: 0.3.0a1
   manager: pip
   platform: linux-64
   dependencies:
     discretize: ==0.11.*
-    geoapps-utils: 0.5.0-alpha.4
-    geoh5py: 0.11.0-alpha.3
+    geoapps-utils: 0.5.0a3
+    geoh5py: '>=0.11.0a3,<0.12.dev'
     numpy: '>=1.26.0,<1.27.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@45472488f4c20cc2b6fcbf36149cec938e1b0ebf
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/octree-creation-app/0.3.0-alpha.1/octree_creation_app-0.3.0a1-py3-none-any.whl
   hash:
-    sha256: 45472488f4c20cc2b6fcbf36149cec938e1b0ebf
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@45472488f4c20cc2b6fcbf36149cec938e1b0ebf
+    sha256: 379dc607aca96db07af2ea8fbacadc9d0ca086e91d2508f5720b87e6e8d778a1
   category: main
   optional: false
 - name: octree-creation-app
-  version: 0.3.0-alpha.2
+  version: 0.3.0a1
   manager: pip
   platform: win-64
   dependencies:
     discretize: ==0.11.*
-    geoapps-utils: 0.5.0-alpha.4
-    geoh5py: 0.11.0-alpha.3
+    geoapps-utils: 0.5.0a3
+    geoh5py: '>=0.11.0a3,<0.12.dev'
     numpy: '>=1.26.0,<1.27.0'
     pydantic: '>=2.5.2,<3.0.0'
     scipy: '>=1.14.0,<1.15.0'
-  url: git+https://github.com/MiraGeoscience/octree-creation-app.git@45472488f4c20cc2b6fcbf36149cec938e1b0ebf
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/octree-creation-app/0.3.0-alpha.1/octree_creation_app-0.3.0a1-py3-none-any.whl
   hash:
-    sha256: 45472488f4c20cc2b6fcbf36149cec938e1b0ebf
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/octree-creation-app.git@45472488f4c20cc2b6fcbf36149cec938e1b0ebf
+    sha256: 379dc607aca96db07af2ea8fbacadc9d0ca086e91d2508f5720b87e6e8d778a1
   category: main
   optional: false
 - name: param-sweeps
-  version: 0.2.1-alpha.2
+  version: 0.2.1a1
   manager: pip
   platform: linux-64
   dependencies:
-    geoh5py: 0.11.0-alpha.3
+    geoh5py: '>=0.11.0a3,<0.12.dev'
     numpy: '>=1.26.0,<1.27.0'
-  url: git+https://github.com/MiraGeoscience/param-sweeps.git@4d0f8262ebb21c803c745fe85583d5cc5ce7d3e6
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/param-sweeps/0.2.1-alpha.1/param_sweeps-0.2.1a1-py3-none-any.whl
   hash:
-    sha256: 4d0f8262ebb21c803c745fe85583d5cc5ce7d3e6
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/param-sweeps.git@4d0f8262ebb21c803c745fe85583d5cc5ce7d3e6
+    sha256: 777618dd6eef4b6e86b4976e01c29bb202abb9d295b0774baeabf7534fb9389c
   category: main
   optional: false
 - name: param-sweeps
-  version: 0.2.1-alpha.2
+  version: 0.2.1a1
   manager: pip
   platform: win-64
   dependencies:
-    geoh5py: 0.11.0-alpha.3
+    geoh5py: '>=0.11.0a3,<0.12.dev'
     numpy: '>=1.26.0,<1.27.0'
-  url: git+https://github.com/MiraGeoscience/param-sweeps.git@4d0f8262ebb21c803c745fe85583d5cc5ce7d3e6
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/param-sweeps/0.2.1-alpha.1/param_sweeps-0.2.1a1-py3-none-any.whl
   hash:
-    sha256: 4d0f8262ebb21c803c745fe85583d5cc5ce7d3e6
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/param-sweeps.git@4d0f8262ebb21c803c745fe85583d5cc5ce7d3e6
+    sha256: 777618dd6eef4b6e86b4976e01c29bb202abb9d295b0774baeabf7534fb9389c
   category: main
   optional: false
 - name: simpeg-drivers
-  version: 0.3.0-alpha.2
+  version: 0.3.0a1
   manager: pip
   platform: linux-64
   dependencies:
     dask-core: ==2025.3.*
     discretize: ==0.11.*
     distributed: ==2025.3.*
-    geoapps-utils: 0.5.0-alpha.4
-    geoh5py: 0.11.0-alpha.3
-    mira-simpeg: 0.23.0.1a1
+    geoapps-utils: '>=0.5.0a3,<0.6.dev'
+    geoh5py: '>=0.11.0a3,<0.12.dev'
+    mira-simpeg: '>=0.23.0.1a1,<0.23.1.dev'
     numpy: '>=1.26.0,<1.27.0'
-    octree-creation-app: 0.3.0-alpha.2
-    param-sweeps: 0.2.1-alpha.2
+    octree-creation-app: '>=0.3.0a1,<0.4.dev'
+    param-sweeps: '>=0.2.1a1,<0.3.dev'
     pydantic: '>=2.5.2,<3.0.0'
     pydiso: '>=0.1.0,<0.2.dev'
     python-mumps: '>=0.0.3,<0.0.4.dev'
     scikit-learn: '>=1.4.0,<1.5.0'
     scipy: '>=1.14.0,<1.15.0'
     tqdm: '>=4.66.1,<5.0.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@9e925c47f9572837d2b9bbc880362aed0c0e4ab8
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/simpeg-drivers/0.3.0-alpha.1/simpeg_drivers-0.3.0a1-py3-none-any.whl
   hash:
-    sha256: 9e925c47f9572837d2b9bbc880362aed0c0e4ab8
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@9e925c47f9572837d2b9bbc880362aed0c0e4ab8
+    sha256: a8a9633f4386ad42ebbff9e8f76f0e2f498d173b14e12297df8f2b2d045aba63
   category: main
   optional: false
 - name: simpeg-drivers
-  version: 0.3.0-alpha.2
+  version: 0.3.0a1
   manager: pip
   platform: win-64
   dependencies:
     dask-core: ==2025.3.*
     discretize: ==0.11.*
     distributed: ==2025.3.*
-    geoapps-utils: 0.5.0-alpha.4
-    geoh5py: 0.11.0-alpha.3
-    mira-simpeg: 0.23.0.1a1
+    geoapps-utils: '>=0.5.0a3,<0.6.dev'
+    geoh5py: '>=0.11.0a3,<0.12.dev'
+    mira-simpeg: '>=0.23.0.1a1,<0.23.1.dev'
     numpy: '>=1.26.0,<1.27.0'
-    octree-creation-app: 0.3.0-alpha.2
-    param-sweeps: 0.2.1-alpha.2
+    octree-creation-app: '>=0.3.0a1,<0.4.dev'
+    param-sweeps: '>=0.2.1a1,<0.3.dev'
     pydantic: '>=2.5.2,<3.0.0'
     pydiso: '>=0.1.0,<0.2.dev'
     python-mumps: '>=0.0.3,<0.0.4.dev'
     scikit-learn: '>=1.4.0,<1.5.0'
     scipy: '>=1.14.0,<1.15.0'
     tqdm: '>=4.66.1,<5.0.0'
-  url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@9e925c47f9572837d2b9bbc880362aed0c0e4ab8
+  url: https://mirageoscienceltd.jfrog.io/artifactory/api/pypi/geoplus-pypi-dev/simpeg-drivers/0.3.0-alpha.1/simpeg_drivers-0.3.0a1-py3-none-any.whl
   hash:
-    sha256: 9e925c47f9572837d2b9bbc880362aed0c0e4ab8
-  source:
-    type: url
-    url: git+https://github.com/MiraGeoscience/simpeg-drivers.git@9e925c47f9572837d2b9bbc880362aed0c0e4ab8
+    sha256: a8a9633f4386ad42ebbff9e8f76f0e2f498d173b14e12297df8f2b2d045aba63
   category: main
   optional: false

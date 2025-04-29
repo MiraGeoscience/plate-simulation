@@ -12,7 +12,7 @@ from geoh5py import Workspace
 from geoh5py.objects import Surface
 
 from plate_simulation.models.events import Anomaly, Deposition, Erosion, Overburden
-from plate_simulation.models.params import PlateParams
+from plate_simulation.models.options import PlateOptions
 from plate_simulation.models.plates import Plate
 
 from . import get_topo_mesh
@@ -79,7 +79,7 @@ def test_overburden(tmp_path):
 def test_anomaly(tmp_path):
     with Workspace(tmp_path / "test.geoh5") as workspace:
         _, octree = get_topo_mesh(workspace)
-        params = PlateParams(
+        params = PlateOptions(
             name="my plate",
             plate=10.0,
             elevation=-1.5,

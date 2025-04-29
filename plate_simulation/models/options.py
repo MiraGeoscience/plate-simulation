@@ -23,7 +23,7 @@ from pydantic import (
 T = TypeVar("T")
 
 
-class PlateParams(BaseModel):
+class PlateOptions(BaseModel):
     """
     Parameters describing an anomalous plate.
 
@@ -72,7 +72,7 @@ class PlateParams(BaseModel):
     @field_validator("reference_surface", "reference_type", mode="before")
     @classmethod
     def none_to_default(cls, value: T | None, info: ValidationInfo) -> T:
-        return value or cls.model_fields[info.field_name].default  # type: ignore
+        return value or cls.model_fields[info.field_name].default  # pylint: disable=unsubscriptable-object
 
     @model_validator(mode="after")
     def single_plate(self):
@@ -132,7 +132,7 @@ class PlateParams(BaseModel):
         return z
 
 
-class OverburdenParams(BaseModel):
+class OverburdenOptions(BaseModel):
     """
     Parameters for the overburden layer.
 
@@ -144,7 +144,7 @@ class OverburdenParams(BaseModel):
     overburden: float
 
 
-class ModelParams(BaseModel):
+class ModelOptions(BaseModel):
     """
     Parameters for the blackground + overburden and plate model.
 
@@ -158,5 +158,5 @@ class ModelParams(BaseModel):
 
     name: str
     background: float
-    overburden: OverburdenParams
-    plate: PlateParams
+    overburden: OverburdenOptions
+    plate: PlateOptions

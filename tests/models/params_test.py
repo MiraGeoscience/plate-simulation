@@ -11,12 +11,12 @@ import numpy as np
 from geoh5py import Workspace
 from geoh5py.objects import Points, Surface
 
-from plate_simulation.models.params import PlateParams
+from plate_simulation.models.options import PlateOptions
 
 
 def test_plate_params(tmp_path):
     workspace = Workspace(tmp_path / "test.geoh5")
-    params = PlateParams(
+    params = PlateOptions(
         name="my plate",
         plate=1.0,
         width=20.0,
@@ -57,7 +57,7 @@ def test_plate_params(tmp_path):
 
 
 def test_plate_params_empty_reference():
-    params = PlateParams(
+    params = PlateOptions(
         name="my plate",
         plate=1.0,
         width=20.0,

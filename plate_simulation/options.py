@@ -34,8 +34,8 @@ from simpeg_drivers.potential_fields.magnetic_vector.options import (
 )
 
 from . import assets_path
-from .mesh.params import MeshParams
-from .models.params import ModelParams
+from .mesh.options import MeshOptions
+from .models.options import ModelOptions
 
 
 PARAM_MAP = {
@@ -49,7 +49,7 @@ PARAM_MAP = {
 }
 
 
-class PlateSimulationParams(BaseData):
+class PlateSimulationOptions(BaseData):
     """
     Parameters for the plate simulation driver.
 
@@ -67,8 +67,8 @@ class PlateSimulationParams(BaseData):
     run_command: ClassVar[str] = "plate_simulation.driver"
     out_group: UIJsonGroup | None = None
 
-    mesh: MeshParams
-    model: ModelParams
+    mesh: MeshOptions
+    model: ModelOptions
     simulation: SimPEGGroup
 
     def simulation_parameters(self) -> BaseForwardOptions:

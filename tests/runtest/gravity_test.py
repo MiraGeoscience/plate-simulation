@@ -15,9 +15,13 @@ from geoh5py.groups import SimPEGGroup
 from simpeg_drivers.constants import default_ui_json
 
 from plate_simulation.driver import PlateSimulationDriver
-from plate_simulation.mesh.params import MeshParams
-from plate_simulation.models.params import ModelParams, OverburdenParams, PlateParams
-from plate_simulation.params import PlateSimulationParams
+from plate_simulation.mesh.options import MeshOptions
+from plate_simulation.models.options import (
+    ModelOptions,
+    OverburdenOptions,
+    PlateOptions,
+)
+from plate_simulation.options import PlateSimulationOptions
 
 from . import get_survey, get_topography
 
@@ -27,7 +31,7 @@ def test_gravity_plate_simulation(tmp_path):
         topography = get_topography(ws)
         survey = get_survey(ws, 10, 10)
 
-        mesh_params = MeshParams(
+        mesh_params = MeshOptions(
             u_cell_size=10.0,
             v_cell_size=10.0,
             w_cell_size=10.0,
@@ -36,9 +40,9 @@ def test_gravity_plate_simulation(tmp_path):
             max_distance=200.0,
         )
 
-        overburden_params = OverburdenParams(thickness=50.0, overburden=0.2)
+        overburden_params = OverburdenOptions(thickness=50.0, overburden=0.2)
 
-        plate_params = PlateParams(
+        plate_params = PlateOptions(
             name="plate",
             plate=0.5,
             elevation=-250.0,
@@ -50,7 +54,7 @@ def test_gravity_plate_simulation(tmp_path):
             reference="center",
         )
 
-        model_params = ModelParams(
+        model_params = ModelOptions(
             name="density",
             background=0.0,
             overburden=overburden_params,
@@ -68,7 +72,7 @@ def test_gravity_plate_simulation(tmp_path):
         gravity_inversion = SimPEGGroup.create(ws)
         gravity_inversion.options = options
 
-        params = PlateSimulationParams(
+        params = PlateSimulationOptions(
             title="test",
             run_command="run",
             geoh5=ws,

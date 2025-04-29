@@ -15,8 +15,8 @@ from geoh5py import Workspace
 from geoh5py.groups import SimPEGGroup
 from geoh5py.objects import AirborneTEMReceivers, ObjectBase, Octree, Surface
 from geoh5py.ui_json import InputFile
-from simpeg_drivers.electromagnetics.time_domain.params import TDEMForwardOptions
-from simpeg_drivers.potential_fields.gravity.params import GravityForwardOptions
+from simpeg_drivers.electromagnetics.time_domain.options import TDEMForwardOptions
+from simpeg_drivers.potential_fields.gravity.options import GravityForwardOptions
 
 from plate_simulation import assets_path
 from plate_simulation.driver import PlateSimulationDriver, PlateSimulationParams

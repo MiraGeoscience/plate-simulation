@@ -22,7 +22,7 @@ from geoh5py.ui_json import InputFile, monitored_directory_copy
 from octree_creation_app.driver import OctreeDriver
 from param_sweeps.generate import generate
 from simpeg_drivers.driver import InversionDriver
-from simpeg_drivers.params import BaseForwardOptions
+from simpeg_drivers.options import BaseForwardOptions
 
 from plate_simulation.logger import get_logger
 from plate_simulation.models.events import Anomaly, Erosion, Overburden

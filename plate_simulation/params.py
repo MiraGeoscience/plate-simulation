@@ -14,22 +14,22 @@ from typing import ClassVar
 from geoapps_utils.driver.data import BaseData
 from geoh5py.groups import SimPEGGroup, UIJsonGroup
 from geoh5py.ui_json import InputFile
-from simpeg_drivers.electricals.direct_current.three_dimensions.params import (
+from simpeg_drivers.electricals.direct_current.three_dimensions.options import (
     DC3DForwardOptions,
 )
-from simpeg_drivers.electromagnetics.frequency_domain.params import (
+from simpeg_drivers.electromagnetics.frequency_domain.options import (
     FDEMForwardOptions,
 )
-from simpeg_drivers.electromagnetics.time_domain.params import (
+from simpeg_drivers.electromagnetics.time_domain.options import (
     TDEMForwardOptions,
 )
-from simpeg_drivers.natural_sources.magnetotellurics.params import (
+from simpeg_drivers.natural_sources.magnetotellurics.options import (
     MTForwardOptions,
 )
-from simpeg_drivers.natural_sources.tipper.params import TipperForwardOptions
-from simpeg_drivers.params import BaseForwardOptions
-from simpeg_drivers.potential_fields.gravity.params import GravityForwardOptions
-from simpeg_drivers.potential_fields.magnetic_vector.params import (
+from simpeg_drivers.natural_sources.tipper.options import TipperForwardOptions
+from simpeg_drivers.options import BaseForwardOptions
+from simpeg_drivers.potential_fields.gravity.options import GravityForwardOptions
+from simpeg_drivers.potential_fields.magnetic_vector.options import (
     MVIForwardOptions,
 )
 

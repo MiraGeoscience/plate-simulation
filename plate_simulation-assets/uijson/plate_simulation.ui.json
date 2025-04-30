@@ -2,7 +2,7 @@
     "icon": "maxwellplate",
     "version": "0.2.0-alpha.1",
     "title": "Plate simulation",
-    "documentation": "https://mirageoscience-plate-simulation.readthedocs-hosted.com/",
+    "documentation": "https://mirageoscience-plate-simulation.readthedocs-hosted.com/en/latest/",
     "conda_environment": "plate_simulation",
     "run_command": "plate_simulation.driver",
     "geoh5": "",

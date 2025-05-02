@@ -22,13 +22,13 @@ from geoh5py.ui_json import InputFile, monitored_directory_copy
 from octree_creation_app.driver import OctreeDriver
 from param_sweeps.generate import generate
 from simpeg_drivers.driver import InversionDriver
-from simpeg_drivers.params import BaseForwardOptions
+from simpeg_drivers.options import BaseForwardOptions
 
 from plate_simulation.logger import get_logger
 from plate_simulation.models.events import Anomaly, Erosion, Overburden
 from plate_simulation.models.plates import Plate
 from plate_simulation.models.series import DikeSwarm, Geology
-from plate_simulation.params import PlateSimulationParams
+from plate_simulation.options import PlateSimulationOptions
 from plate_simulation.utils import replicate
 
 
@@ -44,7 +44,7 @@ class PlateSimulationDriver:
     :param survey: Survey object for the simulation
     """
 
-    def __init__(self, params: PlateSimulationParams):
+    def __init__(self, params: PlateSimulationOptions):
         self.params = params
 
         self._surfaces: list[Surface] | None = None
@@ -305,7 +305,7 @@ class PlateSimulationDriver:
             return None
 
         with ifile.geoh5.open(mode="r+"):  # type: ignore
-            params = PlateSimulationParams.build(ifile)
+            params = PlateSimulationOptions.build(ifile)
 
             return PlateSimulationDriver(params).run()
 

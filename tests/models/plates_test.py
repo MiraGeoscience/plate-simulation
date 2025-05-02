@@ -11,7 +11,7 @@ import numpy as np
 from geoapps_utils.utils.transformations import rotate_xyz
 from geoh5py import Workspace
 
-from plate_simulation.models.params import PlateParams
+from plate_simulation.models.options import PlateOptions
 from plate_simulation.models.plates import Plate
 
 
@@ -24,7 +24,7 @@ def are_collocated(pts1, pts2):
 
 
 def vertical_east_striking_plate(workspace):
-    params = PlateParams(
+    params = PlateOptions(
         name="my plate",
         plate=1.0,
         elevation=0.0,
@@ -73,7 +73,7 @@ def test_dipping_plates_all_quadrants(tmp_path):
 
     for dip_direction in np.arange(0.0, 361.0, 45.0):
         for dip in [20.0, 70.0]:
-            params = PlateParams(
+            params = PlateOptions(
                 name=f"plate dipping {dip} at {dip_direction}",
                 plate=1.0,
                 elevation=0.0,

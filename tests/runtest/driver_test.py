@@ -15,13 +15,13 @@ from geoh5py import Workspace
 from geoh5py.groups import SimPEGGroup
 from geoh5py.objects import AirborneTEMReceivers, ObjectBase, Octree, Surface
 from geoh5py.ui_json import InputFile
-from simpeg_drivers.electromagnetics.time_domain.params import TDEMForwardOptions
-from simpeg_drivers.potential_fields.gravity.params import GravityForwardOptions
+from simpeg_drivers.electromagnetics.time_domain.options import TDEMForwardOptions
+from simpeg_drivers.potential_fields.gravity.options import GravityForwardOptions
 
 from plate_simulation import assets_path
-from plate_simulation.driver import PlateSimulationDriver, PlateSimulationParams
-from plate_simulation.mesh.params import MeshParams
-from plate_simulation.models.params import ModelParams
+from plate_simulation.driver import PlateSimulationDriver, PlateSimulationOptions
+from plate_simulation.mesh.options import MeshOptions
+from plate_simulation.models.options import ModelOptions
 
 from . import get_survey, get_topography
 
@@ -191,7 +191,7 @@ def test_plate_simulation_params_from_input_file(tmp_path):
         ifile.data["reference_surface"] = "topography"
         ifile.data["reference_type"] = "mean"
 
-        params = PlateSimulationParams.build(ifile)
+        params = PlateSimulationOptions.build(ifile)
         assert isinstance(params.simulation, SimPEGGroup)
 
         simulation_parameters = params.simulation_parameters()
@@ -204,7 +204,7 @@ def test_plate_simulation_params_from_input_file(tmp_path):
         )
         assert simulation_parameters.data_object.uid == survey.uid
 
-        assert isinstance(params.mesh, MeshParams)
+        assert isinstance(params.mesh, MeshOptions)
         assert params.mesh.u_cell_size == 10.0
         assert params.mesh.v_cell_size == 10.0
         assert params.mesh.w_cell_size == 10.0
@@ -214,7 +214,7 @@ def test_plate_simulation_params_from_input_file(tmp_path):
         assert params.mesh.minimum_level == 8
         assert not params.mesh.diagonal_balance
 
-        assert isinstance(params.model, ModelParams)
+        assert isinstance(params.model, ModelOptions)
         assert params.model.name == "test_gravity_plate_simulation"
         assert params.model.background == 1000.0
         assert params.model.overburden.thickness == 50.0

@@ -31,15 +31,13 @@ requirements:
     - octree-creation-app >=0.4.0a, <0.5.dev
     - param-sweeps >=0.3.0a, <0.4.dev
     - simpeg-drivers >=0.4.0a, <0.5.dev
-    # direct dependencies
+    # other direct dependencies
     - numpy >=1.26.0, <1.27.dev
     - pydantic >=2.5.2, <3.0.dev
     - rtree >=1.2.0, <1.3.dev
     - scipy >=1.14.0, <1.15.dev
     - threadpoolctl >=3.3.0, <3.4.dev
     - trimesh >=4.1.3, <4.2.dev
-  run_constraints:
-    - __glibc >=2.17
 
 tests:
   - python:
@@ -53,10 +51,8 @@ tests:
       pip_check: false
   - script:
       - pytest --ignore=tests/version_test.py
-      - pip list
     requirements:
       run:
-        - pip
         - pytest
     files:
       source:

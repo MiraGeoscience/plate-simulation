@@ -14,7 +14,7 @@ from octree_creation_app.params import OctreeParams
 from pydantic import BaseModel
 
 
-class MeshParams(BaseModel):
+class MeshOptions(BaseModel):
     """Core parameters for octree mesh creation."""
 
     u_cell_size: float

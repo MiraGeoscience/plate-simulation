@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: "plate-simulation"
-  version: "0.2.0a3"
+  version: "0.2.0b1"
   python_min: "3.10"
 
 package:

@@ -91,7 +91,7 @@ class PlateSimulationOptions(BaseData):
             raise ValueError("Input file data must be set.")
 
         if input_file.data["inversion_type"] in PARAM_MAP:
-            return PARAM_MAP[input_file.data["inversion_type"]].build(input_file.data)
+            return PARAM_MAP[input_file.data["inversion_type"]].build(**input_file.data)
 
         raise NotImplementedError(
             f"Unknown inversion type: {input_file.data['inversion_type']}"

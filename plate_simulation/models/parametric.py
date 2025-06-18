@@ -10,7 +10,6 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from collections.abc import Sequence
 
 import numpy as np
 from geoapps_utils.modelling.plates import PlateModel, inside_plate
@@ -67,21 +66,16 @@ class Plate(Parametric):
     def __init__(
         self,
         params: PlateOptions,
-        center_x: float = 0.0,
-        center_y: float = 0.0,
-        center_z: float = 0.0,
+        center: tuple[float, float, float] = (
+            0.0,
+            0.0,
+            0.0,
+        ),
     ):
         self.params = params
-        self.center_x = center_x
-        self.center_y = center_y
-        self.center_z = center_z
+        self.center = center
 
         super().__init__(self._create_surface())
-
-    @property
-    def center(self) -> Sequence[float]:
-        """Center of the block."""
-        return [self.center_x, self.center_y, self.center_z]
 
     def _create_surface(self) -> Surface:
         """
@@ -131,12 +125,12 @@ class Plate(Parametric):
     def vertices(self) -> np.ndarray:
         """Vertices for triangulation of a rectangular prism in 3D space."""
 
-        u_1 = self.center_x - (self.params.strike_length / 2.0)
-        u_2 = self.center_x + (self.params.strike_length / 2.0)
-        v_1 = self.center_y - (self.params.dip_length / 2.0)
-        v_2 = self.center_y + (self.params.dip_length / 2.0)
-        w_1 = self.center_z - (self.params.width / 2.0)
-        w_2 = self.center_z + (self.params.width / 2.0)
+        u_1 = self.center[0] - (self.params.strike_length / 2.0)
+        u_2 = self.center[0] + (self.params.strike_length / 2.0)
+        v_1 = self.center[1] - (self.params.dip_length / 2.0)
+        v_2 = self.center[1] + (self.params.dip_length / 2.0)
+        w_1 = self.center[2] - (self.params.width / 2.0)
+        w_2 = self.center[2] + (self.params.width / 2.0)
 
         vertices = np.array(
             [
@@ -168,7 +162,7 @@ class Plate(Parametric):
             width=self.params.width,
             direction=self.params.direction,
             dip=self.params.dip,
-            origin=(self.center_x, self.center_y, self.center_z),
+            origin=self.center,
         )
         rotations = [
             z_rotation_matrix(np.deg2rad(self.params.dip_direction)),

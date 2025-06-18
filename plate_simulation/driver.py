@@ -157,29 +157,27 @@ class PlateSimulationDriver:
 
         if self._surfaces is None:
             offset = (
-                self.params.model.overburden.thickness
-                if self.params.model.plate.reference_surface == "overburden"
+                self.params.model.overburden_model.thickness
+                if self.params.model.plate_model.reference_surface == "overburden"
                 else 0.0
             )
-            center = self.params.model.plate.center(
+            center = self.params.model.plate_model.center(
                 self.survey,
                 self.topography,
                 depth_offset=-1 * offset,
             )
             plate = Plate(
-                self.params.model.plate,
-                *center,
+                self.params.model.plate_model,
+                center,
+            )
+            plates = replicate(
+                plate,
+                self.params.model.plate_model.number,
+                self.params.model.plate_model.spacing,
+                self.params.model.plate_model.dip_direction,
             )
 
-            if self.params.model.plate.number == 1:
-                self._surfaces = [plate.surface]
-            else:
-                self._surfaces = replicate(
-                    plate.surface,
-                    self.params.model.plate.number,
-                    self.params.model.plate.spacing,
-                    self.params.model.plate.dip_direction,
-                )
+            self._surfaces = [p.surface for p in plates]
 
         return self._surfaces
 
@@ -225,12 +223,15 @@ class PlateSimulationDriver:
 
         overburden = Overburden(
             topography=self.simulation_parameters.active_cells.topography_object,
-            thickness=self.params.model.overburden.thickness,
-            value=self.params.model.overburden.overburden,
+            thickness=self.params.model.overburden_model.thickness,
+            value=self.params.model.overburden_model.overburden,
         )
 
         dikes = DikeSwarm(
-            [Anomaly(Body(s), self.params.model.plate.plate) for s in self.surfaces],
+            [
+                Anomaly(Body(s), self.params.model.plate_model.plate)
+                for s in self.surfaces
+            ],
             name="plates",
         )
 

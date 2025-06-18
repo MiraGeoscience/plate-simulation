@@ -113,7 +113,7 @@ class PlateSimulationDriver:
         if self._simulation_driver is None:
             with fetch_active_workspace(self.params.geoh5, mode="r+"):
                 self.simulation_parameters.mesh = self.mesh
-                self.simulation_parameters.starting_model = self.model
+                self.simulation_parameters.models.starting_model = self.model
 
                 if not isinstance(
                     self.simulation_parameters.active_cells.topography_object,
@@ -177,7 +177,7 @@ class PlateSimulationDriver:
                 self.params.model.plate_model.dip_direction,
             )
 
-            self._surfaces = [p.surface for p in plates]
+            self._surfaces = [p.surface.copy(parent=self.out_group) for p in plates]
 
         return self._surfaces
 

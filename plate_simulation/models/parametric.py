@@ -20,6 +20,7 @@ from geoapps_utils.utils.transformations import (
     z_rotation_matrix,
 )
 from geoh5py.objects import Octree, Surface
+from geoh5py.shared.utils import fetch_active_workspace
 from geoh5py.workspace import Workspace
 from simpeg_drivers.utils.utils import active_from_xyz
 from trimesh import Trimesh
@@ -71,10 +72,11 @@ class Plate(Parametric):
             0.0,
             0.0,
         ),
+        workspace: Workspace | None = None,
     ):
         self.params = params
         self.center = center
-
+        self._workspace = workspace
         super().__init__(self._create_surface())
 
     def _create_surface(self) -> Surface:
@@ -84,13 +86,13 @@ class Plate(Parametric):
         :param workspace: Workspace object to create the surface in.
         :param out_group: Output group to store the surface.
         """
-        byte_ws = Workspace()
-        surface = Surface.create(
-            byte_ws,
-            vertices=self.vertices,
-            cells=self.triangles,
-            name=self.params.name,
-        )
+        with fetch_active_workspace(self.workspace) as ws:
+            surface = Surface.create(
+                ws,
+                vertices=self.vertices,
+                cells=self.triangles,
+                name=self.params.name,
+            )
 
         return surface
 
@@ -146,6 +148,13 @@ class Plate(Parametric):
         )
 
         return self._rotate(vertices)
+
+    @property
+    def workspace(self) -> Workspace:
+        if self._workspace is None:
+            self._workspace = Workspace()
+
+        return self._workspace
 
     def _rotate(self, vertices: np.ndarray) -> np.ndarray:
         """Rotate vertices and adjust for reference point."""

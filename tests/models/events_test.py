@@ -87,7 +87,7 @@ def test_anomaly(tmp_path):
             strike_length=10.0,
             dip_length=1.0,
         )
-        plate = Plate(params, center_x=5.0, center_y=5.0, center_z=-1.5)
+        plate = Plate(params, center=(5.0, 5.0, -1.5))
 
         anomaly = Anomaly(body=plate, value=10.0)
         event_map = {1: ("Background", 1.0)}

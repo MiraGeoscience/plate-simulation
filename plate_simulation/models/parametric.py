@@ -169,7 +169,7 @@ class Plate(Parametric):
             strike_length=self.params.strike_length,
             dip_length=self.params.dip_length,
             width=self.params.width,
-            direction=self.params.direction,
+            direction=self.params.dip_direction,
             dip=self.params.dip,
             origin=self.center,
         )

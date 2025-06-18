@@ -50,7 +50,7 @@ def replicate(
     plates = []
     for i in range(number):
         center = np.r_[plate.center] + azimuth_to_unit_vector(azimuth) * offsets[i]
-        new = Plate(plate.params, center)
+        new = Plate(plate.params.copy(), center)
         new.params.name = f"{plate.params.name} offset {i + 1}"
         plates.append(new)
     return plates

@@ -10,13 +10,11 @@
 from abc import ABC, abstractmethod
 
 import numpy as np
-from geoh5py.objects import Octree, Points, Surface
+from geoh5py.objects import Octree, Surface
 from geoh5py.shared.utils import find_unique_name
-from simpeg_drivers.utils.utils import active_from_xyz
-from trimesh import Trimesh
-from trimesh.proximity import ProximityQuery
 
 from plate_simulation.models import EventMap
+from plate_simulation.models.parametric import Boundary, Parametric
 
 
 # pylint: disable=too-few-public-methods
@@ -105,7 +103,7 @@ class Overburden(Event):
 
     def __init__(
         self,
-        topography: Surface | Points,
+        topography: Surface,
         thickness: float,
         value: float,
         name: str = "Overburden",
@@ -139,9 +137,7 @@ class Erosion(Event):
     :param name: Name of the Erosion event.
     """
 
-    def __init__(
-        self, surface: Surface | Points, value: float = np.nan, name: str = "Erosion"
-    ):
+    def __init__(self, surface: Surface, value: float = np.nan, name: str = "Erosion"):
         self.surface = Boundary(surface)
         super().__init__(value, name)
 
@@ -161,16 +157,16 @@ class Erosion(Event):
 
 class Anomaly(Event):
     """
-    Enrich or deplete the model within a close surface.
+    Enrich or deplete the model within a close body.
 
-    :param surface: Closed surface within which the model will be filled
+    :param body: Closed body within which the model will be filled
         with the anomaly value.
     :param value: Model value assigned to the anomaly.
     :param name: Name of the event.
     """
 
-    def __init__(self, surface: Surface, value: float, name: str = "Anomaly"):
-        self.body = Body(surface)
+    def __init__(self, body: Parametric, value: float, name: str = "Anomaly"):
+        self.body = body
         super().__init__(value, name)
 
     def realize(
@@ -189,72 +185,3 @@ class Anomaly(Event):
         model[self.body.mask(mesh)] = event_id
 
         return model, event_map
-
-
-class Boundary:
-    """
-    Represents a boundary in a model.
-
-    :param surface: geoh5py Surface object representing a boundary
-        in the model.
-    """
-
-    def __init__(self, surface: Surface | Points):
-        self.surface = surface
-
-    def vertical_shift(self, offset: float) -> np.ndarray:
-        """
-        Returns the surface vertices shifted vertically by offset.
-
-        :param offset: Shifts vertices in up (positive) or down (negative).
-        """
-
-        if self.surface.vertices is None:
-            raise ValueError("Surface vertices are not defined.")
-
-        shift = np.c_[
-            np.zeros(self.surface.vertices.shape[0]),
-            np.zeros(self.surface.vertices.shape[0]),
-            np.ones(self.surface.vertices.shape[0]) * offset,
-        ]
-        return self.surface.vertices + shift
-
-    def mask(
-        self, mesh: Octree, offset: float = 0.0, reference: str = "center"
-    ) -> np.ndarray:
-        """
-        True for cells whose reference lie below the surface.
-
-        :param mesh: Octree mesh on which the mask is computed.
-        :param offset: Statically shift the surface on which the mask
-            is computed.
-        :param reference: Use "bottom", "center" or "top" of the cells
-            in determining the mask.
-
-        """
-
-        return active_from_xyz(mesh, self.vertical_shift(offset), reference)
-
-
-class Body:
-    """
-    Represents a closed surface in the model.
-
-    :param surface: geoh5py Surface object representing a closed surface
-    """
-
-    def __init__(self, surface: Surface):
-        self.surface = surface
-
-    def mask(self, mesh: Octree) -> np.ndarray:
-        """
-        True for cells that lie within the closed surface.
-
-        :param mesh: Octree mesh on which the mask is computed.
-        """
-        triangulation = Trimesh(
-            vertices=self.surface.vertices, faces=self.surface.cells
-        )
-        proximity_query = ProximityQuery(triangulation)
-        dist = proximity_query.signed_distance(mesh.centroids)
-        return dist > 0

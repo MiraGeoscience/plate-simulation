@@ -9,10 +9,9 @@
 
 import numpy as np
 from geoapps_utils.utils.transformations import rotate_xyz
-from geoh5py import Workspace
 
 from plate_simulation.models.options import PlateOptions
-from plate_simulation.models.plates import Plate
+from plate_simulation.models.parametric import Plate
 
 
 def are_collocated(pts1, pts2):
@@ -23,7 +22,7 @@ def are_collocated(pts1, pts2):
     return np.all(truth)
 
 
-def vertical_east_striking_plate(workspace):
+def vertical_east_striking_plate():
     params = PlateOptions(
         name="my plate",
         plate=1.0,
@@ -36,12 +35,11 @@ def vertical_east_striking_plate(workspace):
     )
     plate = Plate(params)
 
-    return plate.create_surface(workspace)
+    return plate.surface
 
 
-def test_vertical_east_striking_plate(tmp_path):
-    workspace = Workspace(tmp_path / "test.geoh5")
-    vertical_east_striking = vertical_east_striking_plate(workspace)
+def test_vertical_east_striking_plate():
+    vertical_east_striking = vertical_east_striking_plate()
     assert vertical_east_striking.vertices is not None
     assert vertical_east_striking.extent is not None
     assert np.isclose(
@@ -67,9 +65,8 @@ def test_vertical_east_striking_plate(tmp_path):
     )
 
 
-def test_dipping_plates_all_quadrants(tmp_path):
-    workspace = Workspace(tmp_path / "test.geoh5")
-    reference = vertical_east_striking_plate(workspace)
+def test_dipping_plates_all_quadrants():
+    reference = vertical_east_striking_plate()
 
     for dip_direction in np.arange(0.0, 361.0, 45.0):
         for dip in [20.0, 70.0]:
@@ -86,7 +83,7 @@ def test_dipping_plates_all_quadrants(tmp_path):
             )
 
             plate = Plate(params)
-            surface = plate.create_surface(workspace)
+            surface = plate.surface
             locs = rotate_xyz(surface.vertices, [0.0, 0.0, 0.0], dip_direction, 0.0)
             locs = rotate_xyz(locs, [0.0, 0.0, 0.0], 0.0, dip - 90.0)
             assert np.allclose(locs, reference.vertices)

@@ -26,7 +26,7 @@ from simpeg_drivers.options import BaseForwardOptions
 
 from plate_simulation.logger import get_logger
 from plate_simulation.models.events import Anomaly, Erosion, Overburden
-from plate_simulation.models.plates import Plate
+from plate_simulation.models.parametric import Body, Plate
 from plate_simulation.models.series import DikeSwarm, Geology
 from plate_simulation.options import PlateSimulationOptions
 from plate_simulation.utils import replicate
@@ -170,13 +170,12 @@ class PlateSimulationDriver:
                 self.params.model.plate,
                 *center,
             )
-            surface = plate.create_surface(self.params.geoh5, self.out_group)
 
             if self.params.model.plate.number == 1:
-                self._surfaces = [surface]
+                self._surfaces = [plate.surface]
             else:
                 self._surfaces = replicate(
-                    surface,
+                    plate.surface,
                     self.params.model.plate.number,
                     self.params.model.plate.spacing,
                     self.params.model.plate.dip_direction,
@@ -231,7 +230,7 @@ class PlateSimulationDriver:
         )
 
         dikes = DikeSwarm(
-            [Anomaly(s, self.params.model.plate.plate) for s in self.surfaces],
+            [Anomaly(Body(s), self.params.model.plate.plate) for s in self.surfaces],
             name="plates",
         )
 

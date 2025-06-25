@@ -26,7 +26,7 @@ from simpeg_drivers.options import BaseForwardOptions
 
 from plate_simulation.logger import get_logger
 from plate_simulation.models.events import Anomaly, Erosion, Overburden
-from plate_simulation.models.plates import Plate
+from plate_simulation.models.parametric import Plate
 from plate_simulation.models.series import DikeSwarm, Geology
 from plate_simulation.options import PlateSimulationOptions
 from plate_simulation.utils import replicate
@@ -47,7 +47,7 @@ class PlateSimulationDriver:
     def __init__(self, params: PlateSimulationOptions):
         self.params = params
 
-        self._surfaces: list[Surface] | None = None
+        self._plates: list[Plate] | None = None
         self._survey: Points | None = None
         self._mesh: Octree | None = None
         self._model: FloatData | None = None
@@ -113,7 +113,7 @@ class PlateSimulationDriver:
         if self._simulation_driver is None:
             with fetch_active_workspace(self.params.geoh5, mode="r+"):
                 self.simulation_parameters.mesh = self.mesh
-                self.simulation_parameters.starting_model = self.model
+                self.simulation_parameters.models.starting_model = self.model
 
                 if not isinstance(
                     self.simulation_parameters.active_cells.topography_object,
@@ -137,7 +137,7 @@ class PlateSimulationDriver:
         if self._simulation_parameters is None:
             self._simulation_parameters = self.params.simulation_parameters()
             if self._simulation_parameters.physical_property == "conductivity":
-                self._simulation_parameters.model_type = "Resistivity (Ohm-m)"
+                self._simulation_parameters.models.model_type = "Resistivity (Ohm-m)"
         return self._simulation_parameters
 
     @property
@@ -148,41 +148,34 @@ class PlateSimulationDriver:
         return self._survey
 
     @property
-    def topography(self) -> Surface | Points:
-        return self.simulation_parameters.active_cells.topography_object
-
-    @property
-    def surfaces(self) -> list[Surface]:
-        """Returns a list of surfaces representing the plates for simulation."""
-
-        if self._surfaces is None:
+    def plates(self) -> list[Plate]:
+        """Generate sequence of plates."""
+        if self._plates is None:
             offset = (
-                self.params.model.overburden.thickness
-                if self.params.model.plate.reference_surface == "overburden"
+                self.params.model.overburden_model.thickness
+                if self.params.model.plate_model.reference_surface == "overburden"
                 else 0.0
             )
-            center = self.params.model.plate.center(
+            center = self.params.model.plate_model.center(
                 self.survey,
                 self.topography,
                 depth_offset=-1 * offset,
             )
             plate = Plate(
-                self.params.model.plate,
-                *center,
+                self.params.model.plate_model,
+                center,
             )
-            surface = plate.create_surface(self.params.geoh5, self.out_group)
+            self._plates = replicate(
+                plate,
+                self.params.model.plate_model.number,
+                self.params.model.plate_model.spacing,
+                self.params.model.plate_model.dip_direction,
+            )
+        return self._plates
 
-            if self.params.model.plate.number == 1:
-                self._surfaces = [surface]
-            else:
-                self._surfaces = replicate(
-                    surface,
-                    self.params.model.plate.number,
-                    self.params.model.plate.spacing,
-                    self.params.model.plate.dip_direction,
-                )
-
-        return self._surfaces
+    @property
+    def topography(self) -> Surface | Points:
+        return self.simulation_parameters.active_cells.topography_object
 
     @property
     def mesh(self) -> Octree:
@@ -211,7 +204,7 @@ class PlateSimulationDriver:
         octree_params = self.params.mesh.octree_params(
             self.survey,
             self.simulation_parameters.active_cells.topography_object,
-            self.surfaces,
+            [p.surface.copy(parent=self.out_group) for p in self.plates],
         )
         octree_driver = OctreeDriver(octree_params)
         mesh = octree_driver.run()
@@ -226,12 +219,12 @@ class PlateSimulationDriver:
 
         overburden = Overburden(
             topography=self.simulation_parameters.active_cells.topography_object,
-            thickness=self.params.model.overburden.thickness,
-            value=self.params.model.overburden.overburden,
+            thickness=self.params.model.overburden_model.thickness,
+            value=self.params.model.overburden_model.overburden,
         )
 
         dikes = DikeSwarm(
-            [Anomaly(s, self.params.model.plate.plate) for s in self.surfaces],
+            [Anomaly(plate, plate.params.plate) for plate in self.plates],
             name="plates",
         )
 

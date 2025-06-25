@@ -7,12 +7,10 @@
 #  (see LICENSE file at the root of this source code package).                         '
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-from copy import deepcopy
-
 import numpy as np
 from geoh5py import Workspace
 from geoh5py.groups import SimPEGGroup
-from simpeg_drivers.constants import default_ui_json
+from simpeg_drivers.potential_fields.gravity.options import GravityForwardOptions
 
 from plate_simulation.driver import PlateSimulationDriver
 from plate_simulation.mesh.options import MeshOptions
@@ -57,20 +55,19 @@ def test_gravity_plate_simulation(tmp_path):
         model_params = ModelOptions(
             name="density",
             background=0.0,
-            overburden=overburden_params,
-            plate=plate_params,
+            overburden_model=overburden_params,
+            plate_model=plate_params,
         )
 
-        options = deepcopy(default_ui_json)
-        options["title"] = "gravity inversion"
-        options["inversion_type"] = "gravity"
-        options["forward_only"] = True
-        options["geoh5"] = str(ws.h5file)
-        options["topography_object"]["value"] = str(topography.uid)
-        options["data_object"]["value"] = str(survey.uid)
+        options = GravityForwardOptions.build(
+            topography_object=topography,
+            data_object=survey,
+            geoh5=ws,
+            starting_model=0.1,
+        )
 
         gravity_inversion = SimPEGGroup.create(ws)
-        gravity_inversion.options = options
+        gravity_inversion.options = options.serialize()
 
         params = PlateSimulationOptions(
             title="test",

@@ -13,7 +13,7 @@ from geoh5py.objects import Surface
 
 from plate_simulation.models.events import Anomaly, Deposition, Erosion, Overburden
 from plate_simulation.models.options import PlateOptions
-from plate_simulation.models.plates import Plate
+from plate_simulation.models.parametric import Plate
 
 from . import get_topo_mesh
 
@@ -87,9 +87,9 @@ def test_anomaly(tmp_path):
             strike_length=10.0,
             dip_length=1.0,
         )
-        plate = Plate(params, center_x=5.0, center_y=5.0, center_z=-1.5)
-        surface = plate.create_surface(workspace)
-        anomaly = Anomaly(surface=surface, value=10.0)
+        plate = Plate(params, center=(5.0, 5.0, -1.5))
+
+        anomaly = Anomaly(body=plate, value=10.0)
         event_map = {1: ("Background", 1.0)}
         model, event_map = anomaly.realize(
             mesh=octree, model=np.ones(octree.n_cells), event_map=event_map

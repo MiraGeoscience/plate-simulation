@@ -27,8 +27,6 @@ class PlateOptions(BaseModel):
     """
     Parameters describing an anomalous plate.
 
-    :param name: Name to be given to the geoh5py Surface object
-        representing the plate(s).
     :param plate: Value given to the plate(s).
     :param width: V-size of the plate.
     :param strike_length: U-size of the plate.
@@ -53,7 +51,7 @@ class PlateOptions(BaseModel):
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
-    name: str
+    name: str = "Plate"
     plate: float
     width: float
     strike_length: float
@@ -90,7 +88,7 @@ class PlateOptions(BaseModel):
         survey: Points,
         surface: Points,
         depth_offset: float = 0.0,
-    ) -> list[float]:
+    ) -> tuple[float, float, float]:
         """
         Find the plate center relative to a survey and topography.
 
@@ -98,20 +96,18 @@ class PlateOptions(BaseModel):
         :param surface: Points-like object to reference plate depth from.
         :param depth_offset: Additional offset to be added to the depth of the plate.
         """
-        return [*self._get_xy(survey), self._get_z(surface, depth_offset)]
+        return *self._get_xy(survey), self._get_z(surface, depth_offset)
 
-    def _get_xy(self, survey: Points) -> list[float]:
+    def _get_xy(self, survey: Points) -> tuple[float, float]:
         """Return true or relative locations in x and y."""
 
         if self.relative_locations:
-            xy = [
+            return (
                 survey.vertices[:, 0].mean() + self.easting,
                 survey.vertices[:, 1].mean() + self.northing,
-            ]
-        else:
-            xy = [self.easting, self.northing]
+            )
 
-        return xy
+        return self.easting, self.northing
 
     def _get_z(self, surface: Points, offset: float = 0.0) -> float:
         """
@@ -148,7 +144,6 @@ class ModelOptions(BaseModel):
     """
     Parameters for the blackground + overburden and plate model.
 
-    :param name: Name to be given to the model.
     :param background: Value given to the background.
     :param overburden: Overburden layer parameters.
     :param plate: Plate parameters.
@@ -156,7 +151,6 @@ class ModelOptions(BaseModel):
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
-    name: str
     background: float
-    overburden: OverburdenOptions
-    plate: PlateOptions
+    overburden_model: OverburdenOptions
+    plate_model: PlateOptions

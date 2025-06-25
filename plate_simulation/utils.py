@@ -8,7 +8,8 @@
 # ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 import numpy as np
-from geoh5py.objects import Surface
+
+from plate_simulation.models.parametric import Plate
 
 
 def azimuth_to_unit_vector(azimuth: float) -> np.ndarray:
@@ -28,27 +29,28 @@ def azimuth_to_unit_vector(azimuth: float) -> np.ndarray:
 
 
 def replicate(
-    surface: Surface,
+    plate: Plate,
     number: int,
     spacing: float,
     azimuth: float,
-) -> list[Surface]:
+) -> list[Plate]:
     """
     Replicate a plate n times along an azimuth centered at origin.
 
-    Surface names will be indexed.
+    Plate names will be indexed.
 
-    :param surface: geoh5py.Surface to be replicated.
+    :param plate: models.parametric.Plate to be replicated.
     :param number: Number of plates returned.
     :param spacing: Spacing between plates.
     :param azimuth: Azimuth of the axis along with plates are replicated.
     """
 
     offsets = (np.arange(number) * spacing) - ((number - 1) * spacing / 2)
-    surfaces = [surface.copy() for i in range(number - 1)] + [surface]
 
+    plates = []
     for i in range(number):
-        surfaces[i].vertices += azimuth_to_unit_vector(azimuth) * offsets[i]
-        surfaces[i].name = f"{surface.name} offset {i + 1}"
-
-    return surfaces
+        center = np.r_[plate.center] + azimuth_to_unit_vector(azimuth) * offsets[i]
+        new = Plate(plate.params.copy(), center)
+        new.params.name = f"{plate.params.name} offset {i + 1}"
+        plates.append(new)
+    return plates

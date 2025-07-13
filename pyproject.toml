@@ -1,22 +1,32 @@
-[tool.poetry]
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[project]
 name = "plate-simulation"
 version = "0.3.0-alpha.1"
 
-license = "MIT"
+dynamic = ["dependencies"]
+
+requires-python = ">=3.10,<4.0"
+
+
+license = { text = "MIT" }
 description = """
     Specialized mesh, model, and simulation for a parameterization of \
     the halfspace + overburden and plate geological setting"""
 
-authors = ["Mira Geoscience <support@mirageoscience.com>"]
+authors = [{ name = "Mira Geoscience", email = "support@mirageoscience.com" }]
 readme = "package.rst"
-repository = "https://github.com/MiraGeoscience/plate-simulation"
 maintainers = [
-    "Benjamin Kary <benjamink@mirageoscience.com>",
-    "Dominique Fournier <dominiquef@mirageoscience.com>",
+    { name = "Benjamin Kary", email = "benjamink@mirageoscience.com" },
+    { name = "Dominique Fournier", email = "dominiquef@mirageoscience.com" }
 ]
-documentation  = "https://mirageoscience-plate-simulation.readthedocs-hosted.com/"
-homepage = "https://www.mirageoscience.com/mining-industry-software/python-integration/"
+
+
 keywords = ["geology", "geophysics", "modelling", "simulation"]
+
 
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -31,6 +41,8 @@ classifiers = [
     "Operating System :: MacOS",
     "Natural Language :: English",
 ]
+
+
 
 packages = [
     { include = "plate_simulation" },
@@ -48,6 +60,11 @@ include = [
 
 exclude = [
 ]
+
+[project.urls]
+documentation  = "https://mirageoscience-plate-simulation.readthedocs-hosted.com/"
+homepage = "https://www.mirageoscience.com/mining-industry-software/python-integration/"
+repository = "https://github.com/MiraGeoscience/plate-simulation"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -108,7 +125,7 @@ scikit-learn = ">=1.4.0, <1.5.dev"  # from simpeg-drivers
 tqdm = ">=4.66.1, <5.0.dev"  # from curve-apps, peak-finder-app, simpeg
 zarr = ">=2.14.2, <2.15.dev"  # from simpeg[dask], simpeg-drivers
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 Pygments = "*"
 pylint = "*"
 pytest = "*"
@@ -192,6 +209,3 @@ exclude_lines = [
 skip_empty = true
 skip_covered = true
 
-[build-system]
-requires = ["poetry-core>=1.0.0", "setuptools"]
-build-backend = "poetry.core.masonry.api"

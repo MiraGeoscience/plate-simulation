@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core>=1.0.0", "setuptools"]
 build-backend = "poetry.core.masonry.api"
 
 
@@ -208,4 +208,3 @@ exclude_lines = [
 [tool.coverage.html]
 skip_empty = true
 skip_covered = true
-

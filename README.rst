@@ -34,8 +34,8 @@
    :alt: Maintainability
 
 
-plate-simulation: # TODO: SHORT DESCRIPTION
-=========================================================================
+plate-simulation
+================
 **plate-simulation** is a package for creating a specialized mesh, model and simulation for
 a particular parameterization of the halfspace + overburden and plate geological setting.
 

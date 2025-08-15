@@ -26,5 +26,6 @@ def get_logger(name: str, level: int = logging.INFO) -> logging.Logger:
     )
     stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
+    logger.propagate = False
 
     return logger

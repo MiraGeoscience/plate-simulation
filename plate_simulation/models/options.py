@@ -10,7 +10,7 @@
 from typing import TypeVar
 
 import numpy as np
-from geoh5py.objects import ObjectBase, Surface
+from geoh5py.objects import Points
 from pydantic import (
     BaseModel,
     ConfigDict,
@@ -23,7 +23,7 @@ from pydantic import (
 T = TypeVar("T")
 
 
-class PlateParams(BaseModel):
+class PlateOptions(BaseModel):
     """
     Parameters describing an anomalous plate.
 
@@ -72,7 +72,7 @@ class PlateParams(BaseModel):
     @field_validator("reference_surface", "reference_type", mode="before")
     @classmethod
     def none_to_default(cls, value: T | None, info: ValidationInfo) -> T:
-        return value or cls.model_fields[info.field_name].default  # type: ignore
+        return value or cls.model_fields[info.field_name].default  # pylint: disable=unsubscriptable-object
 
     @model_validator(mode="after")
     def single_plate(self):
@@ -87,21 +87,22 @@ class PlateParams(BaseModel):
 
     def center(
         self,
-        survey: ObjectBase,
-        surface: Surface,
+        survey: Points,
+        surface: Points,
         depth_offset: float = 0.0,
     ) -> list[float]:
         """
         Find the plate center relative to a survey and topography.
 
         :param survey: geoh5py survey object for plate simulation.
-        :param surface: surface object to reference plate depth from.
+        :param surface: Points-like object to reference plate depth from.
         :param depth_offset: Additional offset to be added to the depth of the plate.
         """
         return [*self._get_xy(survey), self._get_z(surface, depth_offset)]
 
-    def _get_xy(self, survey: ObjectBase) -> list[float]:
+    def _get_xy(self, survey: Points) -> list[float]:
         """Return true or relative locations in x and y."""
+
         if self.relative_locations:
             xy = [
                 survey.vertices[:, 0].mean() + self.easting,
@@ -112,11 +113,11 @@ class PlateParams(BaseModel):
 
         return xy
 
-    def _get_z(self, surface: Surface, offset: float = 0.0) -> float:
+    def _get_z(self, surface: Points, offset: float = 0.0) -> float:
         """
         Return true or relative locations in z.
 
-        :param surface: Surface object to reference plate depth from.
+        :param surface: Points-like object to reference plate depth from.
         :offset: Additional offset to be added to the depth.
 
         """
@@ -131,7 +132,7 @@ class PlateParams(BaseModel):
         return z
 
 
-class OverburdenParams(BaseModel):
+class OverburdenOptions(BaseModel):
     """
     Parameters for the overburden layer.
 
@@ -143,7 +144,7 @@ class OverburdenParams(BaseModel):
     overburden: float
 
 
-class ModelParams(BaseModel):
+class ModelOptions(BaseModel):
     """
     Parameters for the blackground + overburden and plate model.
 
@@ -157,5 +158,5 @@ class ModelParams(BaseModel):
 
     name: str
     background: float
-    overburden: OverburdenParams
-    plate: PlateParams
+    overburden: OverburdenOptions
+    plate: PlateOptions

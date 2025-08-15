@@ -18,7 +18,7 @@ from geoh5py.objects import Surface
 from geoh5py.ui_json.utils import fetch_active_workspace
 from geoh5py.workspace import Workspace
 
-from plate_simulation.models.params import PlateParams
+from plate_simulation.models.options import PlateOptions
 
 
 class Plate:
@@ -31,7 +31,7 @@ class Plate:
 
     def __init__(
         self,
-        params: PlateParams,
+        params: PlateOptions,
         center_x: float = 0.0,
         center_y: float = 0.0,
         center_z: float = 0.0,

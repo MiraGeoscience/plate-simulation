@@ -10,6 +10,7 @@
 import numpy as np
 from geoh5py import Workspace
 from geoh5py.groups import SimPEGGroup
+from simpeg_drivers.options import ActiveCellsOptions
 from simpeg_drivers.potential_fields.gravity.options import GravityForwardOptions
 
 from plate_simulation.driver import PlateSimulationDriver
@@ -59,15 +60,14 @@ def test_gravity_plate_simulation(tmp_path):
             plate_model=plate_params,
         )
 
-        options = GravityForwardOptions.build(
-            topography_object=topography,
-            data_object=survey,
-            geoh5=ws,
-            starting_model=0.1,
+        active_cells = ActiveCellsOptions(topography_object=topography)
+        inputs = {"geoh5": ws, "active_cells": active_cells, "data_object": survey}
+        options = GravityForwardOptions.model_construct(
+            **inputs,
         )
 
-        gravity_inversion = SimPEGGroup.create(ws)
-        gravity_inversion.options = options.serialize()
+        gravity_forward = SimPEGGroup.create(ws)
+        gravity_forward.options = options.serialize()
 
         params = PlateSimulationOptions(
             title="test",
@@ -75,7 +75,7 @@ def test_gravity_plate_simulation(tmp_path):
             geoh5=ws,
             mesh=mesh_params,
             model=model_params,
-            simulation=gravity_inversion,
+            simulation=gravity_forward,
         )
         driver = PlateSimulationDriver(params)
         driver.run()

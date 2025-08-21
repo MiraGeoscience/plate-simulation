@@ -34,6 +34,12 @@
    :alt: Maintainability
 
 
+
+.. warning::
+    **DEPRECATED** - See instead https://github.com/MiraGeoscience/simpeg-drivers
+
+
+
 plate-simulation
 ================
 **plate-simulation** is a package for creating a specialized mesh, model and simulation for
